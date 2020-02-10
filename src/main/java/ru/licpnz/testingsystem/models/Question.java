@@ -24,5 +24,14 @@ public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String answer = "Wait...";
+    private String question;
+
+    @ManyToOne
+    private User owner;
+
+    @ManyToOne
+    private Problem problem;
+
 }
 //TODO

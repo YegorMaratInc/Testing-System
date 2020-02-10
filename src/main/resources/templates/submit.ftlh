@@ -9,6 +9,8 @@
     <title>ITSprint->Отправка решения</title>
 </head>
 <body>
+    <#list languages as lang>
 
+    </#list>
 </body>
 </html>

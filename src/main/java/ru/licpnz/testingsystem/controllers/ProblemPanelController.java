@@ -1,6 +1,17 @@
 package ru.licpnz.testingsystem.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import ru.licpnz.testingsystem.exceptions.NotFoundException;
+import ru.licpnz.testingsystem.models.Contest;
+import ru.licpnz.testingsystem.models.Problem;
+import ru.licpnz.testingsystem.repositories.ContestRepository;
+import ru.licpnz.testingsystem.repositories.ProblemRepository;
+
+import java.util.List;
 
 /**
  * 28/11/2019
@@ -11,5 +22,21 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class ProblemPanelController {
+
+    private final ProblemRepository problemRepository;
+    private final ContestRepository contestRepository;
+
+    public ProblemPanelController(ProblemRepository problemRepository, ContestRepository contestRepository){
+        this.problemRepository = problemRepository;
+        this.contestRepository = contestRepository;
+    }
+
+    @GetMapping("contest/{contestId}")
+    public String getProblemPanel(@PathVariable("contestId") Long contestId, ModelMap modelMap){
+        Contest contest = contestRepository.findById(contestId).orElseThrow(NotFoundException::new);
+        modelMap.addAttribute("problems", problemRepository.findAllByContest(contest));
+        modelMap.addAttribute("contest", contest);
+        return "problemPanel";
+    }
 }
 //TODO

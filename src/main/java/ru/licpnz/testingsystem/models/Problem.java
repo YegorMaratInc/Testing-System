@@ -27,6 +27,7 @@ public class Problem {
 
     private String name;
     private int timeLimit;
+    private String condition;
 
     @ManyToOne
     private Contest contest;
