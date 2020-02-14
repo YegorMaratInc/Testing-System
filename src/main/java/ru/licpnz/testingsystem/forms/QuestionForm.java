@@ -10,8 +10,8 @@ import lombok.Data;
  * @version 1.0
  */
 @Data
-public class SubmissionForm {
-    private String program;
-    private String languageName;
+public class QuestionForm {
+    private String question;
+    private Long problemId;
     //TODO add info about user
 }

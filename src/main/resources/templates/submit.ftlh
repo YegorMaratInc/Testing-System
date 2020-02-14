@@ -9,8 +9,26 @@
     <title>ITSprint->Отправка решения</title>
 </head>
 <body>
-    <#list languages as lang>
+<form>
+    <label>Language:
+        <select>
+            <option>Select language</option>
+            <#list languages as lang>
+                <option value="${lang.id}">${lang.name}</option>
+            </#list>
 
-    </#list>
+        </select>
+    </label>
+    <label>Problem:
+        <select>
+            <option>Select problem</option>
+            <#list problems as problem>
+                <option value="${problem.id}">${problem.name}</option>
+            </#list>
+        </select>
+
+    </label>
+</form>
+<#--TODO apply style and edit form properly-->
 </body>
 </html>

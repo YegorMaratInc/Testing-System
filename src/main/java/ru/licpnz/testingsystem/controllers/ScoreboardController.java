@@ -63,7 +63,7 @@ public class ScoreboardController {
                 else {
                     int difference = userSubmissions.size() * 10 - 10;
                     Date userTime = userSubmissions.get(i).getSubmissionTime();
-                    difference += (int)((userTime.getTime() - contest.getStartTime().getTime()) / 60000);
+                    difference += (int) ((userTime.getTime() - contest.getStartTime().getTime()) / 60000);
                     scoreboard.get(user).add(new ProblemDTO(i + 1, difference, true));
                 }
             });

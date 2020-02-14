@@ -9,6 +9,6 @@
     <title>ITSprint->Вопрос жюри</title>
 </head>
 <body>
-
+<#--TODO make form and apply style-->
 </body>
 </html>

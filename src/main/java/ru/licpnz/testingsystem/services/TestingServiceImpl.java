@@ -1,22 +1,11 @@
 package ru.licpnz.testingsystem.services;
 
 import org.springframework.stereotype.Service;
-import ru.licpnz.testingsystem.exceptions.NotFoundException;
 import ru.licpnz.testingsystem.forms.SubmissionForm;
 import ru.licpnz.testingsystem.models.Problem;
-import ru.licpnz.testingsystem.models.Submission;
-import ru.licpnz.testingsystem.models.SubmissionState;
 import ru.licpnz.testingsystem.models.User;
 import ru.licpnz.testingsystem.repositories.LanguageRepository;
 import ru.licpnz.testingsystem.repositories.SubmissionRepository;
-
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 /**
  * 28/11/2019
@@ -39,6 +28,7 @@ public class TestingServiceImpl implements TestingService {
 
     @Override
     public void test(SubmissionForm submissionForm, Problem problem, User user) {
+        /*
         Date time = new Date();
         if (time.after(problem.getContest().getFinishTime()) || time.before(problem.getContest().getStartTime()))
             throw new NotFoundException();
@@ -72,7 +62,6 @@ public class TestingServiceImpl implements TestingService {
         }
         submission.setState(SubmissionState.T);
         try {
-            //TODO finish testing part
             Process testing = Runtime.getRuntime().exec(submission.getLanguage().getCompilationCommand(), null, dir);
             if (!testing.waitFor(submission.getProblem().getTimeLimit(),TimeUnit.SECONDS)) {
 
@@ -80,6 +69,7 @@ public class TestingServiceImpl implements TestingService {
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
-
+        */
+        //TODO make normal version with normal people
     }
 }

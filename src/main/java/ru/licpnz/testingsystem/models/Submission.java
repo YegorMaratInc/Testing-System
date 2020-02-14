@@ -35,7 +35,6 @@ public class Submission {
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date submissionTime;
-    private String pathToProgram;
 
     @Enumerated(EnumType.STRING)
     private SubmissionState state;

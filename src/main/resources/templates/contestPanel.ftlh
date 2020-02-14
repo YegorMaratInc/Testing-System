@@ -9,6 +9,6 @@
     <title>ITSprint->Ваши Контесты</title>
 </head>
 <body>
-
+<#--TODO fill contestPanel page -->
 </body>
 </html>

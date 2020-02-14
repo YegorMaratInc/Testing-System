@@ -7,11 +7,31 @@
     <link href="<@spring.url '/css/style.css'/>" rel="stylesheet" type="text/css">
     <script src="<@spring.url '/js/jquery-3.4.1.min.js'/>"></script>
     <title>ITSprint->Проблема ${problem.name}</title>
+    <style>
+        h3 {
+            color: #17a2b8;
+            background: #c82333;
+            display: flex;
+            justify-content: center;
+
+        }
+
+        h4 {
+            color: #c82333;
+            display: flex;
+        }
+
+        body {
+            background-image: url(static/images/marat.png);
+            background-color: #34ce57;
+        }
+    </style>
 </head>
 <body>
-    <h4>Условиe</h4>
-<div class="form-control-file">
-    ${problem.condition}
+<h1>${problem.shortName}.${problem.name}</h1>
+<h4>Ограничения по времени: ${problem.timeLimit} сек</h4>
+<div class="text-dark">
+    ${problem.content}
 </div>
 <div>
     <a href="/submit/contest/${problem.contest.id}">Сдать!</a>
@@ -19,24 +39,26 @@
 <div>
     <a href="/contest/${problem.contest.id}">Вернуться к списку задач</a>
 </div>
-<div>
-    <h3 class="h5">Вопросы к задаче:</h3>
-    <table class="table">
-        <tr>
-            <th>Вопрос:</th>
-            <th>Ответ:</th>
-            <th>Вопрос задал</th>
-        </tr>
-        <#list questions as ques>
+<h3>
+    Вопросы к задаче:
+</h3>
+<table class="table">
+    <tr>
+        <th>Вопрос:</th>
+        <th>Ответ:</th>
+        <th>Вопрос задал</th>
+    </tr>
+    <#list questions as ques>
         <tr>
             <th>${ques.question}</th>
             <th>${ques.answer}</th>
             <th>${ques.owner.firstName}</th><#-- сделать ссылку на аккаунт и создать аккаунты-->
         </tr>
-        </#list>
-    </table>
-    <a href="/contest/${problem.contest.id}/problem/${problem.id}/ask">Задать аопрос!</a>
-</div>
+    </#list>
+</table>
+<a href="/contest/${problem.contest.id}/problem/${problem.shortName}/ask">Задать вопрос!</a>
+
 
 </body>
+<#--TODO fix style problems-->
 </html>

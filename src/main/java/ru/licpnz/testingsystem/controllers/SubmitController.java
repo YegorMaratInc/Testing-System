@@ -1,6 +1,5 @@
 package ru.licpnz.testingsystem.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -47,6 +46,17 @@ public class SubmitController {
         Contest contest = contestRepository.findById(contestId).orElseThrow(NotFoundException::new);
         modelMap.addAttribute("problems", problemRepository.findAllByContest(contest));
         modelMap.addAttribute("languages", languageRepository.findAll());
+        //TODO mark last language
+        return "submit";
+    }
+
+    @GetMapping("/submit/contest/{contestId}/problem/{problemId}")
+    public String getSubmitPage(@PathVariable("contestId") Long contestId, @PathVariable String problemId, ModelMap modelMap) {
+        Contest contest = contestRepository.findById(contestId).orElseThrow(NotFoundException::new);
+        modelMap.addAttribute("problems", problemRepository.findAllByContest(contest));
+        modelMap.addAttribute("languages", languageRepository.findAll());
+        modelMap.addAttribute("preferred", problemId);
+        //TODO mark last language
         return "submit";
     }
 
@@ -55,7 +65,7 @@ public class SubmitController {
         if (authentication == null)
             return "redirect:/login";
         Problem problem = problemRepository.findById(problemId).orElseThrow(NotFoundException::new);
-        testingService.test(submissionForm, problem, ((UserDetailsImpl)authentication.getDetails()).getUser());
+        testingService.test(submissionForm, problem, ((UserDetailsImpl) authentication.getDetails()).getUser());
         return "redirect:/submissions/contest/" + problem.getContest().getId();
     }
 }

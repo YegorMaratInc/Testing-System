@@ -25,10 +25,11 @@
                 ${problem.id}
             </th>
             <th>
-                <a href="/contest/${contest.id}/problem/${problem.id}">${problem.name}</a>
+                <a href="/contest/${contest.id}/problem/${problem.shortName}">${problem.shortName}.${problem.name}</a>
             </th>
         </tr>
     </#list>
 </table>
+<#--TODO fix style and order problems-->
 </body>
 </html>

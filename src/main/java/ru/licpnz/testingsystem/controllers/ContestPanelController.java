@@ -21,10 +21,9 @@ public class ContestPanelController {
         this.contestRepository = contestRepository;
     }
 
-    @GetMapping("problemset")
+    @GetMapping("/contestPanel")
     public String getContestPanelPage(ModelMap modelMap) {
         modelMap.addAttribute("contests", contestRepository.findAll());
         return "contestPanel";
     }
 }
-//TODO

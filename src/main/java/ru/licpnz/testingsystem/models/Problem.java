@@ -25,9 +25,12 @@ public class Problem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String shortName;
     private String name;
     private int timeLimit;
-    private String condition;
+    private String content;
+    private String inputFormat;
+    private String outputFormat;
 
     @ManyToOne
     private Contest contest;

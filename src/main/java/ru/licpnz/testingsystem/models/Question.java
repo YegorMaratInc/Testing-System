@@ -24,8 +24,9 @@ public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String answer = "Wait...";
+    private String answer;
     private String question;
+    private boolean isNotification;
 
     @ManyToOne
     private User owner;
@@ -34,4 +35,3 @@ public class Question {
     private Problem problem;
 
 }
-//TODO

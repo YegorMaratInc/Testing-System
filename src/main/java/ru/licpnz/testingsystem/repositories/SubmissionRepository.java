@@ -16,5 +16,6 @@ import java.util.List;
  */
 public interface SubmissionRepository extends JpaRepository<Submission, Long> {
     List<Submission> findAllByOwnerAndProblemOrderBySubmissionTime(User owner, Problem problem);
+
     List<Submission> findAllByOwner(User owner);
 }

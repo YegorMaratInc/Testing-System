@@ -43,24 +43,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/contestPanel/**", "/problemPanel/**").hasAuthority("ADMIN")
-                    .antMatchers("/css/**", "/js/**").permitAll()
-                    .antMatchers("/signUp/**").permitAll()
-                    .anyRequest().authenticated()
+                .antMatchers("/contestPanel/**", "/problemPanel/**").hasAuthority("ADMIN")
+                .antMatchers("/css/**", "/js/**").permitAll()
+                .antMatchers("/signUp/**").permitAll()
+                .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                    .usernameParameter("login")
-                    .passwordParameter("password")
-                    .defaultSuccessUrl("/")
-                    .loginPage("/login")
-                    .permitAll()
+                .usernameParameter("login")
+                .passwordParameter("password")
+                .defaultSuccessUrl("/")
+                .loginPage("/login")
+                .permitAll()
                 .and()
                 .rememberMe()
-                    .rememberMeParameter("remember-me")
-                    .tokenRepository(tokenRepository())
+                .rememberMeParameter("remember-me")
+                .tokenRepository(tokenRepository())
                 .and()
                 .csrf()
-                    .disable();
+                .disable();
     }
 
     @Bean
