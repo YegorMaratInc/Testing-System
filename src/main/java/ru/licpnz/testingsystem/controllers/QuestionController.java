@@ -30,13 +30,11 @@ import java.util.List;
 public class QuestionController {
     private final QuestionRepository questionRepository;
     private final ProblemRepository problemRepository;
-    private final ContestRepository contestRepository;
 
     @Autowired
     public QuestionController(QuestionRepository questionRepository, ProblemRepository problemRepository, ContestRepository contestRepository) {
         this.questionRepository = questionRepository;
         this.problemRepository = problemRepository;
-        this.contestRepository = contestRepository;
     }
 
     @PostMapping("/question/{problemId}")
