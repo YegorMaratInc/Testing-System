@@ -30,6 +30,8 @@ public class User {
 
     private String login;
     private String hashPassword;
+    @ManyToOne
+    private Language lastLanguage;
 
     @Enumerated(value = EnumType.STRING)
     private UserRole userRole;

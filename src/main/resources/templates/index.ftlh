@@ -10,5 +10,6 @@
 </head>
 <body>
 <#--TODO fill active contests home page -->
+<h5>*Дружественный интерфейс*</h5>
 </body>
 </html>

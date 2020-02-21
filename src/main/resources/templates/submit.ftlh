@@ -9,26 +9,38 @@
     <title>ITSprint->Отправка решения</title>
 </head>
 <body>
-<form>
-    <label>Language:
-        <select>
-            <option>Select language</option>
-            <#list languages as lang>
-                <option value="${lang.id}">${lang.name}</option>
-            </#list>
+<form method="get" action="<@spring.url '/submit/contest/${contest.id}'/>">
 
-        </select>
-    </label>
-    <label>Problem:
-        <select>
-            <option>Select problem</option>
-            <#list problems as problem>
-                <option value="${problem.id}">${problem.name}</option>
-            </#list>
-        </select>
-
-    </label>
 </form>
+<div>
+    <form method="post" action="<@spring.url '/submit/contest/${contest.id}'/>">
+        <label for="languageName">Language:
+            <select id="languageName" name="languageName">
+
+                <#list languages as lang>
+                    <option value="${lang.name}">${lang.name}</option>
+                </#list>
+
+            </select>
+        </label>
+        <label for="problem">Problem:
+            <select id="problem" name="problem">
+                <option>Select problem</option>
+                <#list problems as prob>
+                    <option value="${prob.id}">${prob.name}</option>
+                </#list>
+            </select>
+
+        </label>
+        <label for="program">Program:
+            <input id="program" name="program" type="file" value>
+        </label>
+        <#--TODO input file-->
+        <button class="btn btn-success" type="submit">
+            Отправить
+        </button>
+    </form>
+</div>
 <#--TODO apply style and edit form properly-->
 </body>
 </html>

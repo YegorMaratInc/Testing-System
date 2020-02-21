@@ -36,6 +36,9 @@ public class Submission {
     @Temporal(TemporalType.TIMESTAMP)
     private Date submissionTime;
 
+    private String program;
+    private String pathToProgram;
+
     @Enumerated(EnumType.STRING)
     private SubmissionState state;
     private Integer lastTest;

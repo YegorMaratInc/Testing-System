@@ -6,7 +6,7 @@
     <link href="<@spring.url '/css/bootstrap.min.css'/>" rel="stylesheet" type="text/css">
     <link href="<@spring.url '/css/style.css'/>" rel="stylesheet" type="text/css">
     <script src="<@spring.url '/js/jquery-3.4.1.min.js'/>"></script>
-    <title>ITSprint->Проблемы контеста<#--TODO contest name--> ${contest.title}</title>
+    <title>ITSprint->Проблемы контеста ${contest.title}</title>
 </head>
 <body>
 <table class="table">

@@ -1,6 +1,7 @@
 package ru.licpnz.testingsystem.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,9 +11,11 @@ import ru.licpnz.testingsystem.exceptions.NotFoundException;
 import ru.licpnz.testingsystem.forms.QuestionForm;
 import ru.licpnz.testingsystem.models.Problem;
 import ru.licpnz.testingsystem.models.Question;
+import ru.licpnz.testingsystem.models.User;
 import ru.licpnz.testingsystem.repositories.ContestRepository;
 import ru.licpnz.testingsystem.repositories.ProblemRepository;
 import ru.licpnz.testingsystem.repositories.QuestionRepository;
+import ru.licpnz.testingsystem.security.details.UserDetailsImpl;
 
 import java.util.List;
 
@@ -36,14 +39,25 @@ public class QuestionController {
         this.contestRepository = contestRepository;
     }
 
-    @PostMapping("/question")
-    public void postQuestion(QuestionForm questionForm, ModelMap modelMap) {
-        Problem problem = problemRepository.findById(questionForm.getProblemId()).orElseThrow(NotFoundException::new);
+    @PostMapping("/question/{problemId}")
+    public String postQuestion(QuestionForm questionForm, Authentication authentication, @PathVariable Long problemId) {
+        Problem problem = problemRepository.findById(problemId).orElseThrow(NotFoundException::new);
+        User author = ((UserDetailsImpl) authentication.getPrincipal()).getUser();
         //TODO create record in DB
+        //check and criticize
+        Question question = Question.builder()
+                .question(questionForm.getQuestion())
+                .answer("")
+                .problem(problem)
+                .owner(author)
+                .isNotification(false)
+                .build();
+        questionRepository.save(question);
+        return "redirect:/contest/" + problem.getContest().getId() + "/problem/" + problem.getShortName();
     }
 
-    @GetMapping("/question/")
-    public String getQuestionsPage() {
+    @GetMapping("/question/{problemId}")
+    public String getQuestionsPage(ModelMap modelMap, @PathVariable Long problemId) {
         //TODO resolve question creation page
         return "question";
     }

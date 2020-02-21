@@ -22,7 +22,6 @@
         }
 
         body {
-            background-image: url(static/images/marat.png);
             background-color: #34ce57;
         }
     </style>
@@ -56,7 +55,7 @@
         </tr>
     </#list>
 </table>
-<a href="/contest/${problem.contest.id}/problem/${problem.shortName}/ask">Задать вопрос!</a>
+<a href="/question/${problem.id}">Задать вопрос!</a>
 
 
 </body>
