@@ -1,6 +1,5 @@
 package ru.licpnz.testingsystem.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -10,7 +9,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import ru.licpnz.testingsystem.exceptions.NotFoundException;
 import ru.licpnz.testingsystem.forms.SubmissionForm;
 import ru.licpnz.testingsystem.models.Contest;
+import ru.licpnz.testingsystem.models.Language;
 import ru.licpnz.testingsystem.models.Problem;
+import ru.licpnz.testingsystem.models.User;
 import ru.licpnz.testingsystem.repositories.ContestRepository;
 import ru.licpnz.testingsystem.repositories.LanguageRepository;
 import ru.licpnz.testingsystem.repositories.ProblemRepository;
@@ -43,19 +44,47 @@ public class SubmitController {
     }
 
     @GetMapping("/submit/contest/{contestId}")
-    public String getSubmitPage(@PathVariable("contestId") Long contestId, ModelMap modelMap) {
+    public String getSubmitPage(@PathVariable("contestId") Long contestId, ModelMap modelMap, Authentication authentication) {
         Contest contest = contestRepository.findById(contestId).orElseThrow(NotFoundException::new);
+        modelMap.addAttribute("contest", contest);
         modelMap.addAttribute("problems", problemRepository.findAllByContest(contest));
         modelMap.addAttribute("languages", languageRepository.findAll());
+        //TODO mark last language
+        //maybe it work. Check please!
+        Language lastLanguage = ((UserDetailsImpl) authentication.getPrincipal()).getUser().getLastLanguage();
+        modelMap.addAttribute("lastLanguage", lastLanguage);
         return "submit";
     }
 
-    @PostMapping("/submit/problem/{problemId}")
-    public String registerSubmission(@PathVariable("problemId") Long problemId, SubmissionForm submissionForm, Authentication authentication) {
+    @GetMapping("/submit/contest/{contestId}/problem/{problemId}")
+    public String getSubmitPage(@PathVariable("contestId") Long contestId, @PathVariable String problemId, ModelMap modelMap, Authentication authentication) {
+        Contest contest = contestRepository.findById(contestId).orElseThrow(NotFoundException::new);
+        modelMap.addAttribute("contest", contest);
+        modelMap.addAttribute("problems", problemRepository.findAllByContest(contest));
+        modelMap.addAttribute("languages", languageRepository.findAll());
+        modelMap.addAttribute("preferred", problemId);
+        //TODO mark last language
+        //maybe it work. Check please!
+        Language lastLanguage = ((UserDetailsImpl) authentication.getPrincipal()).getUser().getLastLanguage();
+        modelMap.addAttribute("lastLanguage", lastLanguage);
+        return "submit";
+    }
+
+    @PostMapping("/submit/contest/{contestId}/problem/{problemId}")
+    public String registerSubmission(ModelMap modelMap, @PathVariable("problemId") String problemId, SubmissionForm submissionForm, Authentication authentication, @PathVariable Long contestId) {
         if (authentication == null)
             return "redirect:/login";
-        Problem problem = problemRepository.findById(problemId).orElseThrow(NotFoundException::new);
-        testingService.test(submissionForm, problem, ((UserDetailsImpl)authentication.getDetails()).getUser());
-        return "redirect:/submissions/contest/" + problem.getContest().getId();
+        Problem problem = problemRepository.findByContestAndShortName(contestRepository.findById(contestId).orElseThrow(NotFoundException::new), problemId).orElseThrow(NotFoundException::new);
+        testingService.test(submissionForm, problem, ((UserDetailsImpl) authentication.getPrincipal()).getUser());
+        return "redirect:/submissions/contest/" + contestId;
+    }
+    @PostMapping("/submit/contest/{contestId}")
+    public String registerSubmission(ModelMap modelMap, SubmissionForm submissionForm, Authentication authentication, @PathVariable Long contestId) {
+        if (authentication == null)
+            return "redirect:/login";
+        Problem problem = problemRepository.findById(submissionForm.getProblem()).orElseThrow(NotFoundException::new);
+        User user = ((UserDetailsImpl) authentication.getPrincipal()).getUser();
+        testingService.test(submissionForm, problem, user);
+        return "redirect:/submissions/contest/" + contestId;
     }
 }

@@ -16,4 +16,6 @@ import java.util.Optional;
  */
 public interface ProblemRepository extends JpaRepository<Problem, Long> {
     List<Problem> findAllByContest(Contest contest);
+
+    Optional<Problem> findByContestAndShortName(Contest contest, String shortName);
 }

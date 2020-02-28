@@ -1,13 +1,15 @@
 package ru.licpnz.testingsystem.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import ru.licpnz.testingsystem.repositories.ContestRepository;
+import ru.licpnz.testingsystem.security.details.UserDetailsImpl;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.stream.Collectors;
 
 /**
  * 28/11/2019
@@ -26,7 +28,7 @@ public class IndexController {
     }
 
     @GetMapping("/")
-    public String getContestsPage(ModelMap modelMap) {
+    public String getContestsPage(ModelMap modelMap, Authentication authentication) {
         modelMap.addAttribute("contests",
                 contestRepository.findAll()
                         .stream().filter(
@@ -35,7 +37,9 @@ public class IndexController {
                             return time.after(contest.getStartTime()) && time.before(contest.getFinishTime());
                         }
                 )
+                        .collect(Collectors.toList())
         );
+        modelMap.addAttribute("login", ((UserDetailsImpl) authentication.getPrincipal()).getUser().getLogin());
         return "index";
     }
 }

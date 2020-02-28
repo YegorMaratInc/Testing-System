@@ -1,7 +1,6 @@
 package ru.licpnz.testingsystem.forms;
 
 import lombok.Data;
-import ru.licpnz.testingsystem.models.Problem;
 import ru.licpnz.testingsystem.models.User;
 
 /**
@@ -12,11 +11,10 @@ import ru.licpnz.testingsystem.models.User;
  * @version 1.0
  */
 @Data
-public class SubmissionForm {
-    private String program;
-    private String languageName;
-    private Long problem;
+public class QuestionForm {
+    private String question;
+    //private Long problemId;
     //TODO add info about user
     //Зачем, если мы можем посмотреть с кого мы отправляем. Это должно быть не здесь, а в модельке
-    //private User owner;
+    private User author;
 }

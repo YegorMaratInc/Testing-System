@@ -24,8 +24,12 @@ import java.util.stream.Collectors;
 @Controller
 public class SubmissionsController {
 
+    private final SubmissionRepository submissionRepository;
+
     @Autowired
-    private SubmissionRepository submissionRepository;
+    public SubmissionsController(SubmissionRepository submissionRepository) {
+        this.submissionRepository = submissionRepository;
+    }
 
     @GetMapping("/submissions/contest/{contestId}")
     public String getSubmissionsPage(@PathVariable("contestId") Long contestId, Authentication authentication, ModelMap modelMap) {

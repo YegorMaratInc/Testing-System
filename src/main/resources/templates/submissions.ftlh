@@ -9,6 +9,22 @@
     <title>ITSprint->Ваши посылки</title>
 </head>
 <body>
-
+<form method="get" action="/submissions/contest/${contestId}">
+    Yes.
+    <table>
+        <caption></caption>
+        <tr>
+            <th>id</th>
+            <th>Время</th>
+            <th></th>
+        </tr>
+        <#list submissions as sub>
+            <tr>
+                <th></th>
+            </tr>
+        </#list>
+    </table>
+</form>
+<#--TODO make table with your submissions-->
 </body>
 </html>

@@ -9,6 +9,38 @@
     <title>ITSprint->Отправка решения</title>
 </head>
 <body>
+<form method="get" action="<@spring.url '/submit/contest/${contest.id}'/>">
 
+</form>
+<div>
+    <form method="post" action="<@spring.url '/submit/contest/${contest.id}'/>">
+        <label for="languageName">Language:
+            <select id="languageName" name="languageName">
+
+                <#list languages as lang>
+                    <option value="${lang.name}">${lang.name}</option>
+                </#list>
+
+            </select>
+        </label>
+        <label for="problem">Problem:
+            <select id="problem" name="problem">
+                <option>Select problem</option>
+                <#list problems as prob>
+                    <option value="${prob.id}">${prob.name}</option>
+                </#list>
+            </select>
+
+        </label>
+        <label for="program">Program:
+            <textarea id="program" name="program" required></textarea>
+        </label>
+        <button class="btn btn-success" type="submit">
+            Отправить
+        </button>
+        <h6>Егор, преврати это в конфетку</h6>
+    </form>
+</div>
+<#--TODO apply style and edit form properly-->
 </body>
 </html>
