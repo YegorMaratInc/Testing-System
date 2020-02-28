@@ -11,5 +11,25 @@
 <body>
 <#--TODO fill active contests home page -->
 <h5>*Дружественный интерфейс*</h5>
+<form method="get" action="<@spring.url '/'/>">
+    <table>
+        <caption>Активные контесты</caption>
+        <tr>
+            <th>Название</th>
+            <th>Начало</th>
+            <th>Конец</th>
+        </tr>
+        <#list contests as contest>
+            <tr>
+                <th><a href="/contest/${contest.id}">${contest.title}</a></th>
+                <th>${contest.startTime}</th>
+                <th>${contest.finishTime}</th>
+            </tr>
+        </#list>
+    </table>
+    <div align="right">
+        <a href="/profile/${login}">Профиль</a>
+    </div>
+</form>
 </body>
 </html>

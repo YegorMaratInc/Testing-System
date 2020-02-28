@@ -26,10 +26,15 @@ public class Submission {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JoinColumn(name = "owner_id")
     @ManyToOne
     private User owner;
+
+    @JoinColumn(name = "problem_id")
     @ManyToOne
     private Problem problem;
+
+    @JoinColumn(name = "language_id")
     @ManyToOne
     private Language language;
 

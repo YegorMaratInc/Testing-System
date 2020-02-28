@@ -33,12 +33,12 @@
 
         </label>
         <label for="program">Program:
-            <input id="program" name="program" type="file" value>
+            <textarea id="program" name="program" required></textarea>
         </label>
-        <#--TODO input file-->
         <button class="btn btn-success" type="submit">
             Отправить
         </button>
+        <h6>Егор, преврати это в конфетку</h6>
     </form>
 </div>
 <#--TODO apply style and edit form properly-->

@@ -9,21 +9,23 @@
     <title>ITSprint->Контест</title>
 </head>
 <body>
-<table>
-    <caption></caption>
-    <tr>
-        <th>Контест</th>
-        <th>Время начала</th>
-        <th>Время конца</th>
-    </tr>
-    <#list contests as contest>
+<form method="get" action="<@spring.url '/contestPanel'/>">
+    <table>
+        <caption></caption>
         <tr>
-            <th>${contest.title}</th>
-            <th>${contest.startTime}</th>
-            <th>${contest.finishTime}</th>
+            <th>Контест</th>
+            <th>Время начала</th>
+            <th>Время конца</th>
         </tr>
-    </#list>
-</table>
+        <#list contests as contest>
+            <tr>
+                <th>${contest.title}</th>
+                <th>${contest.startTime}</th>
+                <th>${contest.finishTime}</th>
+            </tr>
+        </#list>
+    </table>
+</form>
 <#--TODO fix style and order problems-->
 </body>
 </html>

@@ -28,8 +28,9 @@
         </div>
         <div class="form-group">
             <label for="content">Условие</label>
-            <input autofocus class="form-control" id="content" name="content"
+            <textarea autofocus class="form-control" id="content" name="content"
                    placeholder="Введите условие здесь..." required>
+            </textarea>
         </div>
         <div class="form-group">
             <label for="inputFormat">Формат входа</label>

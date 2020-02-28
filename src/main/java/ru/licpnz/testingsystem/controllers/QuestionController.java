@@ -17,6 +17,7 @@ import ru.licpnz.testingsystem.repositories.ProblemRepository;
 import ru.licpnz.testingsystem.repositories.QuestionRepository;
 import ru.licpnz.testingsystem.security.details.UserDetailsImpl;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -45,6 +46,7 @@ public class QuestionController {
         //check and criticize
         Question question = Question.builder()
                 .question(questionForm.getQuestion())
+                //.date(new Date())
                 .answer("")
                 .problem(problem)
                 .owner(author)

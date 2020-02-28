@@ -7,6 +7,6 @@ import java.util.Date;
 @Data
 public class ContestForm {
     private String title;
-    private Date startTime;
-    private Date finishTime;
+    private String startTime;
+    private String finishTime;
 }

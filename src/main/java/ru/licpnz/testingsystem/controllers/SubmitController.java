@@ -50,7 +50,7 @@ public class SubmitController {
         modelMap.addAttribute("problems", problemRepository.findAllByContest(contest));
         modelMap.addAttribute("languages", languageRepository.findAll());
         //TODO mark last language
-        //maybe it work. Check please!//Спросить Женю, как обнвлять lastLanguage
+        //maybe it work. Check please!
         Language lastLanguage = ((UserDetailsImpl) authentication.getPrincipal()).getUser().getLastLanguage();
         modelMap.addAttribute("lastLanguage", lastLanguage);
         return "submit";

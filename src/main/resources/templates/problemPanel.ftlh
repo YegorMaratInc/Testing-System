@@ -12,21 +12,13 @@
 <table class="table">
     <caption>Задачи</caption>
     <tr>
-        <th>
-            ID
-        </th>
-        <th>
-            Name
-        </th>
+        <th>ID</th>
+        <th>Name</th>
     </tr>
     <#list problems as problem>
         <tr>
-            <th>
-                ${problem.id}
-            </th>
-            <th>
-                <a href="/contest/${contest.id}/problem/${problem.shortName}">${problem.shortName}.${problem.name}</a>
-            </th>
+            <th>${problem.id}</th>
+            <th><a href="/contest/${contest.id}/problem/${problem.shortName}">${problem.shortName}.${problem.name}</a></th>
         </tr>
     </#list>
 </table>

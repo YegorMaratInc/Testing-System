@@ -10,5 +10,15 @@
 </head>
 <body>
 <#--TODO generate resultsTable-->
+<form method="get" action="<@spring.url '/scoreboard/${contest.id}'/>">
+    <#list scoreboard as user, score>
+        <h6>${user.login}
+            <#list score as score>
+                ${score.triesCount}
+            </#list>
+        </h6>
+    </#list>
+
+</form>
 </body>
 </html>

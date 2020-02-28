@@ -94,7 +94,7 @@ public class TestingServiceImpl implements TestingService {
                 .pathToProgram("/" + user.getLogin() + "/" + problem.getId() + "/" + new SimpleDateFormat().format(time))
                 .build();
         submissionRepository.save(submission);
-
+        //Спросить Женю, как обнвлять lastLanguage в User
         //test
 
         //TODO make normal version with normal people

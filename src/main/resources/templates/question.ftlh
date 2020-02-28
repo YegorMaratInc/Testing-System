@@ -14,8 +14,9 @@
     <form method="post" action="<@spring.url '/question/${problemId}'/>">
         <div class="form-group">
             <label for="question">Вопрос</label>
-            <input autofocus class="form-control" id="question" name="question"
-                   placeholder="Введите вопрос здесь..." required>
+            <textarea autofocus class="form-control" id="question" name="question"
+                      placeholder="Введите вопрос здесь..." required>
+            </textarea>
         </div>
         <button class="btn btn-success" type="submit">
             Отправить

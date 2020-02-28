@@ -43,20 +43,24 @@
 </h3>
 <table class="table">
     <tr>
-        <th>Вопрос:</th>
-        <th>Ответ:</th>
+        <th>Id:</th>
+        <th>Time:</th>
         <th>Вопрос задал</th>
+        <th>Вопрос</th>
+        <th>Ответ</th>
     </tr>
     <#list questions as ques>
         <tr>
-            <th>${ques.question}</th>
-            <th>${ques.answer}</th>
-            <th>${ques.owner.firstName}</th><#-- сделать ссылку на аккаунт и создать аккаунты-->
+            <th>${ques.id}</th>
+            <th><time></time></th>
+            <th><a href="/profile/${ques.owner.login}">${ques.owner.login}</a></th>
+            <th><span>${ques.question}</span></th>
+            <th><span>${ques.answer}</span></th>
         </tr>
     </#list>
 </table>
 <a href="/question/${problem.id}">Задать вопрос!</a>
-
+<a href="/scoreboard/${problem.contest.id}">Scoreboard</a>
 
 </body>
 <#--TODO fix style problems-->
