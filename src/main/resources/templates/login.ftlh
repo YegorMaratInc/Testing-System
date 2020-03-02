@@ -13,7 +13,7 @@
     <div class="card">
         <div class="card-header">
             <div class="card-title h2">
-                Войдите в систему ITSprint
+                Войдите в систему
             </div>
         </div>
         <div class="x-body">
