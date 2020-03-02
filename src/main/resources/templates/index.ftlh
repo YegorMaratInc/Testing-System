@@ -26,7 +26,7 @@
             </tr>
         </#list>
     </table>
-    <div align="right">
+    <div class="text-right">
         <a href="/profile/${login}">Профиль</a>
     </div>
 </form>

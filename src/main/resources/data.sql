@@ -17,9 +17,6 @@ create table it_sprint_language
     path_to_scripts     varchar(255)
 );
 
-alter table it_sprint_language
-    owner to postgres;
-
 INSERT INTO it_sprint_language (id, name, path_to_scripts) VALUES (1, 'GNU G++ 14', '/opt/scripts/g++');
 INSERT INTO it_sprint_language (id, name, path_to_scripts) VALUES (2, 'Java 1.8', '/opt/scripts/java');
 INSERT INTO it_sprint_language (id, name, path_to_scripts) VALUES (3, 'Python 3.7', '/opt/scripts/python');
