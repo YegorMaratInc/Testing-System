@@ -1,5 +1,6 @@
 package ru.licpnz.testingsystem.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,6 +16,7 @@ import ru.licpnz.testingsystem.models.User;
 import ru.licpnz.testingsystem.repositories.ContestRepository;
 import ru.licpnz.testingsystem.repositories.LanguageRepository;
 import ru.licpnz.testingsystem.repositories.ProblemRepository;
+import ru.licpnz.testingsystem.repositories.SubmissionRepository;
 import ru.licpnz.testingsystem.security.details.UserDetailsImpl;
 import ru.licpnz.testingsystem.services.TestingService;
 
@@ -34,12 +36,16 @@ public class SubmitController {
 
     private final LanguageRepository languageRepository;
 
+    private final SubmissionRepository submissionRepository;
+
     private final TestingService testingService;
 
-    public SubmitController(ContestRepository contestRepository, ProblemRepository problemRepository, LanguageRepository languageRepository, TestingService testingService) {
+    @Autowired
+    public SubmitController(ContestRepository contestRepository, ProblemRepository problemRepository, LanguageRepository languageRepository, SubmissionRepository submissionRepository, TestingService testingService) {
         this.contestRepository = contestRepository;
         this.problemRepository = problemRepository;
         this.languageRepository = languageRepository;
+        this.submissionRepository = submissionRepository;
         this.testingService = testingService;
     }
 
@@ -49,9 +55,10 @@ public class SubmitController {
         modelMap.addAttribute("contest", contest);
         modelMap.addAttribute("problems", problemRepository.findAllByContest(contest));
         modelMap.addAttribute("languages", languageRepository.findAll());
-        //TODO mark last language
-        //maybe it work. Check please!
-        Language lastLanguage = ((UserDetailsImpl) authentication.getPrincipal()).getUser().getLastLanguage();
+        Language lastLanguage = submissionRepository
+                .findOneByOwnerOrderBySubmissionTimeDesc(((UserDetailsImpl) authentication.getDetails()).getUser())
+                .orElseThrow(NotFoundException::new)
+                .getLanguage();
         modelMap.addAttribute("lastLanguage", lastLanguage);
         return "submit";
     }
@@ -59,13 +66,15 @@ public class SubmitController {
     @GetMapping("/submit/contest/{contestId}/problem/{problemId}")
     public String getSubmitPage(@PathVariable("contestId") Long contestId, @PathVariable String problemId, ModelMap modelMap, Authentication authentication) {
         Contest contest = contestRepository.findById(contestId).orElseThrow(NotFoundException::new);
-        modelMap.addAttribute("contest", contest);
         modelMap.addAttribute("problems", problemRepository.findAllByContest(contest));
-        modelMap.addAttribute("languages", languageRepository.findAll());
+        modelMap.addAttribute("contest", contest);
         modelMap.addAttribute("preferred", problemId);
-        //TODO mark last language
-        //maybe it work. Check please!
-        Language lastLanguage = ((UserDetailsImpl) authentication.getPrincipal()).getUser().getLastLanguage();
+        modelMap.addAttribute("languages", languageRepository.findAll());
+        Language lastLanguage = submissionRepository
+                .findOneByOwnerOrderBySubmissionTimeDesc(((UserDetailsImpl) authentication.getDetails()).getUser())
+                .orElseThrow(NotFoundException::new)
+                .getLanguage();
+
         modelMap.addAttribute("lastLanguage", lastLanguage);
         return "submit";
     }
@@ -78,6 +87,7 @@ public class SubmitController {
         testingService.test(submissionForm, problem, ((UserDetailsImpl) authentication.getPrincipal()).getUser());
         return "redirect:/submissions/contest/" + contestId;
     }
+
     @PostMapping("/submit/contest/{contestId}")
     public String registerSubmission(ModelMap modelMap, SubmissionForm submissionForm, Authentication authentication, @PathVariable Long contestId) {
         if (authentication == null)

@@ -6,6 +6,7 @@ import ru.licpnz.testingsystem.models.Submission;
 import ru.licpnz.testingsystem.models.User;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * 28/11/2019
@@ -16,6 +17,8 @@ import java.util.List;
  */
 public interface SubmissionRepository extends JpaRepository<Submission, Long> {
     List<Submission> findAllByOwnerAndProblemOrderBySubmissionTime(User owner, Problem problem);
+
+    Optional<Submission> findOneByOwnerOrderBySubmissionTimeDesc(User owner);
 
     List<Submission> findAllByOwner(User owner);
 }

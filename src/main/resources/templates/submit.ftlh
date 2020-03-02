@@ -13,7 +13,7 @@
 
 </form>
 <div>
-    <form method="post" action="<@spring.url '/submit/contest/${contest.id}'/>">
+    <form method="post" enctype="multipart/form-data" action="<@spring.url '/submit/contest/${contest.id}'/>">
         <label for="languageName">Language:
             <select id="languageName" name="languageName">
 
@@ -33,7 +33,7 @@
 
         </label>
         <label for="program">Program:
-            <textarea id="program" name="program" required></textarea>
+            <input type="file" name="program" value required>
         </label>
         <button class="btn btn-success" type="submit">
             Отправить
