@@ -1,6 +1,7 @@
 package ru.licpnz.testingsystem.services;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import ru.licpnz.testingsystem.exceptions.NotFoundException;
 import ru.licpnz.testingsystem.forms.SubmissionForm;
 import ru.licpnz.testingsystem.models.Problem;
@@ -11,6 +12,7 @@ import ru.licpnz.testingsystem.repositories.LanguageRepository;
 import ru.licpnz.testingsystem.repositories.SubmissionRepository;
 
 import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -78,11 +80,22 @@ public class TestingServiceImpl implements TestingService {
         }
         */
         Date time = new Date();
+        MultipartFile source = submissionForm.getProgram();
         /*if (time.after(problem.getContest().getFinishTime()) || time.before(problem.getContest().getStartTime()))
             throw new NotFoundException();*/
         SubmissionState state = SubmissionState.Q;
-        File file = new File(System.getProperty("user.dir") + "/submissions/" + user.getLogin() + "/" + problem.getId() + "/" + new SimpleDateFormat().format(time));
-        file.mkdir();
+        File file = new File("/home/anton/Документы/submissions/" + user.getId() + "/");
+        System.out.println(file.getAbsolutePath());
+        if (!file.isDirectory())
+            file.mkdir();
+        System.out.println(file.exists());
+
+        try {
+            source.transferTo(file);
+        } catch (IOException e) {
+
+        }
+
         Submission submission = Submission.builder()
                 .language(languageRepository.findLanguageByName(submissionForm.getLanguageName()).orElseThrow(NotFoundException::new))
                 .owner(user)
@@ -90,14 +103,15 @@ public class TestingServiceImpl implements TestingService {
                 .submissionTime(time)
                 .state(state)
                 .lastTest(1)
-                .program(submissionForm.getProgram())
                 .pathToProgram("/" + user.getLogin() + "/" + problem.getId() + "/" + new SimpleDateFormat().format(time))
                 .build();
+
+
         submissionRepository.save(submission);
-        //Спросить Женю, как обнвлять lastLanguage в User
+
+
         //test
 
         //TODO make normal version with normal people
-        //don't forget about marking last language on user
     }
 }
