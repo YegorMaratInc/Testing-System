@@ -27,6 +27,6 @@ public class Language {
 
     private String name;
 
-    private String compilationFile;
-    private String startFile;
+    @Column(name = "path_to_scripts")
+    private String pathToScripts;
 }

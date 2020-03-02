@@ -55,8 +55,9 @@ public class SubmitController {
         modelMap.addAttribute("contest", contest);
         modelMap.addAttribute("problems", problemRepository.findAllByContest(contest));
         modelMap.addAttribute("languages", languageRepository.findAll());
+        User user = ((UserDetailsImpl) authentication.getPrincipal()).getUser();
         Language lastLanguage = submissionRepository
-                .findOneByOwnerOrderBySubmissionTimeDesc(((UserDetailsImpl) authentication.getDetails()).getUser())
+                .findFirstByOwnerOrderBySubmissionTimeDesc(user)
                 .orElseThrow(NotFoundException::new)
                 .getLanguage();
         modelMap.addAttribute("lastLanguage", lastLanguage);
@@ -70,8 +71,9 @@ public class SubmitController {
         modelMap.addAttribute("contest", contest);
         modelMap.addAttribute("preferred", problemId);
         modelMap.addAttribute("languages", languageRepository.findAll());
+        User user = ((UserDetailsImpl) authentication.getPrincipal()).getUser();
         Language lastLanguage = submissionRepository
-                .findOneByOwnerOrderBySubmissionTimeDesc(((UserDetailsImpl) authentication.getDetails()).getUser())
+                .findFirstByOwnerOrderBySubmissionTimeDesc(user)
                 .orElseThrow(NotFoundException::new)
                 .getLanguage();
 

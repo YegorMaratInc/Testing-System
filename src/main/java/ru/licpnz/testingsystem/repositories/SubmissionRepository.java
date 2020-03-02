@@ -18,7 +18,7 @@ import java.util.Optional;
 public interface SubmissionRepository extends JpaRepository<Submission, Long> {
     List<Submission> findAllByOwnerAndProblemOrderBySubmissionTime(User owner, Problem problem);
 
-    Optional<Submission> findOneByOwnerOrderBySubmissionTimeDesc(User owner);
+    Optional<Submission> findFirstByOwnerOrderBySubmissionTimeDesc(User owner);
 
     List<Submission> findAllByOwner(User owner);
 }
