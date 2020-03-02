@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="<@spring.url '/'/>">
-        <img src="<@spring.url '/images/logo-removebg-preview.png'/>" width="30" height="30"
+        <img src="<@spring.url '/images/logo-removebg-preview.png'/>" width="66" height="66"
              class="d-inline-block align-top" alt="">
         ITSprint
     </a>
