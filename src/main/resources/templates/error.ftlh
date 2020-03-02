@@ -11,8 +11,7 @@
 <body>
 <div class="container">
     <div class="jumbotron">
-        <h1 class="text-center"><i class="fa fa-frown-o"> </i> Something went wrong! </h1>
-        <h2 class="text-center">Our Engineers are on it.</h2>
+        <h1 class="text-center"><i class="fa fa-frown-o"> </i> Что-то пошло не так! :( </h1>
         <p class="text-center"><a class="btn btn-primary" href="/"><i class="fa fa-home"></i>Go Home</a></p>
     </div>
 </div>
