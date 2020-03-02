@@ -16,7 +16,7 @@
                 Войдите в систему ITSprint
             </div>
         </div>
-        <div class="card-body">
+        <div class="x-body">
             <#if error??>
                 <div class="alert alert-danger" role="alert">
                     Логин или пароль введены неверно

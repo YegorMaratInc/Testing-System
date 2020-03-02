@@ -10,7 +10,6 @@
 </head>
 <body>
 <#--TODO fill active contests home page -->
-<h5>*Дружественный интерфейс*</h5>
 <form method="get" action="<@spring.url '/'/>">
     <table>
         <caption>Активные контесты</caption>
