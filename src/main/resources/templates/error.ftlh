@@ -9,6 +9,7 @@
     <title>ITSprint->Активные контесты</title>
 </head>
 <body>
+<#import
 <div class="container">
     <div class="jumbotron">
         <h1 class="text-center"><i class="fa fa-frown-o"> </i> Что-то пошло не так! :( </h1>
