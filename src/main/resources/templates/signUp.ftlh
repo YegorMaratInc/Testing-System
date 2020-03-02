@@ -34,12 +34,12 @@
                            placeholder="Введите пароль здесь..." required>
                 </div>
                 <div class="form-group">
-                    <label for="firstName">Команда</label>
+                    <label for="firstName">Имя</label>
                     <input class="form-control" id="firstName" name="firstName"
                            placeholder="Введите назавние команды здесь..." required>
                 </div>
                 <div class="form-group">
-                    <label for="lastName">Состав</label>
+                    <label for="lastName">Фамилия</label>
                     <input class="form-control" id="lastName" name="lastName"
                            placeholder="Введите состав команды здесь..." required>
                 </div>
