@@ -10,7 +10,7 @@
 </head>
 <body>
 <div>
-    <form method="post" action="<@spring.url '/create/contest/${contestId}'/>">
+    <form method="post" enctype="multipart/form-data" action="<@spring.url '/create/contest/${contestId}'/>">
         <div class="form-group">
             <label for="name">Название</label>
             <input autofocus class="form-control" id="name" name="name"
@@ -29,7 +29,7 @@
         <div class="form-group">
             <label for="content">Условие</label>
             <textarea autofocus class="form-control" id="content" name="content"
-                   placeholder="Введите условие здесь..." required>
+                      placeholder="Введите условие здесь..." required>
             </textarea>
         </div>
         <div class="form-group">
@@ -41,6 +41,18 @@
             <label for="outputFormat">Формат выхода</label>
             <input autofocus class="form-control" id="outputFormat" name="outputFormat"
                    placeholder="Введите здесь..." required>
+        </div>
+
+        <div class="form-group">
+            <label for="input">Входные данные:
+                <input type="file" name="input" multiple value required>
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label for="output">Выходные данные:
+                <input type="file" name="output" multiple value required>
+            </label>
         </div>
 
         <button class="btn btn-success" type="submit">

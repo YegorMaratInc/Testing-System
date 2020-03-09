@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import ru.licpnz.testingsystem.exceptions.NotFoundException;
 import ru.licpnz.testingsystem.models.Submission;
 import ru.licpnz.testingsystem.models.User;
 import ru.licpnz.testingsystem.repositories.SubmissionRepository;
@@ -40,5 +41,11 @@ public class SubmissionsController {
         List<Submission> submissionList = submissionRepository.findAllByOwner(user).stream().filter(submission -> submission.getProblem().getContest().getId().equals(contestId)).collect(Collectors.toList());
         modelMap.addAttribute("submissions", submissionList);
         return "submissions";
+    }
+
+    @GetMapping("/submission/{submissionId}")
+    public String getSubmissionPage(@PathVariable Long submissionId, ModelMap modelMap) {
+        modelMap.addAttribute("submission", submissionRepository.findById(submissionId).orElseThrow(NotFoundException::new));
+        return "submission";
     }
 }

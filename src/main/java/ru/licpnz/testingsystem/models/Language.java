@@ -27,6 +27,8 @@ public class Language {
 
     private String name;
 
+    private String extension;
+
     @Column(name = "path_to_scripts")
     private String pathToScripts;
 }
