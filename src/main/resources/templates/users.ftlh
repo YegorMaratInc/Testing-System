@@ -10,45 +10,55 @@
     <title>ITSprint->Пользователи</title>
 </head>
 <body>
-<div class="container">
-    <div class="card">
-        <div class="card-header">
-            <div class="card-title">
-                <h3>
-                    Зарегистрированные пользователи
-                </h3>
-            </div>
+<form action="<@spring.url '/users'/>">
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <h3>
+                        Зарегистрированные пользователи
+                    </h3>
+                </div>
 
-        </div>
-        <div class="card-body">
-            <div class="card-text text-center">
-                <table class="table table-bordered table-hover">
-                    <tr class="thead-dark">
-                        <th>
-                            Имя пользователя
-                        </th>
-                        <th>
-                            Фамилия
-                        </th>
-                        <th>
-                            Имя
-                        </th>
-                        <th>
-                            Роль
-                        </th>
-                    </tr>
-                    <#list users as user>
-                        <tr>
-                            <td>${user.login}</td>
-                            <td>${user.firstName}</td>
-                            <td>${user.lastName}</td>
-                            <td>${user.userRole}</td>
+            </div>
+            <div class="card-body">
+                <div class="card-text text-center">
+                    <table class="table table-bordered table-hover">
+                        <tr class="thead-dark">
+                            <th>
+                                Имя пользователя
+                            </th>
+                            <th>
+                                Фамилия
+                            </th>
+                            <th>
+                                Имя
+                            </th>
+                            <th>
+                                Роль
+                            </th>
+                            <th>
+                                Состояние
+                            </th>
+                            <th>
+                                Редактировать
+                            </th>
                         </tr>
-                    </#list>
-                </table>
+                        <#list users as user>
+                            <tr>
+                                <td>${user.login}</td>
+                                <td>${user.firstName}</td>
+                                <td>${user.lastName}</td>
+                                <td>${user.userRole.toString()}</td>
+                                <td>${user.userState.toString()}</td>
+                                <td><a href="/edit/${user.login}">Кнопка</a></td>
+                            </tr>
+                        </#list>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</form>
 </body>
 </html>

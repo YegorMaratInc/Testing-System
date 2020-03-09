@@ -61,6 +61,7 @@ public class SubmitController {
                 .orElseThrow(NotFoundException::new)
                 .getLanguage();
         modelMap.addAttribute("lastLanguage", lastLanguage);
+        //TODO исправить : не пускает на submit, если у user нет ни одного submission
         return "submit";
     }
 
@@ -82,7 +83,7 @@ public class SubmitController {
     }
 
     @PostMapping("/submit/contest/{contestId}/problem/{problemId}")
-    public String registerSubmission(ModelMap modelMap, @PathVariable("problemId") String problemId, SubmissionForm submissionForm, Authentication authentication, @PathVariable Long contestId) {
+    public String registerSubmission(@PathVariable("problemId") String problemId, SubmissionForm submissionForm, Authentication authentication, @PathVariable Long contestId) {
         if (authentication == null)
             return "redirect:/login";
         Problem problem = problemRepository.findByContestAndShortName(contestRepository.findById(contestId).orElseThrow(NotFoundException::new), problemId).orElseThrow(NotFoundException::new);
@@ -91,7 +92,7 @@ public class SubmitController {
     }
 
     @PostMapping("/submit/contest/{contestId}")
-    public String registerSubmission(ModelMap modelMap, SubmissionForm submissionForm, Authentication authentication, @PathVariable Long contestId) {
+    public String registerSubmission(SubmissionForm submissionForm, Authentication authentication, @PathVariable Long contestId) {
         if (authentication == null)
             return "redirect:/login";
         Problem problem = problemRepository.findById(submissionForm.getProblem()).orElseThrow(NotFoundException::new);

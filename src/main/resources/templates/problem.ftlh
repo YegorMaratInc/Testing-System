@@ -42,6 +42,7 @@
     Вопросы к задаче:
 </h3>
 <table class="table">
+    <thead>
     <tr>
         <th>Id:</th>
         <th>Time:</th>
@@ -49,15 +50,25 @@
         <th>Вопрос</th>
         <th>Ответ</th>
     </tr>
+    </thead>
+    <tbody>
     <#list questions as ques>
         <tr>
             <th>${ques.id}</th>
-            <th><time></time></th>
+            <th>
+                <time></time>
+            </th>
             <th><a href="/profile/${ques.owner.login}">${ques.owner.login}</a></th>
             <th><span>${ques.question}</span></th>
-            <th><span>${ques.answer}</span></th>
+            <#if ques.answer != "">
+                <th><span>${ques.answer}</span></th>
+            </#if>
+            <#if ques.answer == "">
+                <th><a href="/reply/${ques.id}">Reply!</a></th>
+            </#if>
         </tr>
     </#list>
+    </tbody>
 </table>
 <a href="/question/${problem.id}">Задать вопрос!</a>
 <a href="/scoreboard/${problem.contest.id}">Scoreboard</a>

@@ -7,27 +7,6 @@
     <link href="<@spring.url '/css/style.css'/>" rel="stylesheet" type="text/css">
     <script src="<@spring.url '/js/jquery-3.4.1.min.js'/>"></script>
     <title>ITSprint-> Профиль ${user.login}</title>
-    <style>
-        #submission {
-            width: 300px;
-            height: 50px;
-            text-align: center;
-            padding: 15px;
-            border: 3px solid #0000cc;
-            border-radius: 10px;
-            color: #0000cc;
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            margin: auto;
-        }
-
-        #submission:target {
-            display: block;
-        }
-    </style>
 </head>
 <body>
 <div>
@@ -45,7 +24,7 @@
             </div>
             <tr>
                 <th>
-                    <a href="#submission">
+                    <a href="/submission/${sub.id}">
                         ${sub.id}
                     </a>
                 </th>

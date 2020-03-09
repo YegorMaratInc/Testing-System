@@ -18,10 +18,16 @@
     <#list problems as problem>
         <tr>
             <th>${problem.id}</th>
-            <th><a href="/contest/${contest.id}/problem/${problem.shortName}">${problem.shortName}.${problem.name}</a></th>
+            <th><a href="/contest/${contest.id}/problem/${problem.shortName}">${problem.shortName}.${problem.name}</a>
+            </th>
         </tr>
     </#list>
 </table>
 <#--TODO fix style and order problems-->
+<div>
+    <#if role == true>
+        <a href="/create/contest/${contest.id}">Create Problem</a>
+    </#if>
+</div>
 </body>
 </html>
