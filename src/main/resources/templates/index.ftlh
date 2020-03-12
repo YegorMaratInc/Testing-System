@@ -11,6 +11,7 @@
 <body>
 <#--TODO fill active contests home page -->
 <form method="get" action="<@spring.url '/'/>">
+    <#include "navBar.ftlh">
     <table>
         <caption>Активные контесты</caption>
         <tr>

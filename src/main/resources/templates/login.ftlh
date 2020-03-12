@@ -9,6 +9,7 @@
     <title>ITSprint->Вход</title>
 </head>
 <body>
+<#include "navBar.ftlh">
 <div class="container-fluid">
     <div class="card">
         <div class="card-header">
