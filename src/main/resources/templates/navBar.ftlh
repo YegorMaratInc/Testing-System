@@ -24,8 +24,9 @@
                     <a class="nav-link" href="<@spring.url '/create'/>">Создать контест</a>
                 </li>
             </#if>
-            <li class="nav-item navbar-right pull-right">
-                <a class="nav-link" href="<@spring.url '/logout'/>">Выйти из аккаунта</a>
+            <li class="nav-item navbar-right pull-right" style="float:right;>
+                <a class=" nav-link
+            " href="<@spring.url '/logout'/>">Выйти из аккаунта</a>
             </li>
         </ul>
     </div>
