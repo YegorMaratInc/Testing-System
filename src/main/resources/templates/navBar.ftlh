@@ -13,11 +13,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="<@spring.url '/users'/>">Home<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="<@spring.url '/profile/${login}'/>">Профиль<span
+                            class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<@spring.url 'profile/{userLogin}'/>">Link</a>
-            </li>
+            <#if role == true>
+                <li class="nav-item">
+                    <a class="nav-link" href="<@spring.url '/users'/>">Список пользователей</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<@spring.url '/create'/>">Создать контест</a>
+                </li>
+            </#if>
             <li class="nav-item navbar-right pull-right">
                 <a class="nav-link" href="<@spring.url '/logout'/>">Выйти из аккаунта</a>
             </li>
