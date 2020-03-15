@@ -10,6 +10,7 @@
 </head>
 <body>
 <form method="get" action="/submissions/contest/${contestId}">
+    <#include "navBar.ftlh">
     Yes.
     <table>
         <caption></caption>

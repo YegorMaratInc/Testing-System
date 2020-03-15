@@ -9,6 +9,7 @@
     <title>ITSprint->Регистрация</title>
 </head>
 <body>
+<#include "navBar.ftlh">
 <div class="container">
     <div class="card">
         <div class="card-header">

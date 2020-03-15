@@ -10,6 +10,7 @@
 </head>
 <body>
 <form method="get" action="/submission/${submission.id}">
+    <#include "navBar.ftlh">
     <table>
         <thead>
         <tr>

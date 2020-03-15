@@ -10,8 +10,8 @@
 </head>
 <body>
 <form method="get" action="<@spring.url '/submit/contest/${contest.id}'/>">
-
 </form>
+<#include "navBar.ftlh">
 <div>
     <form method="post" enctype="multipart/form-data" action="<@spring.url '/submit/contest/${contest.id}'/>">
         <label for="languageName">Language:

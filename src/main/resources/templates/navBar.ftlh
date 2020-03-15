@@ -1,6 +1,6 @@
 <#import "/spring.ftl" as spring>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="<@spring.url '/'/>">
         <img src="<@spring.url '/images/logo-removebg-preview.png'/>" width="56" height="56 "
              class="d-inline-block align-top" alt="">
@@ -13,27 +13,12 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="<@spring.url '/users'/>">Home<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="<@spring.url 'profile/{userLogin}'/>">Link</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    Dropdown
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Не нажмешь)</a>
-            </li>
-            <li class="nav-item">
+            <li class="nav-item navbar-right pull-right">
                 <a class="nav-link" href="<@spring.url '/logout'/>">Выйти из аккаунта</a>
             </li>
         </ul>

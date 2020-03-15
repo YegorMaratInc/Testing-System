@@ -9,6 +9,7 @@
     <title>ITSprint-> Профиль ${user.login}</title>
 </head>
 <body>
+<#include "navBar.ftlh">
 <div>
     <table>
         <caption>Последние посылки</caption>

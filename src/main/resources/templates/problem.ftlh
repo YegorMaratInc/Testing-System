@@ -27,6 +27,7 @@
     </style>
 </head>
 <body>
+<#include "navBar.ftlh">
 <h1>${problem.shortName}.${problem.name}</h1>
 <h4>Ограничения по времени: ${problem.timeLimit} сек</h4>
 <div class="text-dark">
