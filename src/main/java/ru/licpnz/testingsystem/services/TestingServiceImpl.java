@@ -1,5 +1,6 @@
 package ru.licpnz.testingsystem.services;
 
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import ru.licpnz.testingsystem.exceptions.NotFoundException;
@@ -13,7 +14,10 @@ import ru.licpnz.testingsystem.repositories.SubmissionRepository;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * 28/11/2019
@@ -84,7 +88,6 @@ public class TestingServiceImpl implements TestingService {
             throw new NotFoundException();*/
         SubmissionState state = SubmissionState.Q;
 
-
         Submission submission = Submission.builder()
                 .language(languageRepository.findLanguageByName(submissionForm.getLanguageName()).orElseThrow(NotFoundException::new))
                 .owner(user)
@@ -95,58 +98,71 @@ public class TestingServiceImpl implements TestingService {
                 .pathToProgram("submissions" + File.separator + time.getTime())
                 .build();
 
-        File file = new File(System.getProperty("user.dir") + File.separator + "submissions" + File.separator + time.getTime() + File.separator + submission.getId());
-        if (!file.isDirectory()) {
-            if (!file.exists())
-                if (!file.mkdirs())
+        submissionRepository.save(submission);
+        File dir = new File(submission.getPathToProgram());
+        File root = new File(System.getProperty("user.dir"));
+        if (!dir.isDirectory()) {
+            if (!dir.exists())
+                if (!dir.mkdirs())
                     System.out.println("No");
         }
-
-
         try {
-            source.transferTo(new File(file.getAbsolutePath() + submission.getLanguage().getExtension()));
-        } catch (IOException e) {
-            System.out.println("No");
-            System.out.println((file.getAbsolutePath() + submission.getLanguage().getExtension()));
-        }
-
-
-        submissionRepository.save(submission);
-        Test testing = new Test();
-        testing.setSubmission(submission);
-        testing.setProblem(problem);
-        testing.run();
-        //test
-
-        //TODO make normal version with normal people
-    }
-
-    static class Test implements Runnable {
-        private Submission submission;
-        private Problem problem;
-
-        public void setProblem(Problem problem) {
-            this.problem = problem;
-        }
-
-        public void setSubmission(Submission submission) {
-            this.submission = submission;
-        }
-
-        @Override
-        public void run() {
-            /*File source = new File(submission.getPathToProgram() + File.separator + "null" + submission.getLanguage().getExtension());
-            File inputDirectory = new File(problem.getId() + File.separator + "input");
-            File outputDirectory = new File(problem.getId() + File.separator + "output");
+            source.transferTo(new File(dir.getAbsolutePath() + File.separator + "null" + submission.getLanguage().getExtension()));
             if (submission.getLanguage().getName().equals("GNU G++ 14")) {
-                try {
-                    Runtime.getRuntime().exec("g++ -Wall -o null " + source.getAbsolutePath());
-                    Runtime.getRuntime().exec("./null < " + inputDirectory.getAbsolutePath() + File.separator + "i1.txt > output.txt");
-                } catch (IOException e) {
-                    System.out.println("Compile error");
-                }
-            }*/
-
+                Process p = Runtime.getRuntime().exec("g++ -Wall -o main.exe null.cpp", null, dir);
+                while (p.isAlive())
+                    Thread.sleep(100L);
+            }
+        } catch (IOException | InterruptedException e) {
+            System.out.println("Compile error");
         }
+
+        if (!(new File(dir.getAbsolutePath(), "main.exe")).isFile()) {
+            submission.setState(SubmissionState.CE);
+            submissionRepository.save(submission);
+            return;
+        }
+
+        submission.setState(SubmissionState.T);
+        submissionRepository.save(submission);
+        try {
+            //TODO: list problem directory
+            //TODO: for each problem
+            //TODO: copy input to myEnv folder in submissionFolder
+            //TODO: execute script.sh with parameters submission id and problem id
+            //TODO: compare output with original by using checker
+            File input = new File(root + File.separator + "problems" + File.separator + problem.getId() + File.separator + "input");
+            File output = new File(dir, "output");
+            output.mkdirs();
+            int i = 1;
+            for (File ignored : Objects.requireNonNull(input.listFiles())) {
+                Files.copy(Paths.get(input + File.separator + "input" + i + ".txt"), new File(dir, "input" + i + ".txt").toPath());
+                ProcessBuilder pb = new ProcessBuilder("./script.sh", String.valueOf(time.getTime()), String.valueOf(i++));
+
+                pb.redirectErrorStream(true);
+                Process p = pb.start();
+                IOUtils.copy(p.getInputStream(), System.out);
+            }
+            /*
+            i = 1;
+            for (File a : Objects.requireNonNull(output.listFiles())) {
+                Reader answerCR = new FileReader(new File(root + File.separator + "problems" + File.separator + problem.getId() + File.separator + "output" + File.separator + "output" + i + ".txt"));
+                Reader answerUR = new FileReader(new File(output + File.separator + "output" + i + ".txt"));
+
+                char[] answerU = new char[50];
+                answerUR.read(answerU);
+
+                char[] answerC = new char[50];
+                answerCR.read(answerC);
+
+                System.out.println(answerU);
+                System.out.println(answerC);
+
+                i++;
+            }*/
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //TODO make normal version with normal people
     }
 }

@@ -42,7 +42,8 @@
             <input autofocus class="form-control" id="outputFormat" name="outputFormat"
                    placeholder="Введите здесь..." required>
         </div>
-
+        <h3>Файлы должны быть именнованы специальным обзазом</h3>
+        <h3>пример: i1.txt, i2.txt ... o1.txt, o2.txt ...</h3>
         <div class="form-group">
             <label for="input">Входные данные:
                 <input type="file" name="input" multiple value required>
