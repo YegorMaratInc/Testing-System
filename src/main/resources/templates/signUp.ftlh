@@ -36,12 +36,12 @@
                 <div class="form-group">
                     <label for="firstName">Имя</label>
                     <input class="form-control" id="firstName" name="firstName"
-                           placeholder="Введите назавние команды здесь..." required>
+                           placeholder="Введите своё имя здесь..." required>
                 </div>
                 <div class="form-group">
                     <label for="lastName">Фамилия</label>
                     <input class="form-control" id="lastName" name="lastName"
-                           placeholder="Введите состав команды здесь..." required>
+                           placeholder="Введите свою фамилию здесь..." required>
                 </div>
                 <button class="btn btn-success" type="submit">
                     Регистрация
