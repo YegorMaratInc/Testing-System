@@ -106,10 +106,30 @@ public class TestingServiceImpl implements TestingService {
                 if (!dir.mkdirs())
                     System.out.println("No");
         }
+
+        String fourArg = "";
+        String exeFileName = "Main";
+
         try {
-            source.transferTo(new File(dir.getAbsolutePath() + File.separator + "null" + submission.getLanguage().getExtension()));
+            source.transferTo(new File(dir.getAbsolutePath() + File.separator + "Main" + submission.getLanguage().getExtension()));
             if (submission.getLanguage().getName().equals("GNU G++ 14")) {
-                Process p = Runtime.getRuntime().exec("g++ -Wall -o main.exe null.cpp", null, dir);
+                Process p = Runtime.getRuntime().exec("g++ -Wall -o Main Main.cpp", null, dir);
+                while (p.isAlive())
+                    Thread.sleep(100L);
+            }
+            if (submission.getLanguage().getName().equals("Java 1.8")) {
+                Process p = Runtime.getRuntime().exec("javac Main.java", null, dir);
+                while (p.isAlive())
+                    Thread.sleep(100L);
+                fourArg = "java ";
+                exeFileName = "Main.java";
+            }
+            if (submission.getLanguage().getName().equals("Python 3.7")) {
+                fourArg = "python3 ";
+                exeFileName = "Main.py";
+            }
+            if (submission.getLanguage().getName().equals("PascalABC.NET")) {
+                Process p = Runtime.getRuntime().exec("fpc Main.pas", null, dir);
                 while (p.isAlive())
                     Thread.sleep(100L);
             }
@@ -117,7 +137,7 @@ public class TestingServiceImpl implements TestingService {
             System.out.println("Compile error");
         }
 
-        if (!(new File(dir.getAbsolutePath(), "main.exe")).isFile()) {
+        if (!(new File(dir.getAbsolutePath(), exeFileName)).isFile()) {
             submission.setState(SubmissionState.CE);
             submissionRepository.save(submission);
             return;
@@ -137,7 +157,7 @@ public class TestingServiceImpl implements TestingService {
             int i = 1;
             for (File ignored : Objects.requireNonNull(input.listFiles())) {
                 Files.copy(Paths.get(input + File.separator + "input" + i + ".txt"), new File(dir, "input" + i + ".txt").toPath());
-                ProcessBuilder pb = new ProcessBuilder("./script.sh", String.valueOf(time.getTime()), String.valueOf(i++));
+                ProcessBuilder pb = new ProcessBuilder("./script.sh", String.valueOf(time.getTime()), String.valueOf(i++), fourArg, exeFileName);
 
                 pb.redirectErrorStream(true);
                 Process p = pb.start();
