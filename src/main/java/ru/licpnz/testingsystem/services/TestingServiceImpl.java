@@ -142,7 +142,6 @@ public class TestingServiceImpl implements TestingService {
             submissionRepository.save(submission);
             return;
         }
-
         submission.setState(SubmissionState.T);
         submissionRepository.save(submission);
         try {
