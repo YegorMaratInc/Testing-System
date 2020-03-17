@@ -89,7 +89,7 @@ public class AdminPanelController {
         number = 1;
         for (MultipartFile output : problemForm.getOutput()) {
             try {
-                output.transferTo(new File(fileOutput + File.separator + "Output" + number + ".txt"));
+                output.transferTo(new File(fileOutput + File.separator + "output" + number + ".txt"));
                 number++;
             } catch (IOException e) {
                 System.out.println("\n");

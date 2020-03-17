@@ -162,26 +162,40 @@ public class TestingServiceImpl implements TestingService {
                 Process p = pb.start();
                 IOUtils.copy(p.getInputStream(), System.out);
             }
-            /*
+
             i = 1;
+
             for (File a : Objects.requireNonNull(output.listFiles())) {
-                Reader answerCR = new FileReader(new File(root + File.separator + "problems" + File.separator + problem.getId() + File.separator + "output" + File.separator + "output" + i + ".txt"));
-                Reader answerUR = new FileReader(new File(output + File.separator + "output" + i + ".txt"));
+                String answerU = Files.lines(Paths.get(output.getAbsolutePath() + File.separator + "output" + i + ".txt")).reduce("", String::concat);
+                String answerC = Files.lines(Paths.get(root.getAbsolutePath() + File.separator + "problems" + File.separator + problem.getId() + File.separator + "output" + File.separator + "output" + i + ".txt")).reduce("", String::concat);
 
-                char[] answerU = new char[50];
-                answerUR.read(answerU);
+                answerC = answerC.replace("\n", " ");
+                answerU = answerU.replace("\n", " ");
 
-                char[] answerC = new char[50];
-                answerCR.read(answerC);
+                while (answerC.contains("  "))
+                    answerC = answerC.replace("  ", " ");
+                while (answerU.contains("  "))
+                    answerU = answerU.replace("  ", " ");
 
-                System.out.println(answerU);
-                System.out.println(answerC);
+
+                if (answerU.indexOf(" ") == 0) {
+                    answerU = answerU.substring(1);
+                }
+
+                if (!answerC.equals(answerU)) {
+                    submission.setLastTest(i);
+                    submission.setState(SubmissionState.WA);
+                    submissionRepository.save(submission);
+                    return;
+                }
 
                 i++;
-            }*/
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
+        submission.setState(SubmissionState.OK);
+        submissionRepository.save(submission);
         //TODO make normal version with normal people
     }
 }
