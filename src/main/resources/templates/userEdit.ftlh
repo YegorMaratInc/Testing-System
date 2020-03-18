@@ -9,6 +9,7 @@
     <title>ITSprint-></title>
 </head>
 <body>
+<#include "navBar.ftlh">
 <form method="post" action="<@spring.url '/edit/${user.login}'/>">
     <label for="userRole">Role:
         <#list roles as role>

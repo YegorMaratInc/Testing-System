@@ -9,6 +9,7 @@
     <title>ITSprint->Создать</title>
 </head>
 <body>
+<#include "navBar.ftlh">
 <form method="post" action="<@spring.url '/create'/>">
     <div class="form-group">
         <label for="title">Название</label>

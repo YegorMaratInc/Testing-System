@@ -9,6 +9,7 @@
     <title>ITSprint->Ваши посылки</title>
 </head>
 <body>
+<#include "navBar.ftlh">
 <form method="get" action="/submission/${submission.id}">
     <table>
         <thead>

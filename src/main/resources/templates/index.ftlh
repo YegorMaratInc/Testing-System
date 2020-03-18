@@ -9,7 +9,7 @@
     <title>ITSprint->Активные контесты</title>
 </head>
 <body>
-<#--TODO fill active contests home page -->
+<#include "navBar.ftlh">
 <div class="container">
     <div class="card">
         <div class="card-header">
@@ -25,7 +25,6 @@
                 <table class="table table-bordered table-hover">
                     <tr class="thead-dark">
                         <th>Название</th>
-
                         <th>Начало</th>
                         <th>Конец</th>
                     </tr>
@@ -49,6 +48,5 @@
         <h6><a href="/create">Create contest</a></h6>
     </#if>
 </div>
-
 </body>
 </html>

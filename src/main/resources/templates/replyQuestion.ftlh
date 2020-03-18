@@ -9,6 +9,7 @@
     <title>ITSprint->Вопрос жюри</title>
 </head>
 <body>
+<#include "navBar.ftlh">
 <#--TODO make form and apply style-->
 <div>
     <form method="post" action="<@spring.url '/reply/${question.id}'/>">

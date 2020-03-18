@@ -9,6 +9,7 @@
     <title>ITSprint->Создать</title>
 </head>
 <body>
+<#include "navBar.ftlh">
 <div>
     <form method="post" enctype="multipart/form-data" action="<@spring.url '/create/contest/${contestId}'/>">
         <div class="form-group">

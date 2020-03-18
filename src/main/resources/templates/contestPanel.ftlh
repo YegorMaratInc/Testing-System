@@ -9,23 +9,35 @@
     <title>ITSprint->Контест</title>
 </head>
 <body>
-<form method="get" action="<@spring.url '/contestPanel'/>">
-    <table>
-        <caption></caption>
-        <tr>
-            <th>Контест</th>
-            <th>Время начала</th>
-            <th>Время конца</th>
-        </tr>
-        <#list contests as contest>
-            <tr>
-                <th><a href="/contest/${contest.id}">${contest.title}</a></th>
-                <th>${contest.startTime}</th>
-                <th>${contest.finishTime}</th>
-            </tr>
-        </#list>
-    </table>
-</form>
-<#--TODO fix style and order problems-->
+<#include "navBar.ftlh">
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">
+                <h3>
+                    Активные контесты
+                </h3>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="card-text text-center">
+                <table class="table table-bordered table-hover">
+                    <tr class="thead-dark">
+                        <th>Контест</th>
+                        <th>Время начала</th>
+                        <th>Время конца</th>
+                    </tr>
+                    <#list contests as contest>
+                        <tr>
+                            <th><a href="/contest/${contest.id}">${contest.title}</a></th>
+                            <th>${contest.startTime}</th>
+                            <th>${contest.finishTime}</th>
+                        </tr>
+                    </#list>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

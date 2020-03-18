@@ -9,6 +9,7 @@
     <title>ITSprint->Результаты</title>
 </head>
 <body>
+<#include "navBar.ftlh">
 <#--TODO generate resultsTable-->
 <form method="get" action="<@spring.url '/scoreboard/${contest.id}'/>">
     <#list scoreboard as user, score>
