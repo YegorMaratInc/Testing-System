@@ -28,8 +28,7 @@
             </ul>
         </div>
     </nav>
-</#if>
-<#if role == false>
+<#else>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand" href="<@spring.url '/'/>">
             <img src="<@spring.url '/images/logo-removebg-preview.png'/>" width="56" height="56 "
