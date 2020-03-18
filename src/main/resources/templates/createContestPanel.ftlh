@@ -11,7 +11,6 @@
 <body>
 <#include "navBar.ftlh">
 <form method="post" action="<@spring.url '/create'/>">
-    <#include "navBar.ftlh">
     <div class="form-group">
         <label for="title">Название</label>
         <input autofocus class="form-control" id="title" name="title"

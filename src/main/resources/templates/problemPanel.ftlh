@@ -9,25 +9,45 @@
     <title>ITSprint->Проблемы контеста ${contest.title}</title>
 </head>
 <body>
-<table class="table">
-    <caption>Задачи</caption>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-    </tr>
-    <#list problems as problem>
-        <tr>
-            <th>${problem.id}</th>
-            <th><a href="/contest/${contest.id}/problem/${problem.shortName}">${problem.shortName}.${problem.name}</a>
-            </th>
-        </tr>
-    </#list>
-</table>
+<#include "navBar.ftlh">
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">
+                <h3>
+                    Задачи
+                </h3>
+            </div>
+
+        </div>
+        <div class="card-body">
+            <div class="card-text text-center">
+                <table class="table table-bordered table-hover">
+                    <tr class="thead-dark">
+                        <th>№</th>
+                        <th>Name</th>
+                        <th>Time limit</th>
+                    </tr>
+                    <#list problems as problem>
+                        <tr>
+                            <th><a href="/contest/${contest.id}/problem/${problem.shortName}">${problem.shortName}</a>
+                            </th>
+                            <th><a href="/contest/${contest.id}/problem/${problem.shortName}">${problem.name}</a>
+                            </th>
+                            <th>${problem.timeLimit} sec</th>
+                        </tr>
+                    </#list>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 <#--TODO fix style and order problems-->
 <div>
     <#if role == true>
         <a href="/create/contest/${contest.id}">Create Problem</a>
     </#if>
 </div>
+
 </body>
 </html>

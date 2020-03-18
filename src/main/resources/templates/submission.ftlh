@@ -11,7 +11,6 @@
 <body>
 <#include "navBar.ftlh">
 <form method="get" action="/submission/${submission.id}">
-    <#include "navBar.ftlh">
     <table>
         <thead>
         <tr>
