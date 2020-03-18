@@ -9,8 +9,8 @@
     <title>ITSprint->Создать</title>
 </head>
 <body>
+<div>
     <form method="post" enctype="multipart/form-data" action="<@spring.url '/create/contest/${contestId}'/>">
-        <#include "navBar.ftlh">
         <div class="form-group">
             <label for="name">Название</label>
             <input autofocus class="form-control" id="name" name="name"
@@ -59,6 +59,7 @@
             Создать
         </button>
     </form>
+</div>
 <#--TODO styles-->
 </body>
 </html>

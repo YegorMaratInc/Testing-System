@@ -9,7 +9,6 @@
     <title>ITSprint->Проблемы контеста ${contest.title}</title>
 </head>
 <body>
-<#include "navBar.ftlh">
 <table class="table">
     <caption>Задачи</caption>
     <tr>

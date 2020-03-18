@@ -10,7 +10,6 @@
 </head>
 <body>
 <form method="get" action="<@spring.url '/contestPanel'/>">
-    <#include "navBar.ftlh">
     <table>
         <caption></caption>
         <tr>

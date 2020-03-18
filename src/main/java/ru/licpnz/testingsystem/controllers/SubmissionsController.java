@@ -39,6 +39,7 @@ public class SubmissionsController {
         User user = ((UserDetailsImpl) authentication.getPrincipal()).getUser();
 
         List<Submission> submissionList = submissionRepository.findAllByOwner(user).stream().filter(submission -> submission.getProblem().getContest().getId().equals(contestId)).collect(Collectors.toList());
+        submissionList.sort((a, b) -> (int) (b.getSubmissionTime().getTime() - a.getSubmissionTime().getTime()));
         modelMap.addAttribute("submissions", submissionList);
         return "submissions";
     }

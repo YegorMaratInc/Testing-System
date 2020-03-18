@@ -6,14 +6,13 @@
     <link href="<@spring.url '/css/bootstrap.min.css'/>" rel="stylesheet" type="text/css">
     <link href="<@spring.url '/css/style.css'/>" rel="stylesheet" type="text/css">
     <script src="<@spring.url '/js/jquery-3.4.1.min.js'/>"></script>
-    <title>ITSprint->Проблема ${problem.name}</title>
+    <title>ITSprint->Проблема ${problem.shortName}</title>
     <style>
         h3 {
             color: #17a2b8;
             background: #c82333;
             display: flex;
             justify-content: center;
-
         }
 
         h4 {
@@ -21,24 +20,22 @@
             display: flex;
         }
 
-        body {
-            background-color: #34ce57;
-        }
+        <#--body {
+            background-color: #c69500;
+        }-->
     </style>
 </head>
 <body>
 <#include "navBar.ftlh">
 <h1>${problem.shortName}.${problem.name}</h1>
 <h4>Ограничения по времени: ${problem.timeLimit} сек</h4>
-<div class="text-dark">
+<div class="text-area">
     ${problem.content}
 </div>
-<div>
-    <a href="/submit/contest/${problem.contest.id}">Сдать!</a>
-</div>
-<div>
-    <a href="/contest/${problem.contest.id}">Вернуться к списку задач</a>
-</div>
+<a href="/submit/contest/${problem.contest.id}">Сдать!</a>
+<a href="/contest/${problem.contest.id}">Вернуться к списку задач</a>
+<a href="/question/${problem.id}">Задать вопрос!</a>
+<a href="/scoreboard/${problem.contest.id}">Scoreboard</a>
 <h3>
     Вопросы к задаче:
 </h3>
@@ -71,9 +68,6 @@
     </#list>
     </tbody>
 </table>
-<a href="/question/${problem.id}">Задать вопрос!</a>
-<a href="/scoreboard/${problem.contest.id}">Scoreboard</a>
-
 </body>
 <#--TODO fix style problems-->
 </html>

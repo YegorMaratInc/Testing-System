@@ -13,5 +13,5 @@ import lombok.Data;
 public class UserEditForm {
     private String userRole;
     private String userState;
-
+    private Long user;
 }
