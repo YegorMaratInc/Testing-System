@@ -12,6 +12,7 @@ import ru.licpnz.testingsystem.models.User;
 import ru.licpnz.testingsystem.repositories.LanguageRepository;
 import ru.licpnz.testingsystem.repositories.SubmissionRepository;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -84,8 +85,8 @@ public class TestingServiceImpl implements TestingService {
         */
         Date time = new Date();
         MultipartFile source = submissionForm.getProgram();
-        /*if (time.after(problem.getContest().getFinishTime()) || time.before(problem.getContest().getStartTime()))
-            throw new NotFoundException();*/
+        if (time.after(problem.getContest().getFinishTime()) || time.before(problem.getContest().getStartTime()))
+            throw new NotFoundException();
         SubmissionState state = SubmissionState.Q;
 
         Submission submission = Submission.builder()
@@ -96,6 +97,7 @@ public class TestingServiceImpl implements TestingService {
                 .state(state)
                 .lastTest(1)
                 .pathToProgram("submissions" + File.separator + time.getTime())
+                .log("")
                 .build();
 
         submissionRepository.save(submission);
@@ -109,16 +111,31 @@ public class TestingServiceImpl implements TestingService {
 
         String fourArg = "";
         String exeFileName = "Main";
+        String compileLog = "";
+        String sep = File.separator;
 
+        //компиляция
         try {
-            source.transferTo(new File(dir.getAbsolutePath() + File.separator + "Main" + submission.getLanguage().getExtension()));
+            source.transferTo(new File(dir.getAbsolutePath() + sep + "Main" + submission.getLanguage().getExtension()));
             if (submission.getLanguage().getName().equals("GNU G++ 14")) {
-                Process p = Runtime.getRuntime().exec("g++ -Wall -o Main Main.cpp", null, dir);
+                ProcessBuilder pb = new ProcessBuilder("g++", "-Wall", "-o", "Main", "Main.cpp");
+                pb.redirectErrorStream(true);
+                pb.directory(dir);
+                Process p = pb.start();
+                ByteArrayOutputStream error = new ByteArrayOutputStream();
+                IOUtils.copy(p.getInputStream(), error);
+                compileLog = error.toString();
                 while (p.isAlive())
                     Thread.sleep(100L);
             }
             if (submission.getLanguage().getName().equals("Java 1.8")) {
-                Process p = Runtime.getRuntime().exec("javac Main.java", null, dir);
+                ByteArrayOutputStream error = new ByteArrayOutputStream();
+                ProcessBuilder pb = new ProcessBuilder("javac", "Main.java");
+                pb.directory(dir);
+                pb.redirectErrorStream(true);
+                Process p = pb.start();
+                IOUtils.copy(p.getInputStream(), error);
+                compileLog = error.toString();
                 while (p.isAlive())
                     Thread.sleep(100L);
                 fourArg = "java ";
@@ -129,7 +146,14 @@ public class TestingServiceImpl implements TestingService {
                 exeFileName = "Main.py";
             }
             if (submission.getLanguage().getName().equals("PascalABC.NET")) {
-                Process p = Runtime.getRuntime().exec("fpc Main.pas", null, dir);
+                ProcessBuilder pb = new ProcessBuilder("fpc", "Main.pas");
+                pb.directory(dir);
+                pb.redirectErrorStream(true);
+                Process p = pb.start();
+                ByteArrayOutputStream error = new ByteArrayOutputStream();
+                IOUtils.copy(p.getInputStream(), error);
+                compileLog = error.toString();
+
                 while (p.isAlive())
                     Thread.sleep(100L);
             }
@@ -138,64 +162,86 @@ public class TestingServiceImpl implements TestingService {
         }
 
         if (!(new File(dir.getAbsolutePath(), exeFileName)).isFile()) {
+            compileLog = compileLog.substring(0, java.lang.Math.min(250, compileLog.length()));
             submission.setState(SubmissionState.CE);
+            submission.setLog(compileLog);
             submissionRepository.save(submission);
             return;
         }
         submission.setState(SubmissionState.T);
         submissionRepository.save(submission);
+
+        //исполнение
         try {
             //TODO: list problem directory
             //TODO: for each problem
             //TODO: copy input to myEnv folder in submissionFolder
+            //ok
             //TODO: execute script.sh with parameters submission id and problem id
+            //ok
             //TODO: compare output with original by using checker
-            File input = new File(root + File.separator + "problems" + File.separator + problem.getId() + File.separator + "input");
+            //ok
+            File input = new File(root + sep + "problems" + sep + problem.getId() + sep + "input");
             File output = new File(dir, "output");
-            output.mkdirs();
+            if (!output.mkdirs()) {
+                System.out.println("output not created");
+                return;
+            }
             int i = 1;
-            for (File ignored : Objects.requireNonNull(input.listFiles())) {
-                Files.copy(Paths.get(input + File.separator + "input" + i + ".txt"), new File(dir, "input" + i + ".txt").toPath());
-                ProcessBuilder pb = new ProcessBuilder("./script.sh", String.valueOf(time.getTime()), String.valueOf(i++), fourArg, exeFileName);
 
+            for (File ignored : Objects.requireNonNull(input.listFiles())) {
+                Files.copy(Paths.get(input + sep + "input" + i + ".txt"), new File(dir, "input" + i + ".txt").toPath());
+                ProcessBuilder pb = new ProcessBuilder("./script.sh", String.valueOf(time.getTime()), String.valueOf(i), fourArg, exeFileName);
                 pb.redirectErrorStream(true);
                 Process p = pb.start();
-                IOUtils.copy(p.getInputStream(), System.out);
+                Thread.sleep(problem.getTimeLimit() * 1000);
+                if (p.isAlive()) {
+                    submission.setState(SubmissionState.TL);
+                    submission.setLastTest(i);
+                    submissionRepository.save(submission);
+                    return;
+                }
+                ByteArrayOutputStream error = new ByteArrayOutputStream();
+                IOUtils.copy(p.getInputStream(), error);
+                if (!error.toString().equals("")) {
+                    submission.setLastTest(i);
+                    submission.setState(SubmissionState.RE);
+                    submission.setLog(error.toString());
+                    submissionRepository.save(submission);
+                    return;
+                }
+                i++;
             }
 
             i = 1;
 
-            for (File a : Objects.requireNonNull(output.listFiles())) {
-                String answerU = Files.lines(Paths.get(output.getAbsolutePath() + File.separator + "output" + i + ".txt")).reduce("", String::concat);
-                String answerC = Files.lines(Paths.get(root.getAbsolutePath() + File.separator + "problems" + File.separator + problem.getId() + File.separator + "output" + File.separator + "output" + i + ".txt")).reduce("", String::concat);
+            for (File ignored : Objects.requireNonNull(output.listFiles())) {
+                String answerU = Files.lines(Paths.get(output.getAbsolutePath() + sep + "output" + i + ".txt")).reduce("", String::concat);
+                String answerC = Files.lines(Paths.get(root.getAbsolutePath() + sep + "problems" + sep + problem.getId() + sep + "output" + sep + "output" + i + ".txt")).reduce("", String::concat);
+
+                //приводим вывод в божеский вид
 
                 answerC = answerC.replace("\n", " ");
                 answerU = answerU.replace("\n", " ");
-
                 while (answerC.contains("  "))
                     answerC = answerC.replace("  ", " ");
                 while (answerU.contains("  "))
                     answerU = answerU.replace("  ", " ");
-
-
                 if (answerU.indexOf(" ") == 0) {
                     answerU = answerU.substring(1);
                 }
-
                 if (!answerC.equals(answerU)) {
                     submission.setLastTest(i);
                     submission.setState(SubmissionState.WA);
                     submissionRepository.save(submission);
                     return;
                 }
-
                 i++;
             }
-        } catch (IOException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
         submission.setState(SubmissionState.OK);
         submissionRepository.save(submission);
-        //TODO make normal version with normal people
     }
 }

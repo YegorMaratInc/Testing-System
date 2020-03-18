@@ -29,6 +29,7 @@ public class ProfileController {
     public String getProfilePage(@PathVariable String userLogin, ModelMap modelMap) {
         User user = userRepository.findUserByLogin(userLogin).orElseThrow(NotFoundException::new);
         List<Submission> submissionList = submissionRepository.findAllByOwner(user);
+        submissionList.sort((a, b) -> (int) (b.getSubmissionTime().getTime() - a.getSubmissionTime().getTime()));
         modelMap.addAttribute("user", user);
         modelMap.addAttribute("submissions", submissionList);
         return "profile";

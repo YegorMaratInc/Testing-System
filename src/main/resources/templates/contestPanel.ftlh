@@ -19,7 +19,7 @@
         </tr>
         <#list contests as contest>
             <tr>
-                <th>${contest.title}</th>
+                <th><a href="/contest/${contest.id}">${contest.title}</a></th>
                 <th>${contest.startTime}</th>
                 <th>${contest.finishTime}</th>
             </tr>
