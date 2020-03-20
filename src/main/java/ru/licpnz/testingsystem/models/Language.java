@@ -27,8 +27,6 @@ public class Language {
 
     private String name;
 
-    private String compilationCommand;
-    private String runCommand;
-    private String compiledFileName;
-    private String programName;
+    private String compilationFile;
+    private String startFile;
 }

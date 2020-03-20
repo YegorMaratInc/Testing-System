@@ -27,7 +27,6 @@ public class Contest {
     private Long id;
 
     private String title;
-    private String localDir;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date startTime;
