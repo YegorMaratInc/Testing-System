@@ -114,6 +114,11 @@ public class TestingServiceImpl implements TestingService {
         String compileLog = "";
         String sep = File.separator;
 
+        File sub = new File(root, "submissions");
+        if (!sub.exists())
+            if (!sub.mkdirs())
+                System.out.println("No");
+
         //компиляция
         try {
             source.transferTo(new File(dir.getAbsolutePath() + sep + "Main" + submission.getLanguage().getExtension()));
