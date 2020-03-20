@@ -28,6 +28,7 @@ public class ProfileController {
         List<Submission> submissionList = submissionRepository.findAllByOwner(user);
         submissionList.sort((a, b) -> (int) (b.getSubmissionTime().getTime() - a.getSubmissionTime().getTime()));
         modelMap.addAttribute("user", user);
+        modelMap.addAttribute("role", user.getUserRole().toString().equals("ADMIN"));
         modelMap.addAttribute("submissions", submissionList);
         return "profile";
     }

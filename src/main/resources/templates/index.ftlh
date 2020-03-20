@@ -40,11 +40,5 @@
         </div>
     </div>
 </div>
-<div>
-    <#if role == true>
-        <h6><a href="/users">List users</a></h6>
-        <h6><a href="/create">Create contest</a></h6>
-    </#if>
-</div>
 </body>
 </html>

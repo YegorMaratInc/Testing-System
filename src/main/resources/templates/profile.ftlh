@@ -10,6 +10,12 @@
 </head>
 <body>
 <#include "navBar.ftlh">
+<#if role == true>
+    <div>
+        <h6><a href="/create">Создать контест</a></h6>
+        <h6><a href="/users">Список пользователей</a></h6>
+    </div>
+</#if>
 <div class="container">
     <div class="card">
         <div class="card-header">

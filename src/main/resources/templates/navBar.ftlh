@@ -16,13 +16,7 @@
                             class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<@spring.url '/users'/>">Список пользователей</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="<@spring.url '/contestPanel'/>">Соревнования</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<@spring.url '/create'/>">Создать контест</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<@spring.url '/logout'/>">Выйти из аккаунта</a>
