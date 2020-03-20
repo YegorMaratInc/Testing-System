@@ -41,8 +41,6 @@
     </div>
 </div>
 <div>
-    <h6><a href="/profile/${login}">Профиль</a></h6>
-    <h6><a href="/contestPanel">All contests</a></h6>
     <#if role == true>
         <h6><a href="/users">List users</a></h6>
         <h6><a href="/create">Create contest</a></h6>

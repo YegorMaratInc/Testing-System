@@ -15,7 +15,7 @@
         <div class="card-header">
             <div class="card-title">
                 <h3>
-                    Активные контесты
+                    Все контесты
                 </h3>
             </div>
         </div>
