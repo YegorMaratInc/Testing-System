@@ -31,7 +31,7 @@
                     <#list problems as problem>
                         <tr>
                             <th>
-                                <a href="/contest/${problem.contest.id}/problem/${problem.shortName}">${problem.contest.title}${problem.shortName}</a>
+                                <a href="/contest/${problem.contest.id}/problem/${problem.shortName}">${problem.contest.id}${problem.shortName}</a>
                             </th>
                             <th>
                                 <a href="/contest/${problem.contest.id}/problem/${problem.shortName}">${problem.name}</a>

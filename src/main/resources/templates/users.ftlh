@@ -67,7 +67,7 @@
                             </td>
                             <td>
                                 <button type="submit" onclick="
-                                        let jsonData = '\{\'userRole\': \'' + $('#selectRole${user.login}').val() + '\', \'userState\': \'' + $('#selectState${user.login}').val() + '\', \'user\': ${user.id}}';
+                                        let jsonData = JSON.stringify({'userRole': $('#selectRole${user.login}').val(), 'userState': $('#selectState${user.login}').val(), 'user': ${user.id}});
                                         $.ajax({
                                         url:'<@spring.url '/users' />',
                                         type: 'POST',
