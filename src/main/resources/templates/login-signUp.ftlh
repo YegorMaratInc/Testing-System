@@ -1,13 +1,15 @@
 <#ftl encoding='UTF-8'>
 <#import "/spring.ftl" as spring/>
-<!doctype html>
-<html lang="ru">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    \
-    <style>
+    <meta charset="utf-8">
+    <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
+    <title>Fancy Login / Registration form - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        /* form */
         body {
             background: #efefef;
         }
@@ -15,6 +17,12 @@
         .form-body {
             background: #fff;
             padding: 20px;
+        }
+
+        .login-form {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-top: 3px solid #3e4043;
         }
 
         .innter-form {
@@ -136,8 +144,17 @@
             padding-top: 10px;
         }
     </style>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 </head>
 <body>
+<div class="container">
+    <div class="row">
+        <h2>Fancy Login / Registration form</h2>
+    </div>
+</div>
+<br>
+<br>
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
@@ -196,4 +213,9 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+
+</script>
 </body>
+</html>
