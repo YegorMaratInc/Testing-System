@@ -40,7 +40,6 @@ public class IndexController {
                         .collect(Collectors.toList())
         );
         modelMap.addAttribute("login", ((UserDetailsImpl) authentication.getPrincipal()).getUser().getLogin());
-        modelMap.addAttribute("role", ((UserDetailsImpl) authentication.getPrincipal()).getUser().getUserRole().toString().equals("ADMIN"));
         return "index";
     }
 }
