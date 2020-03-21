@@ -3,10 +3,10 @@
 <!doctype html>
 <html lang="ru">
 <head>
-    <link href="<@spring.url '/css/bootstrap.min.css'/>" rel="stylesheet" type="text/css">
-    <link href="<@spring.url '/css/style.css'/>" rel="stylesheet" type="text/css">
-    <script src="<@spring.url '/js/jquery-3.4.1.min.js'/>"></script>
-    <title>ITSprint->Регистрация</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    \
     <style>
         body {
             background: #efefef;
@@ -15,12 +15,6 @@
         .form-body {
             background: #fff;
             padding: 20px;
-        }
-
-        .login-form {
-            background: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border-top: 3px solid #3e4043;
         }
 
         .innter-form {
@@ -167,7 +161,9 @@
                         <div class="social-login">
                             <p>- - - - - - - - - - - - - Sign In With - - - - - - - - - - - - - </p>
                             <ul>
-                                <li><a href=""><i class="fa fa-facebook"></i> TipaVK</a></li>
+                                <li><a href=""><i class="fa fa-facebook"></i> Facebook</a></li>
+                                <li><a href=""><i class="fa fa-google-plus"></i> Google+</a></li>
+                                <li><a href=""><i class="fa fa-twitter"></i> Twitter</a></li>
                             </ul>
                         </div>
                         <div class="clearfix"></div>
@@ -189,7 +185,9 @@
                         <div class="social-login">
                             <p>- - - - - - - - - - - - - Register With - - - - - - - - - - - - - </p>
                             <ul>
-                                <li><a href=""><i class="fa fa-facebook"></i> TipaVK</a></li>
+                                <li><a href=""><i class="fa fa-facebook"></i> Facebook</a></li>
+                                <li><a href=""><i class="fa fa-google-plus"></i> Google+</a></li>
+                                <li><a href=""><i class="fa fa-twitter"></i> Twitter</a></li>
                             </ul>
                         </div>
                     </div>
@@ -199,4 +197,3 @@
     </div>
 </div>
 </body>
-</html>
