@@ -26,6 +26,7 @@
                     <tr class="thead-dark">
                         <th>№</th>
                         <th>Дата</th>
+                        <th>Отправитель</th>
                         <th>Задача</th>
                         <th>Язык</th>
                         <th>Вердикт</th>

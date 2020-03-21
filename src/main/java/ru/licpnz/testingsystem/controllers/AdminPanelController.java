@@ -64,6 +64,11 @@ public class AdminPanelController {
                 .build();
         problemRepository.save(problem);
 
+        File problems = new File(System.getProperty("user.dir"), "problems");
+        if (!problems.exists())
+            if (!problems.mkdirs())
+                System.out.println("No");
+
         File fileInput = new File(System.getProperty("user.dir") + File.separator + "problems" + File.separator + problem.getId() + File.separator + "input");
         File fileOutput = new File(System.getProperty("user.dir") + File.separator + "problems" + File.separator + problem.getId() + File.separator + "output");
         if (!fileInput.exists()) {
