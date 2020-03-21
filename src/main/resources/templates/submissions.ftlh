@@ -37,6 +37,7 @@
                         <tr>
                             <th>${sub.submissionTime}</th>
                             <th><a href="/submission/${sub.id}">${sub.id}</a></th>
+                            <th><a href="/profile/${sub.owner.login}">${sub.owner.login}</a></th>
                             <th>
                                 <a href="/contest/${sub.problem.contest.id}/problem/${sub.problem.shortName}">${sub.problem.shortName}
                                     - ${sub.problem.name}</a></th>

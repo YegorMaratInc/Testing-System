@@ -39,11 +39,11 @@ public class ProfileController {
     }
 
     @GetMapping("/profile/{login}")
-    public String getProfile(@PathVariable String login, ModelMap modelMap) {
+    public String getProfile(@PathVariable String login, ModelMap modelMap, Authentication authentication) {
         User user = userRepository.findUserByLogin(login).orElseThrow(NotFoundException::new);
         List<Submission> submissionList = submissionRepository.findAllByOwner(user);
         modelMap.addAttribute("user", user);
-        modelMap.addAttribute("role", user.getUserRole().toString().equals("ADMIN"));
+        modelMap.addAttribute("role", ((UserDetailsImpl) authentication.getPrincipal()).getUser().getUserRole().toString().equals("ADMIN"));
         submissionList.sort((a, b) -> (int) (b.getSubmissionTime().getTime() - a.getSubmissionTime().getTime()));
         modelMap.addAttribute("submissions", submissionList);
         return "profile";

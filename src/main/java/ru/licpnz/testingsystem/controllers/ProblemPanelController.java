@@ -43,4 +43,10 @@ public class ProblemPanelController {
         modelMap.addAttribute("role", ((UserDetailsImpl) authentication.getPrincipal()).getUser().getUserRole().toString().equals("ADMIN"));
         return "problemPanel";
     }
+
+    @GetMapping("/problemPanel")
+    public String getProblems(ModelMap modelMap) {
+        modelMap.addAttribute("problems", problemRepository.findAll());
+        return "allProblemPanel";
+    }
 }

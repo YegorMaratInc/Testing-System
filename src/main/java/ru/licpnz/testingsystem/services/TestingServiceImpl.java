@@ -68,6 +68,11 @@ public class TestingServiceImpl implements TestingService {
                     System.out.println("No");
         }
 
+        File subs = new File(root, "submissions");
+        if (!subs.exists())
+            if (!subs.mkdirs())
+                System.out.println("NO");
+
         String fourArg = "";
         String exeFileName = "Main";
         String compileLog = "";
@@ -155,7 +160,6 @@ public class TestingServiceImpl implements TestingService {
                 Files.copy(Paths.get(input + sep + "input" + i + ".txt"), new File(dir, "input" + i + ".txt").toPath());
 
                 Runtime.getRuntime().exec("Main.exe", null, new File(root + sep + dir));
-
 
 
                 ProcessBuilder pb;

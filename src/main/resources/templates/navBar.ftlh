@@ -19,6 +19,9 @@
                 <a class="nav-link" href="<@spring.url '/contestPanel'/>">Соревнования</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="<@spring.url '/problemPanel'/>">Архив</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="<@spring.url '/logout'/>">Выйти из аккаунта</a>
             </li>
         </ul>
