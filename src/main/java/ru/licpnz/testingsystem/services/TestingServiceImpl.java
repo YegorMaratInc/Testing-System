@@ -43,9 +43,9 @@ public class TestingServiceImpl implements TestingService {
     public void test(SubmissionForm submissionForm, Problem problem, User user) {
         Date time = new Date();
         MultipartFile source = submissionForm.getProgram();
-        /*if (time.after(problem.getContest().getFinishTime()) || time.before(problem.getContest().getStartTime()))
+        if (time.after(problem.getContest().getFinishTime()) || time.before(problem.getContest().getStartTime()))
             throw new NotFoundException();
-        */
+
         SubmissionState state = SubmissionState.Q;
 
         Submission submission = Submission.builder()
@@ -82,8 +82,7 @@ public class TestingServiceImpl implements TestingService {
         try {
             source.transferTo(new File(dir.getAbsolutePath() + sep + "Main" + submission.getLanguage().getExtension()));
             if (submission.getLanguage().getName().equals("GNU G++ 14")) {
-                ProcessBuilder pb = new ProcessBuilder("g++", "-Wall", "-o", "Main.exe", "Main.cpp");
-                exeFileName = "Main.exe";
+                ProcessBuilder pb = new ProcessBuilder("g++", "-Wall", "-o", "Main", "Main.cpp");
                 pb.redirectErrorStream(true);
                 pb.directory(dir);
                 Process p = pb.start();
@@ -107,9 +106,7 @@ public class TestingServiceImpl implements TestingService {
                 exeFileName = "Main.java";
             }
             if (submission.getLanguage().getName().equals("Python 3.7")) {
-                if (os.equals("windows 10"))
-                    fourArg = "";
-                else fourArg = "python3 ";
+                fourArg = "python3 ";
                 exeFileName = "Main.py";
             }
             if (submission.getLanguage().getName().equals("PascalABC.NET")) {
@@ -140,14 +137,6 @@ public class TestingServiceImpl implements TestingService {
 
         //исполнение
         try {
-            //TODO: list problem directory
-            //TODO: for each problem
-            //TODO: copy input to myEnv folder in submissionFolder
-            //ok
-            //TODO: execute script.sh with parameters submission id and problem id
-            //ok
-            //TODO: compare output with original by using checker
-            //ok
             File input = new File(root + sep + "problems" + sep + problem.getId() + sep + "input");
             File output = new File(dir, "output");
             if (!output.mkdirs()) {
@@ -158,37 +147,22 @@ public class TestingServiceImpl implements TestingService {
 
             for (File ignored : Objects.requireNonNull(input.listFiles())) {
                 Files.copy(Paths.get(input + sep + "input" + i + ".txt"), new File(dir, "input" + i + ".txt").toPath());
-
-                Runtime.getRuntime().exec("Main.exe", null, new File(root + sep + dir));
-
-
-                ProcessBuilder pb;
-                if (!os.equals("windows 10"))
-                    pb = new ProcessBuilder("./script.sh", String.valueOf(time.getTime()), String.valueOf(i), fourArg, exeFileName);
-                else
-                    pb = new ProcessBuilder(root + sep + "submissions" + sep + time.getTime() + sep + exeFileName + "<" + root + sep + "submissions" + sep + time.getTime() + sep + "input" + i + ".txt" + ">" + root + sep + "submissions" + sep + time.getTime() + sep + "output" + sep + "output" + i + ".txt");
-
+                ProcessBuilder pb = new ProcessBuilder("./script.sh", String.valueOf(time.getTime()), String.valueOf(i), fourArg, exeFileName);
                 pb.redirectErrorStream(true);
                 Process p = pb.start();
-                //Thread.sleep(problem.getTimeLimit() * 1000);
-                /*if (p.isAlive()) {
+                Thread.sleep(problem.getTimeLimit() * 1000);
+                if (p.isAlive()) {
                     submission.setState(SubmissionState.TL);
                     submission.setLastTest(i);
                     submissionRepository.save(submission);
                     return;
-                }*/
-                System.out.println(pb.command());
-                while (p.isAlive())
-                    Thread.sleep(100L);
+                }
                 ByteArrayOutputStream error = new ByteArrayOutputStream();
                 IOUtils.copy(p.getInputStream(), error);
                 if (!error.toString().equals("")) {
                     submission.setLastTest(i);
                     submission.setState(SubmissionState.RE);
-                    if (error.toString().length() > 250)
-                        submission.setLog(error.toString().substring(250));
-                    else submission.setLog(error.toString());
-                    System.out.println(error);
+                    submission.setLog(error.toString());
                     submissionRepository.save(submission);
                     return;
                 }
