@@ -145,6 +145,7 @@ public class TestingServiceImpl implements TestingService {
             }
             int i = 1;
 
+
             for (File ignored : Objects.requireNonNull(input.listFiles())) {
                 Files.copy(Paths.get(input + sep + "input" + i + ".txt"), new File(dir, "input" + i + ".txt").toPath());
                 ProcessBuilder pb = new ProcessBuilder("./script.sh", String.valueOf(time.getTime()), String.valueOf(i), fourArg, exeFileName);
