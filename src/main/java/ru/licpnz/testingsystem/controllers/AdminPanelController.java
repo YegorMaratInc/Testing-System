@@ -36,7 +36,7 @@ public class AdminPanelController {
         String start = contestForm.getStartTime();
         String finish = contestForm.getFinishTime();
         //2020-02-25T00:00
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-ddTHH:mm");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
 
         Date startTime = format.parse(start);
         Date finishTime = format.parse(finish);
