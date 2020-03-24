@@ -37,8 +37,8 @@
         }
 
         .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-            color: #fff;
-            background-color: #d14d42;
+            color: #000000;
+            background-color: #ffe5b4;
             border: none !important;
             border-bottom-color: transparent;
         }
@@ -84,7 +84,7 @@
         }
 
         .social-login ul li:nth-child(2) a {
-            background: #e74c3d;
+            background: #ffe5b4;
         }
 
         .social-login ul li:nth-child(3) a {
@@ -102,8 +102,8 @@
         }
 
         .sa-innate-form input[type=submit] {
-            border: 1px solid #e64b3b;
-            background: #e64b3b;
+            border: 1px solid #ffe5b4;
+            background: #ffe5b4;
             color: #fff;
             padding: 10px 25px;
             font-size: 14px;
@@ -111,14 +111,14 @@
         }
 
         .sa-innate-form input[type=submit]:hover {
-            border: 1px solid #db3b2b;
-            background: #db3b2b;
+            border: 1px solid #ffe5b4;
+            background: #ffe5b4;
             color: #fff;
         }
 
         .sa-innate-form button {
-            border: 1px solid #e64b3b;
-            background: #e64b3b;
+            border: 1px solid #ffe5b4;
+            background: #ffe5b4;
             color: #fff;
             padding: 10px 25px;
             font-size: 14px;
@@ -126,8 +126,8 @@
         }
 
         .sa-innate-form button:hover {
-            border: 1px solid #db3b2b;
-            background: #db3b2b;
+            border: 1px solid #ffe5b4;
+            background: #ffe5b4;
             color: #fff;
         }
 
@@ -140,78 +140,81 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="container ">
-    <div class="row justify-content-center">
-        <div class="col-md-4 col-md-offset-4">
-            <div class="form-body">
-                <ul class="nav nav-tabs final-login">
-                    <li class="active"><a data-toggle="tab" href="#sectionA">Войти</a></li>
-                    <li><a data-toggle="tab" href="#sectionB">Регистрация</a></li>
-                </ul>
-                <div class="tab-content">
-                    <div id="sectionA" class="tab-pane fade in active">
-                        <div class="innter-form">
-                            <#if error??>
-                                <div class="alert alert-danger" role="alert">
-                                    Логин или пароль введены неверно
-                                </div>
-                            </#if>
-                            <form method="post" action="<@spring.url '/login'/>">
-                                <div class="form-group">
-                                    <label for="login">Логин</label>
-                                    <input autofocus class="form-control" id="login" name="login"
-                                           placeholder="Введите логин здесь..." required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="password">Пароль</label>
-                                    <input type="password" class="form-control" id="password" name="password"
-                                           placeholder="Введите пароль здесь..." required>
-                                </div>
-                                <div class="form-group form-check">
-                                    <input type="checkbox" class="form-check-input" id="remember-me" name="remember-me">
-                                    <label class="form-check-label" for="remember-me">Запомните меня!</label>
-                                </div>
-                                <div class="btn-group-vertical" role="group">
-                                    <button class="btn btn-success" type="submit">
-                                        Войти
-                                    </button>
-                                </div>
-                            </form>
+<div id="particles-js">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="form-body">
+                    <ul class="nav nav-tabs final-login">
+                        <li class="active"><a data-toggle="tab" href="#sectionA">Войти</a></li>
+                        <li><a data-toggle="tab" href="#sectionB">Регистрация</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="sectionA" class="tab-pane fade in active">
+                            <div class="innter-form">
+                                <#if error??>
+                                    <div class="alert alert-danger" role="alert">
+                                        Логин или пароль введены неверно
+                                    </div>
+                                </#if>
+                                <form method="post" action="<@spring.url '/login'/>">
+                                    <div class="form-group">
+                                        <label for="login">Логин</label>
+                                        <input autofocus class="form-control" id="login" name="login"
+                                               placeholder="Введите логин здесь..." required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">Пароль</label>
+                                        <input type="password" class="form-control" id="password" name="password"
+                                               placeholder="Введите пароль здесь..." required>
+                                    </div>
+                                    <div class="form-group form-check">
+                                        <input type="checkbox" class="form-check-input" id="remember-me"
+                                               name="remember-me">
+                                        <label class="form-check-label" for="remember-me">Запомните меня!</label>
+                                    </div>
+                                    <div class="btn-group-vertical" role="group">
+                                        <button class="btn btn-success" type="submit">
+                                            Войти
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="clearfix"></div>
                         </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div id="sectionB" class="tab-pane fade">
-                        <div class="innter-form">
-                            <#if signupError??>
-                                <div class="alert alert-danger" role="alert">
-                                    ${alert}
-                                </div>
-                            </#if>
-                            <form method="post" action="<@spring.url '/signUp'/>">
-                                <div class="form-group">
-                                    <label for="login">Логин</label>
-                                    <input autofocus class="form-control" id="login" name="login"
-                                           placeholder="Введите логин здесь..." required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="password">Пароль</label>
-                                    <input type="password" class="form-control" id="password" name="password"
-                                           placeholder="Введите пароль здесь..." required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="firstName">Имя</label>
-                                    <input class="form-control" id="firstName" name="firstName"
-                                           placeholder="Введите своё имя здесь..." required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="lastName">Фамилия</label>
-                                    <input class="form-control" id="lastName" name="lastName"
-                                           placeholder="Введите свою фамилию здесь..." required>
-                                </div>
-                                <button class="btn btn-success" type="submit">
-                                    Регистрация
-                                </button>
-                            </form>
+                        <div id="sectionB" class="tab-pane fade">
+                            <div class="innter-form">
+                                <#if signupError??>
+                                    <div class="alert alert-danger" role="alert">
+                                        ${alert}
+                                    </div>
+                                </#if>
+                                <form method="post" action="<@spring.url '/signUp'/>">
+                                    <div class="form-group">
+                                        <label for="login">Логин</label>
+                                        <input autofocus class="form-control" id="login" name="login"
+                                               placeholder="Введите логин здесь..." required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">Пароль</label>
+                                        <input type="password" class="form-control" id="password" name="password"
+                                               placeholder="Введите пароль здесь..." required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="firstName">Имя</label>
+                                        <input class="form-control" id="firstName" name="firstName"
+                                               placeholder="Введите своё имя здесь..." required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="lastName">Фамилия</label>
+                                        <input class="form-control" id="lastName" name="lastName"
+                                               placeholder="Введите свою фамилию здесь..." required>
+                                    </div>
+                                    <button class="btn btn-success" type="submit">
+                                        Регистрация
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -341,6 +344,5 @@
 
     });
 </script>
-<div id="particles-js"></div>
 </body>
 </html>
