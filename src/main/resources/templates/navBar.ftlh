@@ -5,12 +5,12 @@
     }
 
     .nav-link {
-        color: darkturquoise !important;
+        color: #000000 !important;
     }
 
-    .btn-success {
-        color: darkturquoise !important;
-        background: black !important;
+    .btn-dark {
+        color: #000000 !important;
+        background: #FF7F50 !important;
     }
 </style>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3">
@@ -34,7 +34,7 @@
             </li>
         </ul>
         <ul class="nav justify-content-end">
-            <a class="btn btn-success" href="<@spring.url '/logout'/>" role="button">Выйти из аккаунта</a>
+            <a class="btn btn-dark" href="<@spring.url '/logout'/>" role="button">Выйти из аккаунта</a>
         </ul>
     </div>
 </nav>

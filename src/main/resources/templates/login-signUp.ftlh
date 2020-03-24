@@ -14,6 +14,11 @@
             background: #000000 !important;
         }
 
+        .btn-dark {
+            color: #000000 !important;
+            background: #FF7F50 !important;
+        }
+
         .form-body {
             background: #fff;
             padding: 20px;
@@ -38,7 +43,7 @@
 
         .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
             color: #000000;
-            background-color: #ffe5b4;
+            background-color: #FF7F50;
             border: none !important;
             border-bottom-color: transparent;
         }
@@ -49,11 +54,6 @@
             border: none !important;
             text-transform: uppercase;
             font-size: 16px;
-        }
-
-        .social-login {
-            text-align: center;
-            font-size: 12px;
         }
 
         .social-login p {
@@ -80,7 +80,7 @@
         }
 
         .social-login ul li:nth-child(1) a {
-            background: #3b5998;
+            background: #000000;
         }
 
         .social-login ul li:nth-child(2) a {
@@ -88,7 +88,7 @@
         }
 
         .social-login ul li:nth-child(3) a {
-            background: #3698d9;
+            background: #000000;
         }
 
         .sa-innate-form input[type=text], input[type=password], input[type=file], textarea, select, email {
@@ -174,7 +174,7 @@
                                         <label class="form-check-label" for="remember-me">Запомните меня!</label>
                                     </div>
                                     <div class="btn-group-vertical" role="group">
-                                        <button class="btn btn-success" type="submit">
+                                        <button class="btn btn-dark" type="submit">
                                             Войти
                                         </button>
                                     </div>
@@ -210,7 +210,7 @@
                                         <input class="form-control" id="lastName" name="lastName"
                                                placeholder="Введите свою фамилию здесь..." required>
                                     </div>
-                                    <button class="btn btn-success" type="submit">
+                                    <button class="btn btn-dark" type="submit">
                                         Регистрация
                                     </button>
                                 </form>
