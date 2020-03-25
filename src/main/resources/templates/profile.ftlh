@@ -15,17 +15,17 @@
         <h6><a href="/create">Создать контест</a></h6>
         <h6><a href="/users">Список пользователей</a></h6>
     </div>
-</#if>
-<div class="container">
-    <div class="card">
-        <div class="card-header">
-            <div class="card-title">
-                <h3>
-                    Последние посылки
-                </h3>
-            </div>
+<#else>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <h3>
+                        Последние посылки
+                    </h3>
+                </div>
 
-        </div>
+            </div>
         <div class="card-body">
             <div class="card-text text-center">
                 <table class="table table-bordered table-hover">
@@ -55,7 +55,8 @@
                 </table>
             </div>
         </div>
+        </div>
     </div>
-</div>
+</#if>
 </body>
 </html>

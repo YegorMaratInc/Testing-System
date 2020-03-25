@@ -5,12 +5,12 @@
     }
 
     .nav-link {
-        color: darkturquoise !important;
+        color: #000000 !important;
     }
 
-    .btn-success {
-        color: darkturquoise !important;
-        background: black !important;
+    .btn-dark {
+        color: #000000 !important;
+        background: #FF7F50 !important;
     }
 </style>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3">
@@ -18,6 +18,11 @@
         <img src="<@spring.url '/images/logo-removebg-preview.png'/>" width="56" height="56 "
              class="d-inline-block align-top" alt="">
     </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
