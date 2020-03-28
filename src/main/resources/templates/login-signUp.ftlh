@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="<@spring.url 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css'/>" rel="stylesheet">
+    <link href="<@spring.url '/css/bootstrap3.min.css'/>" rel="stylesheet">
     <link href="<@spring.url '/css/style.css'/>" rel="stylesheet" type="text/css">
     <title>ITSprint->Активные контесты</title>
     <script src="<@spring.url '/js/jquery-3.4.1.min.js'/>"></script>
@@ -136,8 +136,7 @@
             padding-top: 10px;
         }
     </style>
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 <div id="particles-js">
@@ -223,7 +222,7 @@
     </div>
 </div>
 <script type="text/javascript">
-    $.getScript("https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js", function () {
+    $.getScript("<@spring.url '/js/particles.min.js'/>", function () {
         particlesJS('particles-js',
             {
                 "particles": {
