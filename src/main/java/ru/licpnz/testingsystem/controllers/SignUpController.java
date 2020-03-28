@@ -37,7 +37,7 @@ public class SignUpController {
         if (userRepository.findUserByLogin(userForm.getLogin()).isPresent()) {
             modelMap.addAttribute("signupError", "true");
             modelMap.addAttribute("alert", "Имя пользователя занято");
-            return "signUp";
+            return "login-signUp";
         }
         signUpService.signUp(userForm);
         return "redirect:/login";

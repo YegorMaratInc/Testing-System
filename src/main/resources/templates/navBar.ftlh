@@ -37,7 +37,7 @@
             </li>
         </ul>
         <ul class="nav justify-content-end">
-            <a class="btn btn-success" href="<@spring.url '/logout'/>" role="button">Выйти из аккаунта</a>
+            <a class="btn btn-dark" href="<@spring.url '/logout'/>" role="button">Выйти из аккаунта</a>
         </ul>
     </div>
 </nav>

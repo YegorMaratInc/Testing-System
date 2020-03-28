@@ -57,17 +57,18 @@ public class ScoreboardController {
                         break;
                 }
                 if (i == userSubmissions.size())
-                    scoreboard.get(user).add(new ProblemDTO(userSubmissions.size(), 0, false));
+                    scoreboard.get(user).add(new ProblemDTO(userSubmissions.size(), 0, false, problem.getShortName()));
                 else if (userSubmissions.size() == 0)
-                    scoreboard.get(user).add(new ProblemDTO(0, 0, false));
+                    scoreboard.get(user).add(new ProblemDTO(0, 0, false, problem.getShortName()));
                 else {
                     int difference = userSubmissions.size() * 10 - 10;
                     Date userTime = userSubmissions.get(i).getSubmissionTime();
                     difference += (int) ((userTime.getTime() - contest.getStartTime().getTime()) / 60000);
-                    scoreboard.get(user).add(new ProblemDTO(i + 1, difference, true));
+                    scoreboard.get(user).add(new ProblemDTO(i + 1, difference, true, problem.getShortName()));
                 }
             });
         });
+        modelMap.addAttribute("problems", problems);
         modelMap.addAttribute("scoreboard", scoreboard);
         return "scoreboard";
     }

@@ -18,4 +18,5 @@ public class ProblemDTO {
     private int triesCount;
     private int timeAdded;
     private boolean solved;
+    private String problemShortName;
 }

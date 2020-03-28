@@ -44,6 +44,7 @@
 </div>
 <#--TODO fix style and order problems-->
 <div>
+    <a href="/scoreboard/${contest.id}">Результаты</a>
     <#if role == true>
         <a href="/create/contest/${contest.id}">Create Problem</a>
     </#if>

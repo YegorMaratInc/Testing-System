@@ -54,7 +54,7 @@
         <tr>
             <th>${ques.id}</th>
             <th>
-                <time></time>
+                <span id="time${ques.id}">${ques.date?datetime}</span>
             </th>
             <th><a href="/profile/${ques.owner.login}">${ques.owner.login}</a></th>
             <th><span>${ques.question}</span></th>
