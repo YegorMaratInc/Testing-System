@@ -163,7 +163,9 @@ public class TestingServiceImpl implements TestingService {
                 if (!error.toString().equals("")) {
                     submission.setLastTest(i);
                     submission.setState(SubmissionState.RE);
-                    submission.setLog(error.toString());
+                    if (error.toString().length() > 250)
+                        submission.setLog(error.toString().substring(0, 250));
+                    else submission.setLog(error.toString());
                     submissionRepository.save(submission);
                     return;
                 }
