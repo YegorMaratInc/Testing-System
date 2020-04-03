@@ -19,6 +19,17 @@
             font-size: 13px;
         }
     </style>
+    <script type="text/javascript">
+        let table = $("#table");
+        let i = table.rows.length;
+        <#list scoreboard as user, score>
+        table.insertRow(i++);
+        let j = 0;
+        <#list score as score>
+        table.rows[i].insertCell(j++);
+        </#list>
+        </#list>
+    </script>
 </head>
 <body>
 <#include "navBar.ftlh">
@@ -95,7 +106,7 @@
                                                 time.addClass("cell-down");
                                                 time.text(tt);
                                                 if (triesCount > 1)
-                                                    text = "+" + String(triesCount);
+                                                    text = "+" + triesCount;
                                                 else
                                                     text = "+";
                                             } else {
