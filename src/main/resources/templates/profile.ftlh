@@ -3,9 +3,7 @@
 <!doctype html>
 <html lang="ru">
 <head>
-    <link href="<@spring.url '/css/bootstrap.min.css'/>" rel="stylesheet" type="text/css">
-    <link href="<@spring.url '/css/style.css'/>" rel="stylesheet" type="text/css">
-    <script src="<@spring.url '/js/jquery-3.4.1.min.js'/>"></script>
+    <#include "includes.ftlh"/>
     <title>ITSprint-> Профиль ${user.login}</title>
 </head>
 <body>

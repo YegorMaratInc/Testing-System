@@ -5,10 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="<@spring.url '/js/jquery-3.4.1.min.js'/>"></script>
-    <script src="<@spring.url '/js/popper.min.js'/>"></script>
-    <script src="<@spring.url '/js/bootstrap.min.js'/>"></script>
-    <link href="<@spring.url '/css/bootstrap.min.css'/>" rel="stylesheet">
+    <#include "includes.ftlh"/>
     <title>ITSprint->Активные контесты</title>
 </head>
 <body>
