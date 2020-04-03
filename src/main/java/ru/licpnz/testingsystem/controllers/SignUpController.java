@@ -2,7 +2,6 @@ package ru.licpnz.testingsystem.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.licpnz.testingsystem.forms.UserForm;
 import ru.licpnz.testingsystem.repositories.UserRepository;
@@ -25,11 +24,6 @@ public class SignUpController {
     public SignUpController(SignUpService signUpService, UserRepository userRepository) {
         this.signUpService = signUpService;
         this.userRepository = userRepository;
-    }
-
-    @GetMapping("/signUp")
-    public String getSignUpPage() {
-        return "signUp";
     }
 
     @PostMapping("/signUp")
