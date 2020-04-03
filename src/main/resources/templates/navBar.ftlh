@@ -21,10 +21,9 @@
             <li class="nav-item">
                 <a class="nav-link link-my" href="<@spring.url '/problemPanel'/>">Архив</a>
             </li>
-            <li>
-                <a class="btn btn-dark my-2 my-lg-0 btn-my" href="<@spring.url '/logout'/>" role="button">Выйти из
-                    аккаунта</a>
-            </li>
         </ul>
+        <form class="form-inline" method="get" action="<@spring.url '/logout'/>">
+            <a class="btn btn-outline-dark my-2 my-lg-0 btn-my" role="button" type="submit">Выйти из аккаунта</a>
+        </form>
     </div>
 </nav>
