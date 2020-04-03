@@ -82,7 +82,7 @@ public class ScoreboardController {
         });
         score.sort((s1, s2) -> {
             if (s1.getCount() != s2.getCount())
-                return s1.getCount() - s2.getCount();
+                return s2.getCount() - s1.getCount();
             return s1.getTotal() - s2.getTotal();
         });
         modelMap.addAttribute("problems", problems);
