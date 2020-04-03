@@ -23,7 +23,8 @@
             </li>
         </ul>
         <form class="form-inline" method="get" action="<@spring.url '/logout'/>">
-            <a class="btn btn-outline-dark my-2 my-lg-0 btn-my" role="button" type="submit">Выйти из аккаунта</a>
+            <button class="btn btn-outline-dark my-2 my-lg-0 btn-my" role="button" type="submit">Выйти из аккаунта
+            </button>
         </form>
     </div>
 </nav>
