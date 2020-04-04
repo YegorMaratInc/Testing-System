@@ -1,17 +1,5 @@
 <#import "/spring.ftl" as spring>
 <style>
-    .bg-primary {
-        background: #ffe5b4 !important;
-    }
-
-    .nav-link {
-        color: #000000 !important;
-    }
-
-    .btn-dark {
-        color: #000000 !important;
-        background: #FF7F50 !important;
-    }
 </style>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3">
     <a class="navbar-brand" href="<@spring.url '/'/>">
