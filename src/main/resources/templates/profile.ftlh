@@ -10,7 +10,7 @@
 <#include "navBar.ftlh">
 <div class="container">
     <div class="row align-content-center">
-        <div class="col">
+        <div class="col-lg-4 col-md-4 col-xs-12">
             <div class="card">
                 <div class="card-header">
                     Профиль
@@ -34,7 +34,7 @@
                 </#if>
             </div>
         </div>
-        <div class="col">
+        <div class="col-lg-8 col-md-8 col-xs-12">
             <div class="card">
                 <div class="card-header">
                     <div class="card-title">
