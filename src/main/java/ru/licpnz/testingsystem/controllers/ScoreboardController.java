@@ -11,6 +11,7 @@ import ru.licpnz.testingsystem.repositories.ProblemRepository;
 import ru.licpnz.testingsystem.repositories.SubmissionRepository;
 import ru.licpnz.testingsystem.repositories.UserRepository;
 import ru.licpnz.testingsystem.transfer.ProblemDTO;
+import ru.licpnz.testingsystem.transfer.ScoreboardDTO;
 
 import java.util.*;
 
@@ -68,8 +69,24 @@ public class ScoreboardController {
                 }
             });
         });
+        List<ScoreboardDTO> score = new ArrayList<>();
+        scoreboard.forEach((user, problemDTOS) -> {
+            int total = 0;
+            int solved = 0;
+            for (ProblemDTO problemDTO : problemDTOS) {
+                total += problemDTO.getTimeAdded();
+                solved += problemDTO.isSolved() ? 1 : 0;
+            }
+            problemDTOS.sort(Comparator.comparing(ProblemDTO::getProblemShortName));
+            score.add(new ScoreboardDTO(problemDTOS, user, total, solved));
+        });
+        score.sort((s1, s2) -> {
+            if (s1.getCount() != s2.getCount())
+                return s2.getCount() - s1.getCount();
+            return s1.getTotal() - s2.getTotal();
+        });
         modelMap.addAttribute("problems", problems);
-        modelMap.addAttribute("scoreboard", scoreboard);
+        modelMap.addAttribute("scoreboard", score);
         return "scoreboard";
     }
 }

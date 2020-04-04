@@ -5,11 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="<@spring.url '/js/jquery-3.4.1.min.js'/>"></script>
-    <script src="<@spring.url '/js/popper.min.js'/>"></script>
-    <script src="<@spring.url '/js/bootstrap.min.js'/>"></script>
-    <link href="<@spring.url '/css/bootstrap.min.css'/>" rel="stylesheet">
-    <title>ITSprint->Активные контесты</title>
+    <#include "includes.ftlh"/>
+    <title>ITSprint->Регистрация</title>
 </head>
 <body>
 <div class="container">
@@ -18,20 +15,24 @@
             <div class="card-header-tabs">
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="aTab" href="#sectionA" data-toggle="tab" role="tab"
-                           aria-controls="sectionA" aria-selected="true">Войти</a>
+                        <a class="nav-link <#if signupError??><#else>active</#if>" id="aTab" href="#sectionA"
+                           data-toggle="tab" role="tab"
+                           aria-controls="sectionA"
+                           <#if signupError??>aria-selected="false"<#else> aria-selected="true"</#if> >Войти</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="bTab" href="#sectionB" data-toggle="tab" role="tab"
+                        <a class="nav-link <#if signupError??>active</#if>" id="bTab" href="#sectionB" data-toggle="tab"
+                           role="tab"
                            aria-controls="sectionB"
-                           aria-selected="false">Регистрация</a>
+                           <#if signupError??>aria-selected="true"<#else> aria-selected="false"</#if>>Регистрация</a>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="card-body">
             <div class="tab-content">
-                <div id="sectionA" class="tab-pane fade show active" role="tabpanel" aria-labelledby="aTab">
+                <div id="sectionA" class="tab-pane fade <#if signupError??><#else>show active</#if>" role="tabpanel"
+                     aria-labelledby="aTab">
                     <div>
                         <#if error??>
                             <div class="alert alert-danger" role="alert">
@@ -62,7 +63,8 @@
                         </form>
                     </div>
                 </div>
-                <div id="sectionB" class="tab-pane fade" role="tabpanel" aria-labelledby="bTab">
+                <div id="sectionB" class="tab-pane fade<#if signupError??>show active</#if>" role="tabpanel"
+                     aria-labelledby="bTab">
                     <div>
                         <#if signupError??>
                             <div class="alert alert-danger" role="alert">
