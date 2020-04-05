@@ -22,6 +22,10 @@
             color: #000000 !important;
             background: #FF7F50 !important;
         }
+
+        .nav-link:active {
+            background: #000000 !important;
+        }
     </style>
 </head>
 <body>
@@ -65,7 +69,7 @@
                                 <label class="form-check-label" for="remember-me">Запомните меня!</label>
                             </div>
                             <div class="btn-group-vertical" role="group">
-                                <button class="btn btn-my" type="submit">
+                                <button class="btn btn-outline-dark" type="submit">
                                     Войти
                                 </button>
                             </div>
@@ -96,7 +100,7 @@
                                 <input class="form-control" id="lastName" name="lastName"
                                        placeholder="Введите свою фамилию здесь..." required="">
                             </div>
-                            <button class="btn btn-my" type="submit">
+                            <button class="btn btn-outline-dark" type="submit">
                                 Регистрация
                             </button>
                         </form>

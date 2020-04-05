@@ -26,7 +26,7 @@
             </div>
             <div class="card-body">
                 <img class="card-img-top rounded-circle mw-50% mh-50%"
-                     src="https://1eu.funnyjunk.com/pictures/Apu+and+frens_5ec876_6904703.jpg"
+                     src="https://l2e-global.com/forum/attachments/023-png.119734/"
                      alt="Аватарка">
                 <h5 class="card-title text-center">${user.firstName} ${user.lastName}</h5>
                 <ul class="list-group list-group-flush">
@@ -70,18 +70,15 @@
                     </div>
                     <div сlass="card-body">
                         <div class="btn-group-vertical btn-group-xs" role="group" aria-label="Admin Panel">
-                            <button class="btn btn-outline-dark my-2 my-lg-0 btn-my" role="button"
-                                    type="submit" href="<@spring.url '/create'/>">
+                            <a role="button" class="btn btn-outline-dark" href="<@spring.url '/create'/>">
                                 Создать контест
-                            </button>
-                            <button class="btn btn-outline-dark my-2 my-lg-0 btn-my" role="button"
-                                    type="submit" href="<@spring.url '/users'/>">
+                            </a>
+                            <a role="button" class="btn btn-outline-dark" href="<@spring.url '/users'/>">
                                 Список пользователей
-                            </button>
-                            <button class="btn btn-outline-dark my-2 my-lg-0 btn-my" role="button"
-                                    type="submit" href="<@spring.url '/createGhost'/>">
+                            </a>
+                            <a role="button" class="btn btn-outline-dark" href="<@spring.url '/createGhost'/>">
                                 Создать пользователя
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
