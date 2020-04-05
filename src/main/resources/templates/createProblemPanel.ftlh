@@ -41,9 +41,9 @@
                    placeholder="Введите здесь..." required>
         </div>
         <div class="form-group">
-            <label for="output">Выходные данные:
-                <input type="file" name="output" multiple value>
-            </label>
+            <label for="example">Пример</label>
+            <input autofocus class="form-control" id="example" name="example"
+                   placeholder="Введите здесь..." required>
         </div>
 
         <button class="btn btn-success" type="submit">

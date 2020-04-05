@@ -13,6 +13,7 @@ public class ProblemForm {
     private String content;
     private String inputFormat;
     private String outputFormat;
+    private String example;
     private List<MultipartFile> input;
     private List<MultipartFile> output;
 }

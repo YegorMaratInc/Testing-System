@@ -61,6 +61,7 @@ public class AdminPanelController {
                 .name(problemForm.getName())
                 .shortName(problemForm.getShortName())
                 .timeLimit(problemForm.getTimeLimit())
+                .example(problemForm.getExample())
                 .build();
         problemRepository.save(problem);
 

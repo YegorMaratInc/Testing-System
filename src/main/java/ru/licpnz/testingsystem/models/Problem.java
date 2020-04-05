@@ -31,6 +31,7 @@ public class Problem {
     private String content;
     private String inputFormat;
     private String outputFormat;
+    private String example;
     @JoinColumn(name = "contest_id")
     @ManyToOne
     private Contest contest;
