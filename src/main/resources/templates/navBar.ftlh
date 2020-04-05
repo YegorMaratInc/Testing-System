@@ -1,5 +1,5 @@
 <#import "/spring.ftl" as spring>
-<nav class="navbar navbar-expand-lg navbar-dark bg-my mb-3 flex-column flex-md-row">
+<nav class="navbar navbar-expand-lg navbar-dark bg-my mb-3 navbar-fixed-top">
     <a class="navbar-brand" href="<@spring.url '/'/>">
         <img src="<@spring.url '/images/logo-removebg-preview.png'/>" width="56" height="56"
              class="d-inline-block align-top" alt="">

@@ -5,6 +5,11 @@
 <head>
     <#include "includes.ftlh"/>
     <title>ITSprint->Проблема ${problem.shortName}</title>
+    <style>
+        .table-light:hover {
+            background: #FF7F50;
+        }
+    </style>
 </head>
 <body>
 <#include "navBar.ftlh">
@@ -65,7 +70,7 @@
                 </thead>
                 <tbody>
                 <#list questions as ques>
-                    <tr>
+                    <tr class="table-light">
                         <th>${ques.id}</th>
                         <th>
                             <span id="time${ques.id}">${ques.date?datetime}</span>
