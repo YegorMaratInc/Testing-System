@@ -5,54 +5,84 @@
 <head>
     <#include "includes.ftlh"/>
     <title>ITSprint-> Профиль ${user.login}</title>
+    <style>
+        .card {
+            margin-left: 1px;
+            margin-right: 1px;
+        }
+
+        .card-img-top {
+            background-size: 150px 150px;
+        }
+    </style>
 </head>
 <body>
 <#include "navBar.ftlh">
-<#if role == true>
-    <div>
-        <h6><a href="/create">Создать контест</a></h6>
-        <h6><a href="/users">Список пользователей</a></h6>
-    </div>
-</#if>
-<div class="container">
-    <div class="card">
-        <div class="card-header">
-            <div class="card-title">
-                <h3>
-                    Последние посылки
-                </h3>
+<div class="container-fluid">
+    <div class="card-columns p-6">
+        <div class="card border-dark">
+            <div class="card-header text-center">
+                <h3 class="card-text">Профиль</h3>
             </div>
-
+            <div class="card-body">
+                <img class="card-img-top rounded-circle"
+                     src="https://1eu.funnyjunk.com/pictures/Apu+and+frens_5ec876_6904703.jpg"
+                     alt="Аватарка">
+                <h5 class="card-title text-center">${user.firstName} ${user.lastName}</h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Количество решенный задач:</li>
+                    <li class="list-group-item">Пол:</li>
+                    <li class="list-group-item">Полных лет:</li>
+                </ul>
+            </div>
         </div>
-        <div class="card-body">
-            <div class="card-text text-center">
-                <table class="table table-bordered table-hover">
-                    <tr class="thead-dark">
-                        <th>№</th>
-                        <th>Дата</th>
-                        <th>Задача</th>
-                        <th>Язык</th>
-                        <th>Вердикт</th>
-                        <th>Last test</th>
-                        <th>Log</th>
-                    </tr>
-                    <#list submissions as sub>
-                        <tr>
-                            <th><a href="/submission/${sub.id}">${sub.id}</a></th>
-                            <th>${sub.submissionTime}</th>
-
-                            <th>
-                                <a href="/contest/${sub.problem.contest.id}/problem/${sub.problem.shortName}">${sub.problem.shortName}
-                                    - ${sub.problem.name}</a></th>
-                            <th>${sub.language.name}</th>
-                            <th>${sub.state.name()} </th>
-                            <th>${sub.lastTest}</th>
-                            <th>${sub.log}</th>
+        <div class="card border-dark " style="width: 50rem;">
+            <div class="card-header text-center">
+                <div class="card-title">
+                    <h3>
+                        Последние посылки
+                    </h3>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card-text text-center">
+                    <table class="table table-bordered table-hover table-responsive-md">
+                        <tbody>
+                        <tr class="thead-dark">
+                            <th>№</th>
+                            <th>Дата</th>
+                            <th>Задача</th>
+                            <th>Язык</th>
+                            <th>Вердикт</th>
+                            <th>Last test</th>
+                            <th>Log</th>
                         </tr>
-                    </#list>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
+        <#if role == true>
+            <div class="card border-dark">
+                <div class="card-body text-center">
+                    <div class="card-header text-center">
+                        <h3 class="card-text">Панель админа</h3>
+                    </div>
+                    <div сlass="card-body">
+                        <div class="btn-group-vertical btn-group-xs" role="group" aria-label="Admin Panel">
+                            <button class="btn btn-outline-dark my-2 my-lg-0 btn-my" role="button"
+                                    type="submit" href="<@spring.url '/create'/>">
+                                Создать контест
+                            </button>
+                            <button class="btn btn-outline-dark my-2 my-lg-0 btn-my" role="button"
+                                    type="submit" href="<@spring.url '/users'/>">
+                                Список пользователей
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </#if>
     </div>
 </div>
 </body>

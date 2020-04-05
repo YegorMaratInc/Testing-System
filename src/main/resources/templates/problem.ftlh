@@ -6,25 +6,30 @@
     <#include "includes.ftlh"/>
     <title>ITSprint->Проблема ${problem.shortName}</title>
     <style>
-        h3 {
-            color: #17a2b8;
-            background: #c82333;
-            display: flex;
-            justify-content: center;
-        }
-
-        h4 {
-            color: #c82333;
-            display: flex;
-        }
-
-        <#--body {
-            background-color: #c69500;
-        }-->
     </style>
 </head>
 <body>
 <#include "navBar.ftlh">
+<div class="container">
+    <div class="btn-group" role="group" aria-label="MiniNavBar">
+        <button type="button" class="btn btn-secondary" href="<@spring.url '/submit/contest/${problem.contest.id}'/>">
+            Сдать!
+        </button>
+        <button type="button" class="btn btn-secondary" href="<@spring.url '/contest/${problem.contest.id}'/>">Вернуться
+            к списку задач
+        </button>
+        <button type="button" class="btn btn-secondary" href="<@spring.url '/question/${problem.id}'/>">Задать вопрос!
+        </button>
+        <button type="button" class="btn btn-secondary" href="<@spring.url '/scoreboard/${problem.contest.id}'/>">
+            Scoreboard
+        </button>
+    </div>
+    <div class="jumbotron jumbotron-fluid text-center">
+        <h1>${problem.shortName}.${problem.name}</h1>
+        <p>Ограничения по времени: ${problem.timeLimit} </p>
+    </div>
+</div>
+<#--
 <h1>${problem.shortName}.${problem.name}</h1>
 <h4>Ограничения по времени: ${problem.timeLimit} сек</h4>
 <div class="text-area">
@@ -66,6 +71,7 @@
     </#list>
     </tbody>
 </table>
+-->
 </body>
 <#--TODO fix style problems-->
 </html>

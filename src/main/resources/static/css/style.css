@@ -1,7 +1,3 @@
-.bg-my {
-    background: #ffe5b4 !important;
-}
-
 .link-my {
     color: #000000 !important;
 }
@@ -9,4 +5,8 @@
 .btn-my {
     color: #000000 !important;
     background: #FF7F50 !important;
+}
+
+.navbar-dark {
+    background: #ffe5b4 !important;
 }
