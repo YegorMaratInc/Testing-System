@@ -17,10 +17,6 @@
             color: #c82333;
             display: flex;
         }
-
-        <#--body {
-            background-color: #c69500;
-        }-->
     </style>
 </head>
 <body>
