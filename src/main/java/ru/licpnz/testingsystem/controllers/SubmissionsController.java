@@ -33,7 +33,13 @@ public class SubmissionsController {
     }
 
     @GetMapping("/submissions/contest/{contestId}")
-    public String getSubmissionsPage(@PathVariable("contestId") Long contestId, Authentication authentication, ModelMap modelMap) {
+    public String getSubmissionsPage(@PathVariable("contestId") Long contestId, ModelMap modelMap) {
+        modelMap.addAttribute("submissions", submissionRepository.findAll().stream().filter(submission -> submission.getProblem().getContest().getId().equals(contestId)).collect(Collectors.toList()));
+        return "submissions";
+    }
+
+    @GetMapping("/submissions/contest/{contestId}/my")
+    public String getMySubmissionsPage(@PathVariable("contestId") Long contestId, Authentication authentication, ModelMap modelMap) {
         if (authentication == null)
             return "redirect:/login";
         User user = ((UserDetailsImpl) authentication.getPrincipal()).getUser();
