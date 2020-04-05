@@ -22,8 +22,7 @@
         </div>
         <div class="form-group">
             <label for="timeLimit">Ограничение по времени</label>
-            <input autofocus class="form-control" id="timeLimit" name="timeLimit" type="number"
-                   placeholder="1" required>
+            <input autofocus class="form-control" id="timeLimit" name="timeLimit" type="number" required>
         </div>
         <div class="form-group">
             <label for="content">Условие</label>
@@ -45,13 +44,13 @@
         <h3>пример: i1.txt, i2.txt ... o1.txt, o2.txt ...</h3>
         <div class="form-group">
             <label for="input">Входные данные:
-                <input type="file" name="input" multiple value required>
+                <input type="file" name="input" multiple value>
             </label>
         </div>
 
         <div class="form-group">
             <label for="output">Выходные данные:
-                <input type="file" name="output" multiple value required>
+                <input type="file" name="output" multiple value>
             </label>
         </div>
 

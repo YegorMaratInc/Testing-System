@@ -18,14 +18,14 @@
 </head>
 <body>
 <#include "navBar.ftlh">
-<div class="container-fluid">
+<div class="container">
     <div class="card-columns p-6">
         <div class="card border-dark">
             <div class="card-header text-center">
                 <h3 class="card-text">Профиль</h3>
             </div>
             <div class="card-body">
-                <img class="card-img-top rounded-circle"
+                <img class="card-img-top rounded-circle mw-50% mh-50%"
                      src="https://1eu.funnyjunk.com/pictures/Apu+and+frens_5ec876_6904703.jpg"
                      alt="Аватарка">
                 <h5 class="card-title text-center">${user.firstName} ${user.lastName}</h5>
@@ -77,6 +77,10 @@
                             <button class="btn btn-outline-dark my-2 my-lg-0 btn-my" role="button"
                                     type="submit" href="<@spring.url '/users'/>">
                                 Список пользователей
+                            </button>
+                            <button class="btn btn-outline-dark my-2 my-lg-0 btn-my" role="button"
+                                    type="submit" href="<@spring.url '/createGhost'/>">
+                                Создать пользователя
                             </button>
                         </div>
                     </div>
