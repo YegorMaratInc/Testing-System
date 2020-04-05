@@ -8,7 +8,7 @@
 </head>
 <body>
 <#include "navBar.ftlh">
-<div class="container">
+<div class="container-fluid">
     <div class="card">
         <div class="card-header">
             <div class="card-title">
@@ -33,8 +33,8 @@
                     </tr>
                     <#list submissions as sub>
                         <tr>
-                            <th>${sub.submissionTime}</th>
                             <th><a href="/submission/${sub.id}">${sub.id}</a></th>
+                            <th>${sub.submissionTime}</th>
                             <th><a href="/profile/${sub.owner.login}">${sub.owner.login}</a></th>
                             <th>
                                 <a href="/contest/${sub.problem.contest.id}/problem/${sub.problem.shortName}">${sub.problem.shortName}
