@@ -6,20 +6,8 @@
     <#include "includes.ftlh"/>
     <title>ITSprint->Проблема ${problem.shortName}</title>
     <style>
-        .jumbotron {
-            background: #ffe5b4;
-        }
-
-        .btn-primary {
+        .table-light:hover {
             background: #FF7F50;
-            color: #000000;
-            border-color: #000000;
-            primary: red;
-        }
-
-        .btn-outline-info {
-            color: #000000;
-            border-color: #000000;
         }
     </style>
 </head>
@@ -29,17 +17,17 @@
     <div class="card">
         <div class="card-header text-center">
             <div class="btn-group btn-group-lg" role="group" aria-label="MiniNavBar">
-                <a role="button" class="btn btn-outline-info" href="<@spring.url '/contest/${problem.contest.id}'/>">
+                <a role="button" class="btn btn-outline-dark" href="<@spring.url '/contest/${problem.contest.id}'/>">
                     Вернуться к списку задач
                 </a>
-                <a role="button" class="btn btn-outline-info" href="<@spring.url '/scoreboard/${problem.contest.id}'/>">
+                <a role="button" class="btn btn-outline-dark" href="<@spring.url '/scoreboard/${problem.contest.id}'/>">
                     Таблица результатов
                 </a>
-                <a role="button" class="btn btn-outline-info"
+                <a role="button" class="btn btn-outline-dark"
                    href="<@spring.url '/submissions/contest/${problem.contest.id}'/>">
                     Мои посылки
                 </a>
-                <a role="button" class="btn btn-outline-info" href="<@spring.url '/question/${problem.id}'/>">
+                <a role="button" class="btn btn-outline-dark" href="<@spring.url '/question/${problem.id}'/>">
                     Задать вопрос
                 </a>
             </div>
@@ -65,10 +53,44 @@
             <h4>Пример</h4>
             <div id="example"></div>
             </p>
-            <a role="button" class="btn btn-primary btn-lg btn-block"
+            <a role="button" class="btn btn-outline-dark btn-lg btn-block"
                href="<@spring.url '/submit/contest/${problem.contest.id}'/>">
                 Сдать!
             </a>
+        </div>
+        <div class="card-body">
+            <h4>
+                Вопросы к задаче:
+            </h4>
+            <table class="table table-hover table-responsive-md">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Id:</th>
+                    <th>Time:</th>
+                    <th>Вопрос задал</th>
+                    <th>Вопрос</th>
+                    <th>Ответ</th>
+                </tr>
+                </thead>
+                <tbody>
+                <#list questions as ques>
+                    <tr class="table-light">
+                        <th>${ques.id}</th>
+                        <th>
+                            <span id="time${ques.id}">${ques.date?datetime}</span>
+                        </th>
+                        <th><a href="/profile/${ques.owner.login}">${ques.owner.login}</a></th>
+                        <th><span>${ques.question}</span></th>
+                        <#if ques.answer != "">
+                            <th><span>${ques.answer}</span></th>
+                        </#if>
+                        <#if ques.answer == "">
+                            <th><a href="/reply/${ques.id}">Reply!</a></th>
+                        </#if>
+                    </tr>
+                </#list>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
@@ -80,4 +102,5 @@
     });
 </script>
 </body>
+<#--TODO fix style problems-->
 </html>
