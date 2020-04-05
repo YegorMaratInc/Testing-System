@@ -35,6 +35,12 @@ public class ProfileController {
         modelMap.addAttribute("user", user);
         modelMap.addAttribute("role", user.getUserRole().toString().equals("ADMIN"));
         modelMap.addAttribute("submissions", submissionList);
+        int count = 0;
+        for (Submission submission : submissionList) {
+            if (submission.getState().toString().equals("OK"))
+                count++;
+        }
+        modelMap.addAttribute("problemsAccepted", count);
         return "profile";
     }
 
@@ -46,6 +52,12 @@ public class ProfileController {
         modelMap.addAttribute("role", ((UserDetailsImpl) authentication.getPrincipal()).getUser().getUserRole().toString().equals("ADMIN"));
         submissionList.sort((a, b) -> (int) (b.getSubmissionTime().getTime() - a.getSubmissionTime().getTime()));
         modelMap.addAttribute("submissions", submissionList);
+        int count = 0;
+        for (Submission submission : submissionList) {
+            if (submission.getState().toString().equals("OK"))
+                count++;
+        }
+        modelMap.addAttribute("problemsAccepted", count);
         return "profile";
     }
 }
