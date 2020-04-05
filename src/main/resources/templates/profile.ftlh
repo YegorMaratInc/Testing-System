@@ -10,18 +10,23 @@
             margin-left: 1px;
             margin-right: 1px;
         }
+
+        .card-img-top {
+            background-size: 150px 150px;
+        }
     </style>
 </head>
 <body>
 <#include "navBar.ftlh">
-<div class="container">
+<div class="container-fluid">
     <div class="card-columns p-6">
         <div class="card border-dark">
             <div class="card-header text-center">
-                <h1 class="card-text">Профиль</h1>
+                <h3 class="card-text">Профиль</h3>
             </div>
             <div class="card-body">
-                <img class="card-img-top" src="https://1eu.funnyjunk.com/pictures/Apu+and+frens_5ec876_6904703.jpg"
+                <img class="card-img-top rounded-circle"
+                     src="https://1eu.funnyjunk.com/pictures/Apu+and+frens_5ec876_6904703.jpg"
                      alt="Аватарка">
                 <h5 class="card-title text-center">${user.firstName} ${user.lastName}</h5>
                 <ul class="list-group list-group-flush">
@@ -32,7 +37,7 @@
             </div>
         </div>
         <div class="card border-dark " style="width: 50rem;">
-            <div class="card-header">
+            <div class="card-header text-center">
                 <div class="card-title">
                     <h3>
                         Последние посылки
@@ -41,7 +46,7 @@
             </div>
             <div class="card-body">
                 <div class="card-text text-center">
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-bordered table-hover table-responsive-md">
                         <tbody>
                         <tr class="thead-dark">
                             <th>№</th>
@@ -59,25 +64,21 @@
         </div>
         <#if role == true>
             <div class="card border-dark">
-                <div class="card-body">
-                    <h5 class="card-title">Панель админа:</h5>
+                <div class="card-body text-center">
+                    <div class="card-header text-center">
+                        <h3 class="card-text">Панель админа</h3>
+                    </div>
                     <div сlass="card-body">
-                        <h6>
-                            <form class="form-inline" method="get" action="<@spring.url '/create'/>">
-                                <button class="btn btn-outline-dark my-2 my-lg-0 btn-my" role="button"
-                                        type="submit">
-                                    Создать контест
-                                </button>
-                            </form>
-
-
-                            <form class="form-inline" method="get" action="<@spring.url '/users'/>">
-                                <button class="btn btn-outline-dark my-2 my-lg-0 btn-my" role="button"
-                                        type="submit">
-                                    Список пользователей
-                                </button>
-                            </form>
-                        </h6>
+                        <div class="btn-group-vertical btn-group-xs" role="group" aria-label="Admin Panel">
+                            <button class="btn btn-outline-dark my-2 my-lg-0 btn-my" role="button"
+                                    type="submit" href="<@spring.url '/create'/>">
+                                Создать контест
+                            </button>
+                            <button class="btn btn-outline-dark my-2 my-lg-0 btn-my" role="button"
+                                    type="submit" href="<@spring.url '/users'/>">
+                                Список пользователей
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
