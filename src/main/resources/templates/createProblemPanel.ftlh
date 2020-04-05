@@ -27,9 +27,8 @@
         </div>
         <div class="form-group">
             <label for="content">Условие</label>
-            <textarea autofocus class="form-control" id="content" name="content"
-                      placeholder="Введите условие здесь..." required>
-            </textarea>
+            <textarea autofocus class="form-control" id="content" name="content" placeholder="Введите условие здесь..."
+                      required></textarea>
         </div>
         <div class="form-group">
             <label for="inputFormat">Формат входа</label>
@@ -41,17 +40,9 @@
             <input autofocus class="form-control" id="outputFormat" name="outputFormat"
                    placeholder="Введите здесь..." required>
         </div>
-        <h3>Файлы должны быть именнованы специальным обзазом</h3>
-        <h3>пример: i1.txt, i2.txt ... o1.txt, o2.txt ...</h3>
-        <div class="form-group">
-            <label for="input">Входные данные:
-                <input type="file" name="input" multiple value required>
-            </label>
-        </div>
-
         <div class="form-group">
             <label for="output">Выходные данные:
-                <input type="file" name="output" multiple value required>
+                <input type="file" name="output" multiple value>
             </label>
         </div>
 

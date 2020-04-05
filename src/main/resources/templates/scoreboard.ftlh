@@ -29,7 +29,7 @@
                         </th>
                         <#list problems as prob>
                             <th>
-                                ${prob.shortName}
+                                <a href="/contest/${prob.contest.id}/problem/${prob.shortName}">${prob.shortName}</a>
                             </th>
                         </#list>
                     </tr>
