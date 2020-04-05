@@ -5,14 +5,21 @@
 <head>
     <#include "includes.ftlh"/>
     <title>ITSprint-></title>
+    <style>
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
 <#include "navBar.ftlh">
 <div class="container">
-    <div class="card">
-        <div class="card-header">
+    <div class="card w-50">
+        <div class="card-header text-center">
             <div class="card-title h2">
-                Зарегистрировать нового пользователя:
+                Зарегистрировать нового пользователя
             </div>
         </div>
         <div class="card-body">
@@ -42,10 +49,11 @@
                     <input class="form-control" id="lastName" name="lastName"
                            placeholder="Введите фамилию здесь..." required>
                 </div>
-                <button class="btn btn-success" type="submit">
-                    Регистрация
-                </button>
-
+                <div class="text-center">
+                    <button class="btn btn-outline-dark bt-lg" type="submit">
+                        Регистрация
+                    </button>
+                </div>
             </form>
         </div>
     </div>
