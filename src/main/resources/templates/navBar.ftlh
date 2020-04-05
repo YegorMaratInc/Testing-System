@@ -1,7 +1,7 @@
 <#import "/spring.ftl" as spring>
-<nav class="navbar navbar-expand-lg navbar-dark bg-my mb-3">
+<nav class="navbar navbar-expand-lg navbar-dark bg-my mb-3 flex-column flex-md-row">
     <a class="navbar-brand" href="<@spring.url '/'/>">
-        <img src="<@spring.url '/images/logo-removebg-preview.png'/>" width="56" height="56 "
+        <img src="<@spring.url '/images/logo-removebg-preview.png'/>" width="56" height="56"
              class="d-inline-block align-top" alt="">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"

@@ -22,8 +22,7 @@
         </div>
         <div class="form-group">
             <label for="timeLimit">Ограничение по времени</label>
-            <input autofocus class="form-control" id="timeLimit" name="timeLimit" type="number"
-                   placeholder="1" required>
+            <input autofocus class="form-control" id="timeLimit" name="timeLimit" type="number" required>
         </div>
         <div class="form-group">
             <label for="content">Условие</label>

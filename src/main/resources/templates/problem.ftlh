@@ -6,28 +6,96 @@
     <#include "includes.ftlh"/>
     <title>ITSprint->Проблема ${problem.shortName}</title>
     <style>
+        .jumbotron {
+            background: #ffe5b4;
+        }
+
+        .btn-primary {
+            background: #FF7F50;
+            color: #000000;
+            border-color: #000000;
+            primary: red;
+        }
+
+        .btn-outline-info {
+            color: #000000;
+            border-color: #000000;
+        }
     </style>
 </head>
 <body>
 <#include "navBar.ftlh">
 <div class="container">
-    <div class="btn-group" role="group" aria-label="MiniNavBar">
-        <button type="button" class="btn btn-secondary" href="<@spring.url '/submit/contest/${problem.contest.id}'/>">
-            Сдать!
-        </button>
-        <button type="button" class="btn btn-secondary" href="<@spring.url '/contest/${problem.contest.id}'/>">Вернуться
-            к списку задач
-        </button>
-        <button type="button" class="btn btn-secondary" href="<@spring.url '/question/${problem.id}'/>">Задать вопрос!
-        </button>
-        <button type="button" class="btn btn-secondary" href="<@spring.url '/scoreboard/${problem.contest.id}'/>">
-            Scoreboard
-        </button>
+    <div class="card">
+        <div class="card-header text-center">
+            <div class="btn-group btn-group-lg" role="group" aria-label="MiniNavBar">
+                <a role="button" class="btn btn-outline-info" href="<@spring.url '/contest/${problem.contest.id}'/>">
+                    Вернуться к списку задач
+                </a>
+                <a role="button" class="btn btn-outline-info" href="<@spring.url '/scoreboard/${problem.contest.id}'/>">
+                    Таблица результатов
+                </a>
+                <a role="button" class="btn btn-outline-info"
+                   href="<@spring.url '/submission/contest/${problem.contest.id}'/>">
+                    Мои посылки
+                </a>
+                <a role="button" class="btn btn-outline-info" href="<@spring.url '/question/${problem.id}'/>">
+                    Задать вопрос
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="jumbotron text-center">
+                <h1>${problem.shortName}. ${problem.name}</h1>
+                <p>Ограничения по времени: ${problem.timeLimit} </p>
+            </div>
+            <p class="card-text">
+            <h4>Условие</h4>
+            ${problem.content}
+            </p>
+            <p class="card-text">
+            <h4>Входные данные</h4>
+            ${problem.inputFormat}
+            </p>
+            <p class="card-text">
+            <h4>Выходные данные</h4>
+            ${problem.outputFormat}
+            </p>
+            <a role="button" class="btn btn-primary btn-lg btn-block"
+               href="<@spring.url '/submit/contest/${problem.contest.id}'/>">
+                Сдать!
+            </a>
+        </div>
     </div>
-    <div class="jumbotron jumbotron-fluid text-center">
+</div>
+</div>
+<#--    <div class="btn-group btn-group-lg" role="group" aria-label="MiniNavBar">
+        <a role="button" class="btn btn-outline-info" href="<@spring.url '/contest/${problem.contest.id}'/>">
+            Вернуться к списку задач
+        </a>
+        <a role="button" class="btn btn-outline-info" href="<@spring.url '/scoreboard/${problem.contest.id}'/>">
+            Таблица результатов
+        </a>
+        <a role="button" class="btn btn-outline-info" href="<@spring.url '/submission/contest/${problem.contest.id}'/>">
+            Мои посылки
+        </a>
+        <a role="button" class="btn btn-outline-info" href="<@spring.url '/question/${problem.id}'/>">
+            Задать вопрос
+        </a>
+    </div>
+    <div class="jumbotron text-center">
         <h1>${problem.shortName}.${problem.name}</h1>
         <p>Ограничения по времени: ${problem.timeLimit} </p>
     </div>
+    <div class="card">
+        <div class="card-body">
+            ${problem.content}
+        </div>
+    </div>
+    <a role="button" class="btn btn-primary btn-lg btn-block"
+       href="<@spring.url '/submit/contest/${problem.contest.id}'/>">
+        Сдать!
+    </a>
 </div>
 <#--
 <h1>${problem.shortName}.${problem.name}</h1>
