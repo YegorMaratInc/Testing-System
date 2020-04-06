@@ -30,9 +30,7 @@
                      alt="Аватарка">
                 <h5 class="card-title text-center">${user.firstName} ${user.lastName}</h5>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Количество решенный задач:</li>
-                    <li class="list-group-item">Пол:</li>
-                    <li class="list-group-item">Полных лет:</li>
+                    <li class="list-group-item">Количество решенный задач:</li>${problemsAccepted}
                 </ul>
             </div>
         </div>

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 
@@ -28,6 +29,7 @@ public class Problem {
     private String shortName;
     private String name;
     private int timeLimit;
+    @Type(type = "text")
     private String content;
     private String inputFormat;
     private String outputFormat;

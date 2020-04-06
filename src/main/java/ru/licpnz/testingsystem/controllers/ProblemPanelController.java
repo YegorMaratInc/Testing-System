@@ -46,7 +46,13 @@ public class ProblemPanelController {
 
     @GetMapping("/problemPanel")
     public String getProblems(ModelMap modelMap) {
-        modelMap.addAttribute("problems", problemRepository.findAll());
+        List<Problem> problems = problemRepository.findAll();
+        problems.sort((t1, t2) -> {
+            if (t1.getContest().getId() == t2.getContest().getId())
+                return t1.getShortName().compareTo(t2.getShortName());
+            return (int) (t1.getContest().getId() - t2.getContest().getId());
+        });
+        modelMap.addAttribute("problems", problems);
         return "allProblemPanel";
     }
 }
