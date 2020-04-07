@@ -102,8 +102,8 @@ public class TestingServiceImpl implements TestingService {
                 compileLog = error.toString();
                 while (p.isAlive())
                     Thread.sleep(100L);
-                fourArg = "java ";
-                exeFileName = "Main.java";
+                fourArg = "java -Xmx300m -Xss512k -XX:CICompilerCount=2 -Dfile.encoding=UTF-8 ";
+                exeFileName = "Main";
             }
             if (submission.getLanguage().getName().equals("Python 3.7")) {
                 fourArg = "python3 ";
