@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.multipart.MultipartFile;
 import ru.licpnz.testingsystem.exceptions.NotFoundException;
 import ru.licpnz.testingsystem.forms.ContestForm;
 import ru.licpnz.testingsystem.forms.ProblemForm;
@@ -15,7 +14,6 @@ import ru.licpnz.testingsystem.repositories.ContestRepository;
 import ru.licpnz.testingsystem.repositories.ProblemRepository;
 
 import java.io.File;
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -82,7 +80,7 @@ public class AdminPanelController {
                 System.out.println("No");
             }
         }
-        int number = 1;
+        /*int number = 1;
         for (MultipartFile input : problemForm.getInput()) {
             try {
                 input.transferTo(new File(fileInput + File.separator + "input" + number + ".txt"));
@@ -100,7 +98,7 @@ public class AdminPanelController {
             } catch (IOException e) {
                 System.out.println("\n");
             }
-        }
+        }*/
 
         return "redirect:/contest/" + contestId;
     }
