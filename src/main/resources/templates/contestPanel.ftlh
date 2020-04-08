@@ -5,23 +5,28 @@
 <head>
     <#include "includes.ftlh"/>
     <title>ITSprint->Контест</title>
+    <style>
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
 <#include "navBar.ftlh">
 <div class="container">
-    <div class="card">
-        <div class="card-header">
-            <div class="card-title">
-                <h3>
-                    Все контесты
-                </h3>
+    <div class="card w-75">
+        <div class="card-header text-center">
+            <div class="card-title h2">
+                Все соревнования
             </div>
         </div>
         <div class="card-body">
             <div class="card-text text-center">
-                <table class="table table-bordered table-hover">
+                <table class="table table-bordered table-hover table-responsive-md">
                     <tr class="thead-dark">
-                        <th>Контест</th>
+                        <th>Название</th>
                         <th>Время начала</th>
                         <th>Время конца</th>
                     </tr>

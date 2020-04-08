@@ -8,13 +8,11 @@
 </head>
 <body>
 <#include "navBar.ftlh">
-<div class="m-3">
+<div class="container-fluid">
     <div class="card">
-        <div class="card-header">
-            <div class="card-title">
-                <h3>
-                    Таблица результатов
-                </h3>
+        <div class="card-header text-center">
+            <div class="card-title h3">
+                Таблица результатов
             </div>
         </div>
         <div class="card-body">
@@ -22,10 +20,10 @@
                 <table class="table table-bordered table-hover table-responsive-md">
                     <tr class="thead-dark">
                         <th>
-                            Кто
+                            Пользователь
                         </th>
                         <th>
-                            =
+                            Общее количество баллов
                         </th>
                         <#list problems as prob>
                             <th>

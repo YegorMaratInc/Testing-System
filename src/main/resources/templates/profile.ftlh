@@ -10,10 +10,6 @@
             margin-left: 1px;
             margin-right: 1px;
         }
-
-        .card-img-top {
-            background-size: 150px 150px;
-        }
     </style>
 </head>
 <body>
@@ -25,9 +21,6 @@
                 <h3 class="card-text">Профиль</h3>
             </div>
             <div class="card-body">
-                <img class="card-img-top rounded-circle mw-50% mh-50%"
-                     src="https://l2e-global.com/forum/attachments/023-png.119734/"
-                     alt="Аватарка">
                 <h5 class="card-title text-center">${user.firstName} ${user.lastName}</h5>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Количество решенный задач:</li>
