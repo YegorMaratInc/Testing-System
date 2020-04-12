@@ -39,19 +39,21 @@
             </div>
             <div class="card-body">
                 <div class="card-text text-center">
-                    <table class="table table-bordered table-hover table-responsive-md">
-                        <tbody>
-                        <tr class="thead-dark">
-                            <th>№</th>
-                            <th>Дата</th>
-                            <th>Задача</th>
-                            <th>Язык</th>
-                            <th>Вердикт</th>
-                            <th>Last test</th>
-                            <th>Log</th>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <tbody>
+                            <tr class="thead-dark">
+                                <th>№</th>
+                                <th>Дата</th>
+                                <th>Задача</th>
+                                <th>Язык</th>
+                                <th>Вердикт</th>
+                                <th>Last test</th>
+                                <th>Log</th>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

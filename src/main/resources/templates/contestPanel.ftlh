@@ -24,20 +24,22 @@
         </div>
         <div class="card-body">
             <div class="card-text text-center">
-                <table class="table table-bordered table-hover table-responsive-md">
-                    <tr class="thead-dark">
-                        <th>Название</th>
-                        <th>Время начала</th>
-                        <th>Время конца</th>
-                    </tr>
-                    <#list contests as contest>
-                        <tr>
-                            <th><a href="/contest/${contest.id}">${contest.title}</a></th>
-                            <th>${contest.startTime}</th>
-                            <th>${contest.finishTime}</th>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <tr class="thead-dark">
+                            <th>Название</th>
+                            <th>Время начала</th>
+                            <th>Время конца</th>
                         </tr>
-                    </#list>
-                </table>
+                        <#list contests as contest>
+                            <tr>
+                                <th><a href="/contest/${contest.id}">${contest.title}</a></th>
+                                <th>${contest.startTime}</th>
+                                <th>${contest.finishTime}</th>
+                            </tr>
+                        </#list>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

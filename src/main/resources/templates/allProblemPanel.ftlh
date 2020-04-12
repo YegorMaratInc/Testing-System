@@ -24,11 +24,13 @@
         </div>
         <div class="card-body">
             <div class="card-text text-center">
-                <table class="table table-bordered table-hover table-responsive">
-                    <tr class="thead-dark">
-                        <th>№</th>
-                        <th>Название</th>
-                        <th>Лимит по времени</th>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover>
+                    <tr class=" thead-dark
+                    ">
+                    <th>№</th>
+                    <th>Название</th>
+                    <th>Лимит по времени</th>
                     </tr>
                     <#list problems as problem>
                         <tr>
@@ -41,7 +43,8 @@
                             <th>${problem.timeLimit} sec</th>
                         </tr>
                     </#list>
-                </table>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

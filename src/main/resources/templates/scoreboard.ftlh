@@ -17,48 +17,50 @@
         </div>
         <div class="card-body">
             <div class="card-text text-center">
-                <table class="table table-bordered table-hover table-responsive-md">
-                    <tr class="thead-dark">
-                        <th>
-                            Пользователь
-                        </th>
-                        <th>
-                            Общее количество баллов
-                        </th>
-                        <#list problems as prob>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <tr class="thead-dark">
                             <th>
-                                ${prob.shortName}
+                                Пользователь
                             </th>
-                        </#list>
-                    </tr>
-                    <#list scoreboard as score>
-                        <tr>
-                            <th><a href="/profile/${score.owner.login}">${score.owner.login}</a></th>
-                            <th>${score.total}</th>
-                            <#list score.problemDTO as pd>
-                                <td>
-                                    <#if pd.triesCount gt 0>
-                                        <#if pd.solved == true>
-                                            <span class="text-success">
-                                            +<#if pd.triesCount gt 1>${pd.triesCount - 1}</#if>
-                                            </span>
-                                            <br>
-                                            <span>
-                                                ${pd.timeAdded}
-                                            </span>
-                                        <#else>
-                                            <span class="text-danger">
-                                            -${pd.triesCount}
-                                            </span>
-                                        </#if>
-                                    <#else>
-                                        -
-                                    </#if>
-                                </td>
+                            <th>
+                                Общее количество баллов
+                            </th>
+                            <#list problems as prob>
+                                <th>
+                                    ${prob.shortName}
+                                </th>
                             </#list>
                         </tr>
-                    </#list>
-                </table>
+                        <#list scoreboard as score>
+                            <tr>
+                                <th><a href="/profile/${score.owner.login}">${score.owner.login}</a></th>
+                                <th>${score.total}</th>
+                                <#list score.problemDTO as pd>
+                                    <td>
+                                        <#if pd.triesCount gt 0>
+                                            <#if pd.solved == true>
+                                                <span class="text-success">
+                                            +<#if pd.triesCount gt 1>${pd.triesCount - 1}</#if>
+                                            </span>
+                                                <br>
+                                                <span>
+                                                ${pd.timeAdded}
+                                            </span>
+                                            <#else>
+                                                <span class="text-danger">
+                                            -${pd.triesCount}
+                                            </span>
+                                            </#if>
+                                        <#else>
+                                            -
+                                        </#if>
+                                    </td>
+                                </#list>
+                            </tr>
+                        </#list>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

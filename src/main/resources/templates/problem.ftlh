@@ -58,35 +58,37 @@
             <h4>
                 Вопросы к задаче:
             </h4>
-            <table class="table table-hover table-responsive-md">
-                <thead class="thead-dark">
-                <tr>
-                    <th>Id:</th>
-                    <th>Time:</th>
-                    <th>Вопрос задал</th>
-                    <th>Вопрос</th>
-                    <th>Ответ</th>
-                </tr>
-                </thead>
-                <tbody>
-                <#list questions as ques>
-                    <tr class="table-light">
-                        <th>${ques.id}</th>
-                        <th>
-                            <span id="time${ques.id}">${ques.date?datetime}</span>
-                        </th>
-                        <th><a href="/profile/${ques.owner.login}">${ques.owner.login}</a></th>
-                        <th><span>${ques.question}</span></th>
-                        <#if ques.answer != "">
-                            <th><span>${ques.answer}</span></th>
-                        </#if>
-                        <#if ques.answer == "">
-                            <th><a href="/reply/${ques.id}">Reply!</a></th>
-                        </#if>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>Id:</th>
+                        <th>Time:</th>
+                        <th>Вопрос задал</th>
+                        <th>Вопрос</th>
+                        <th>Ответ</th>
                     </tr>
-                </#list>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    <#list questions as ques>
+                        <tr class="table-light">
+                            <th>${ques.id}</th>
+                            <th>
+                                <span id="time${ques.id}">${ques.date?datetime}</span>
+                            </th>
+                            <th><a href="/profile/${ques.owner.login}">${ques.owner.login}</a></th>
+                            <th><span>${ques.question}</span></th>
+                            <#if ques.answer != "">
+                                <th><span>${ques.answer}</span></th>
+                            </#if>
+                            <#if ques.answer == "">
+                                <th><a href="/reply/${ques.id}">Reply!</a></th>
+                            </#if>
+                        </tr>
+                    </#list>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
