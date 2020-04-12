@@ -10,13 +10,10 @@
 <#include "navBar.ftlh">
 <div class="container-fluid">
     <div class="card">
-        <div class="card-header">
-            <div class="card-title">
-                <h3>
-                    Последние посылки
-                </h3>
+        <div class="card-header text-center">
+            <div class="card-title h3">
+                Последние посылки
             </div>
-
         </div>
         <div class="card-body">
             <div class="card-text text-center">

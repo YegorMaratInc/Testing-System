@@ -10,10 +10,6 @@
             margin-left: 1px;
             margin-right: 1px;
         }
-
-        .card-img-top {
-            background-size: 150px 150px;
-        }
     </style>
 </head>
 <body>

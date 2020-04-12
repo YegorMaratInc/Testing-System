@@ -9,7 +9,7 @@
     <title>ITSprint->Регистрация</title>
     <style>
         body {
-            background: #ffe5b4 !important;
+            background: #ffe5b4 url(https://images.wallpaperscraft.ru/image/kod_tekst_raznotsvetnyj_140555_1920x1080.jpg);
         }
 
         .container {
@@ -22,14 +22,11 @@
             color: #000000 !important;
             background: #FF7F50 !important;
         }
-
-        .nav-link:active {
-            background: #000000 !important;
-        }
+        
     </style>
 </head>
 <body>
-<div class="container">
+<div class="container my-lg-8">
     <div class="card mt-5 border-dark" style="width: 25rem;">
         <div class="card-header">
             <div class="card-header-tabs">

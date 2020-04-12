@@ -5,26 +5,30 @@
 <head>
     <#include "includes.ftlh"/>
     <title>ITSprint->Проблемы контеста ${contest.title}</title>
+    <style>
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
 <#include "navBar.ftlh">
 <div class="container">
-    <div class="card">
-        <div class="card-header">
-            <div class="card-title">
-                <h3>
-                    Задачи
-                </h3>
+    <div class="card w-50">
+        <div class="card-header text-center">
+            <div class="card-title h2">
+                Задачи
             </div>
-
         </div>
         <div class="card-body">
             <div class="card-text text-center">
-                <table class="table table-bordered table-hover">
+                <table class="table table-bordered table-hover table-responsive-md">
                     <tr class="thead-dark">
                         <th>№</th>
-                        <th>Name</th>
-                        <th>Time limit</th>
+                        <th>Название</th>
+                        <th>Лимит по времени</th>
                     </tr>
                     <#list problems as problem>
                         <tr>
@@ -38,14 +42,21 @@
                 </table>
             </div>
         </div>
+        <div class="card-body">
+            <div class="text-center">
+                <a role="button" class="btn btn-outline-dark" href="/scoreboard/${contest.id}">
+                    Результаты
+                </a>
+                <#if role == true>
+                    <a role="button" class="btn btn-outline-dark" href="/create/contest/${contest.id}">
+                        Создать задачу
+                    </a>
+                </#if>
+            </div>
+        </div>
     </div>
 </div>
-<#--TODO fix style and order problems-->
 <div>
-    <a href="/scoreboard/${contest.id}">Результаты</a>
-    <#if role == true>
-        <a href="/create/contest/${contest.id}">Create Problem</a>
-    </#if>
 </div>
 
 </body>
