@@ -22,7 +22,7 @@ INSERT INTO it_sprint_language (id, name, path_to_scripts, extension)
 VALUES (1, 'Python 3.7', '/opt/scripts/python', '.py');
 --INSERT INTO it_sprint_language (id, name, path_to_scripts, extension)
 --VALUES (3, 'GNU G++ 14', '/opt/scripts/g++', '.cpp');
---INSERT INTO it_sprint_language (id, name, path_to_scripts, extension)
---VALUES (2, 'Java 1.8', '/opt/scripts/java', '.java');
+INSERT INTO it_sprint_language (id, name, path_to_scripts, extension)
+VALUES (2, 'Java 1.8', '/opt/scripts/java', '.java');
 --INSERT INTO it_sprint_language (id, name, path_to_scripts, extension)
 --VALUES (4, 'PascalABC.NET', '/opt/scripts/pascal', '.pas');

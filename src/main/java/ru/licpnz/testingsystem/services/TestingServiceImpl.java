@@ -103,7 +103,7 @@ public class TestingServiceImpl implements TestingService {
                 while (p.isAlive())
                     Thread.sleep(100L);
                 fourArg = "java ";
-                exeFileName = "Main";
+                exeFileName = "Main.class";
             }
             if (submission.getLanguage().getName().equals("Python 3.7")) {
                 fourArg = "python3 ";
@@ -148,7 +148,11 @@ public class TestingServiceImpl implements TestingService {
 
             for (File ignored : Objects.requireNonNull(input.listFiles())) {
                 Files.copy(Paths.get(input + sep + "input" + i + ".txt"), new File(dir, "input" + i + ".txt").toPath());
-                ProcessBuilder pb = new ProcessBuilder("./script.sh", String.valueOf(time.getTime()), String.valueOf(i), fourArg, exeFileName);
+                ProcessBuilder pb;
+                if (submission.getLanguage().getId() == 2L) {
+                    pb = new ProcessBuilder("./scriptForJava.sh", String.valueOf(time.getTime()), String.valueOf(i));
+                } else
+                    pb = new ProcessBuilder("./script.sh", String.valueOf(time.getTime()), String.valueOf(i), fourArg, exeFileName);
                 pb.redirectErrorStream(true);
                 Process p = pb.start();
                 Thread.sleep(problem.getTimeLimit() * 1000);
