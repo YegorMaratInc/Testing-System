@@ -24,8 +24,12 @@
                     Таблица результатов
                 </a>
                 <a role="button" class="btn btn-outline-dark"
-                   href="<@spring.url '/submissions/contest/${problem.contest.id}'/>">
+                   href="<@spring.url '/submissions/contest/${problem.contest.id}/my'/>">
                     Мои посылки
+                </a>
+                <a role="button" class="btn btn-outline-dark"
+                   href="<@spring.url '/submissions/contest/${problem.contest.id}'/>">
+                    Статус
                 </a>
                 <a role="button" class="btn btn-outline-dark" href="<@spring.url '/question/${problem.id}'/>">
                     Задать вопрос
