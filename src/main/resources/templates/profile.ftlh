@@ -18,46 +18,17 @@
 </head>
 <body>
 <#include "navBar.ftlh">
-<div class="container">
+<div class="container-fluid">
     <div class="card-columns p-6">
         <div class="card border-dark">
             <div class="card-header text-center">
                 <h3 class="card-text">Профиль</h3>
             </div>
             <div class="card-body">
-                <img class="card-img-top rounded-circle mw-50% mh-50%"
-                     src="https://l2e-global.com/forum/attachments/023-png.119734/"
-                     alt="Аватарка">
                 <h5 class="card-title text-center">${user.firstName} ${user.lastName}</h5>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Количество решенный задач:</li>${problemsAccepted}
                 </ul>
-            </div>
-        </div>
-        <div class="card border-dark " style="width: 50rem;">
-            <div class="card-header text-center">
-                <div class="card-title">
-                    <h3>
-                        Последние посылки
-                    </h3>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="card-text text-center">
-                    <table class="table table-bordered table-hover table-responsive-md">
-                        <tbody>
-                        <tr class="thead-dark">
-                            <th>№</th>
-                            <th>Дата</th>
-                            <th>Задача</th>
-                            <th>Язык</th>
-                            <th>Вердикт</th>
-                            <th>Last test</th>
-                            <th>Log</th>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
             </div>
         </div>
         <#if role == true>
@@ -82,6 +53,45 @@
                 </div>
             </div>
         </#if>
+        <div class="card border-dark " style="width: 50rem;">
+            <div class="card-header text-center">
+                <div class="card-title">
+                    <h3>
+                        Последние посылки
+                    </h3>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card-text text-center">
+                    <table class="table table-bordered table-hover table-responsive-md">
+                        <thead>
+                        <tr class="thead-dark">
+                            <th>№</th>
+                            <th>Дата</th>
+                            <th>Задача</th>
+                            <th>Язык</th>
+                            <th>Вердикт</th>
+                            <th>Last test</th>
+                            <th>Log</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <#list submissions as sub>
+                            <tr>
+                                <td>${sub.id}</td>
+                                <td>${sub.submissionTime}</td>
+                                <td>${sub.problem.contest.id}${sub.problem.shortName} ${sub.problem.name}</td>
+                                <td>${sub.language.name}</td>
+                                <td>${sub.state.name()}</td>
+                                <td>${sub.lastTest}</td>
+                                <td>${sub.log}</td>
+                            </tr>
+                        </#list>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </body>
