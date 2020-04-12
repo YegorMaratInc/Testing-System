@@ -66,7 +66,7 @@
             <h4>
                 Вопросы к задаче:
             </h4>
-            <table class="table table-hover table-responsive-md">
+            <table class="table table-hover table-responsive">
                 <thead class="thead-dark">
                 <tr>
                     <th>Id:</th>

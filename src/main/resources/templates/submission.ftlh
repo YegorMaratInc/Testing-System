@@ -9,7 +9,7 @@
 <body>
 <#include "navBar.ftlh">
 <form method="get" action="/submission/${submission.id}">
-    <table>
+    <table class="table table-bordered table-hover table-responsive">
         <thead>
         <tr>
             <th>Дата</th>

@@ -17,7 +17,7 @@
         </div>
         <div class="card-body">
             <div class="card-text text-center">
-                <table class="table table-bordered table-hover">
+                <table class="table table-bordered table-hover table-responsive">
                     <tr class="thead-dark">
                         <th>№</th>
                         <th>Дата</th>
