@@ -70,7 +70,7 @@
                                 <td>${sub.lastTest}</td>
                                 <td>
                                     <button type="button" class="btn btn-outline-dark myBtn"
-                                            data-toggle="dataModal"
+                                            data-toggle="modal"
                                             data-target="#modal"
                                             onclick='$("#modalLabel").text("Логи посылки #${sub.id}"); $("#logBody").text("${sub.log}")'>
                                         Логи
@@ -93,7 +93,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="modalLabel"></h5>
                 <button type="button" class="close"
-                        data-dismiss="dataModal"
+                        data-dismiss="modal"
                         aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -101,7 +101,7 @@
             <div id="logBody" class="modal-body"></div>
             <div class="modal-footer">
                 <button class="btn btn-outline-dark myBtn"
-                        data-dismiss="dataModal" type="button">
+                        data-dismiss="modal" type="button">
                     Закрыть
                 </button>
             </div>
