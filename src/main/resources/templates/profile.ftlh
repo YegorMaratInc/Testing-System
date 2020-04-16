@@ -70,8 +70,8 @@
                                 <td>${sub.lastTest}</td>
                                 <td>
                                     <button type="button" class="btn btn-outline-dark myBtn"
-                                            data-toggle="dataModal${sub.id}"
-                                            data-target="#modal${sub.id}"
+                                            data-toggle="dataModal"
+                                            data-target="#modal"
                                             onclick='$("#modalLabel").text("Логи посылки #${sub.id}"); $("#logBody").text("${sub.log}")'>
                                         Логи
                                     </button>
