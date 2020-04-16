@@ -63,7 +63,7 @@
                             <label for="selectState${user.login}"></label>
                         </td>
                         <td>
-                            <button type="submit" onclick="
+                            <button class="btn btn-outline-dark myBtn" type="submit" onclick="
                                     let jsonData = JSON.stringify({'userRole': $('#selectRole${user.login}').val(), 'userState': $('#selectState${user.login}').val(), 'user': ${user.id}});
                                     $.ajax({
                                     url:'<@spring.url '/users' />',
