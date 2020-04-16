@@ -4,7 +4,7 @@
 <html lang="ru">
 <head>
     <#include "includes.ftlh"/>
-    <title>ITSprint-> Профиль ${user.login}</title>
+    <title>AlgoSprint->${user.login}</title>
 </head>
 <body>
 <#include "navBar.ftlh">

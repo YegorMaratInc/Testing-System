@@ -4,7 +4,7 @@
 <html lang="ru">
 <head>
     <#include "includes.ftlh"/>
-    <title>ITSprint->Проблема ${problem.shortName}</title>
+    <title>AlgoSprint->Проблема ${problem.shortName}</title>
 </head>
 <body>
 <#include "navBar.ftlh">
@@ -66,8 +66,8 @@
             <table class="table table-hover table-responsive-md">
                 <thead class="thead-dark">
                 <tr>
-                    <th>Id:</th>
-                    <th>Time:</th>
+                    <th>#</th>
+                    <th>Время</th>
                     <th>Вопрос задал</th>
                     <th>Вопрос</th>
                     <th>Ответ</th>
@@ -86,7 +86,8 @@
                             <th><span>${ques.answer}</span></th>
                         </#if>
                         <#if ques.answer == "">
-                            <th><a href="/reply/${ques.id}">Reply!</a></th>
+                            <th><a class="btn btn-outline-dark myBtn" href="/reply/${ques.id}"
+                                   role="button">Ответить</a></th>
                         </#if>
                     </tr>
                 </#list>

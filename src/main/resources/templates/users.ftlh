@@ -5,7 +5,7 @@
 <html lang="ru">
 <head>
     <#include "includes.ftlh"/>
-    <title>ITSprint->Пользователи</title>
+    <title>AlgoSprint->Пользователи</title>
 </head>
 <body>
 <#include "navBar.ftlh">
@@ -70,7 +70,7 @@
                                     type: 'POST',
                                     contentType: 'application/json',
                                     data: jsonData
-                                    });">Update
+                                    });">Зафиксировать
                             </button>
                         </td>
                     </tr>

@@ -35,6 +35,7 @@ public class SubmissionsController {
     @GetMapping("/submissions/contest/{contestId}")
     public String getSubmissionsPage(@PathVariable("contestId") Long contestId, ModelMap modelMap) {
         modelMap.addAttribute("submissions", submissionRepository.findAll().stream().filter(submission -> submission.getProblem().getContest().getId().equals(contestId)).collect(Collectors.toList()));
+        modelMap.addAttribute("personal", "Все посылки");
         return "submissions";
     }
 
@@ -46,6 +47,7 @@ public class SubmissionsController {
 
         List<Submission> submissionList = submissionRepository.findAllByOwner(user).stream().filter(submission -> submission.getProblem().getContest().getId().equals(contestId)).collect(Collectors.toList());
         submissionList.sort((a, b) -> (int) (b.getSubmissionTime().getTime() - a.getSubmissionTime().getTime()));
+        modelMap.addAttribute("personal", "Мои посылки");
         modelMap.addAttribute("submissions", submissionList);
         return "submissions";
     }

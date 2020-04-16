@@ -15,6 +15,4 @@ public class SubmissionForm {
     private MultipartFile program;
     private String languageName;
     private Long problem;
-    //TODO add info about user
-    //private User owner;
 }

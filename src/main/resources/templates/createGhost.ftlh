@@ -4,7 +4,7 @@
 <html lang="ru">
 <head>
     <#include "includes.ftlh"/>
-    <title>ITSprint->Создать пользователя</title>
+    <title>AlgoSprint->Создать пользователя</title>
 </head>
 <body>
 <#include "navBar.ftlh">

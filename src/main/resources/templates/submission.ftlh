@@ -4,7 +4,7 @@
 <html lang="ru">
 <head>
     <#include "includes.ftlh"/>
-    <title>ITSprint->Ваши посылки</title>
+    <title>AlgoSprint->#${submission.id}</title>
 </head>
 <body>
 <#include "navBar.ftlh">
@@ -24,19 +24,21 @@
                     <th>Язык</th>
                     <th>Задача</th>
                     <th>Вердикт</th>
-                    <th>Log</th>
+                    <th>Тест №</th>
+                    <th>Логи</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <th>${submission.submissionTime}</th>
-                    <th><a href="/profile/${submission.owner.login}">${submission.owner.login}</a></th>
-                    <th>${submission.language.name}</th>
-                    <th>
+                    <td>${submission.submissionTime}</td>
+                    <td><a href="/profile/${submission.owner.login}">${submission.owner.login}</a></td>
+                    <td>${submission.language.name}</td>
+                    <td>
                         <a href="/contest/${submission.problem.contest.id}/problem/${submission.problem.shortName}">${submission.problem.contest.id}${submission.problem.shortName}
-                            .${submission.problem.name}</a></th>
-                    <th>${submission.state.name()}</th>
-                    <th>${submission.log}</th>
+                            .${submission.problem.name}</a></td>
+                    <td>${submission.state.name()}</td>
+                    <td>${submission.lastTest}</td>
+                    <td>${submission.log}</td>
                 </tr>
                 </tbody>
             </table>

@@ -38,3 +38,7 @@
 .signUp-login {
     background-image: url("/images/background.jpg");
 }
+
+.navbar-brand {
+    font-size: 2rem;
+}

@@ -4,13 +4,14 @@
 <html lang="ru">
 <head>
     <#include "includes.ftlh"/>
-    <title>ITSprint->Ошибка</title>
+    <title>AlgoSprint->Ошибка</title>
 </head>
 <body>
 <#include "navBar.ftlh">
 <div class="container">
     <div class="jumbotron">
         <h1 class="text-center"><i class="fa fa-frown-o"> </i> Что-то пошло не так! :( </h1>
+        <#--TODO add collapse with error info-->
         <p class="text-center"><a class="btn btn-outline-dark myBtn" href="/"><i class="fa fa-home"></i>Домашняя
                 страница</a>
         </p>

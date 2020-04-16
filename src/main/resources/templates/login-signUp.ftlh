@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <#include "includes.ftlh"/>
-    <title>ITSprint->Регистрация</title>
+    <title><-AlgoSprint-></title>
 </head>
 <body class="signUp-login">
 <div class="container">

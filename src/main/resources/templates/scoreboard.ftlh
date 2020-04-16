@@ -4,7 +4,7 @@
 <html lang="ru">
 <head>
     <#include "includes.ftlh"/>
-    <title>ITSprint->Результаты</title>
+    <title>AlgoSprint->Результаты ${contest.title}</title>
 </head>
 <body>
 <#include "navBar.ftlh">

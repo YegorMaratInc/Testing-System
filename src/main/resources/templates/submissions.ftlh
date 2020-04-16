@@ -4,7 +4,7 @@
 <html lang="ru">
 <head>
     <#include "includes.ftlh"/>
-    <title>ITSprint->Ваши посылки</title>
+    <title>AlgoSprint-><#if personal??>${personal}<#else>Посылки</#if></title>
 </head>
 <body>
 <#include "navBar.ftlh">
@@ -12,20 +12,20 @@
     <div class="card">
         <div class="card-header text-center">
             <div class="card-title h3">
-                Последние посылки
+                <#if personal??>${personal}<#else>Посылки</#if>
             </div>
         </div>
         <div class="card-body">
             <table class="table table-bordered table-hover table-responsive-md">
                 <tr class="thead-dark">
-                    <th>№</th>
+                    <th>#</th>
                     <th>Дата</th>
                     <th>Отправитель</th>
                     <th>Задача</th>
                     <th>Язык</th>
                     <th>Вердикт</th>
-                    <th>Last test</th>
-                    <th>Log</th>
+                    <th>Тест №</th>
+                    <th>Логи</th>
                 </tr>
                 <#list submissions as sub>
                     <tr>

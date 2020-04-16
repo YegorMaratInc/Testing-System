@@ -4,7 +4,7 @@
 <html lang="ru">
 <head>
     <#include "includes.ftlh"/>
-    <title>ITSprint->Создать задачу</title>
+    <title>AlgoSprint->Новая задача</title>
 </head>
 <body>
 <#include "navBar.ftlh">
@@ -35,12 +35,12 @@
                               required></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="inputFormat">Формат входа</label>
+                    <label for="inputFormat">Формат ввода</label>
                     <input autofocus class="form-control" id="inputFormat" name="inputFormat"
                            placeholder="Введите здесь..." required>
                 </div>
                 <div class="form-group">
-                    <label for="outputFormat">Формат выхода</label>
+                    <label for="outputFormat">Формат вывода</label>
                     <input autofocus class="form-control" id="outputFormat" name="outputFormat"
                            placeholder="Введите здесь..." required>
                 </div>

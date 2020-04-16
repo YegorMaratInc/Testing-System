@@ -70,9 +70,7 @@ public class QuestionController {
     }
 
     @GetMapping("/question/{problemId}")
-    public String getQuestionsPage(ModelMap modelMap, @PathVariable Long problemId) {
-        //TODO resolve question creation page
-
+    public String getQuestionsPage(@PathVariable Long problemId) {
         return "question";
     }
 
