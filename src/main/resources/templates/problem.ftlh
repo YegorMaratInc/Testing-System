@@ -53,7 +53,7 @@
             <h4>Пример</h4>
             <div id="example"></div>
             <p>
-                <a role="button" class="btn btn-outline-dark btn-lg btn-block"
+                <a role="button" class="btn btn-outline-dark myBtn btn-block"
                    href="<@spring.url '/submit/contest/${problem.contest.id}'/>">
                     Сдать!
                 </a>
@@ -94,12 +94,14 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    $(document).ready(function () {
-        let span = $('#example');
-        let ex = "${problem.example}";
-        span.html("<h5>Входные данные:</h5>" + ex.split(':')[0] + "<br><h5>Выходные данные:</h5>" + ex.split(':')[1]);
-    });
-</script>
+<#if problem.example??>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            let span = $('#example');
+            let ex = "${problem.example}";
+            span.html("<h5>Входные данные:</h5>" + ex.split(':')[0] + "<br><h5>Выходные данные:</h5>" + ex.split(':')[1]);
+        });
+    </script>
+</#if>
 </body>
 </html>

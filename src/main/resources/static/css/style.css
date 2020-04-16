@@ -30,12 +30,13 @@
     color: #000000;
     border-color: #000000;
 }
-
+/*
 .container {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+*/
 
 .orangeCardHeader {
     background: #ffe5b4;
