@@ -8,15 +8,15 @@
 </head>
 <body>
 <#include "navBar.ftlh">
+
+#TODO edit submission page
 <div>
     <form method="post" enctype="multipart/form-data" action="<@spring.url '/submit/contest/${contest.id}'/>">
         <label for="languageName">Language:
             <select id="languageName" name="languageName">
-
                 <#list languages as lang>
                     <option value="${lang.name}">${lang.name}</option>
                 </#list>
-
             </select>
         </label>
         <label for="problem">Problem:
@@ -29,14 +29,13 @@
 
         </label>
         <label for="program">Program:
-            <input type="file" name="program" value required>
+            <input id="program" type="file" name="program" value required>
         </label>
-        <button class="btn btn-success" type="submit">
+        <button class="btn btn-outline-dark myBtn" type="submit">
             Отправить
         </button>
-        <h6>Егор, преврати это в конфетку</h6>
+
     </form>
 </div>
-<#--TODO apply style and edit form properly-->
 </body>
 </html>

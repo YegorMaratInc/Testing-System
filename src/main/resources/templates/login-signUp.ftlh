@@ -7,38 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <#include "includes.ftlh"/>
     <title>ITSprint->Регистрация</title>
-    <style>
-        body {
-            background: #ffe5b4 url(https://images.wallpaperscraft.ru/image/kod_tekst_raznotsvetnyj_140555_1920x1080.jpg);
-        }
-
-        .container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .nav-link {
-            color: #000000 !important;
-            background: #FF7F50 !important;
-        }
-        
-    </style>
 </head>
-<body>
-<div class="container my-lg-8">
-    <div class="card mt-5 border-dark" style="width: 25rem;">
-        <div class="card-header">
+<body class="signUp-login">
+<div class="container">
+    <div class="card mt-5 border-dark">
+        <div class="card-header orangeCardHeader">
             <div class="card-header-tabs">
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link <#if signupError??><#else>active</#if>" id="aTab" href="#sectionA"
+                        <a class="nav-link headerLink <#if signupError??><#else>active</#if>" id="aTab" href="#sectionA"
                            data-toggle="tab" role="tab"
                            aria-controls="sectionA"
                            <#if signupError??>aria-selected="false"<#else> aria-selected="true"</#if> >Войти</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <#if signupError??>active</#if>" id="bTab" href="#sectionB" data-toggle="tab"
+                        <a class="nav-link headerLink <#if signupError??>active</#if>" id="bTab" href="#sectionB"
+                           data-toggle="tab"
                            role="tab"
                            <#if signupError??>aria-selected="true"<#else> aria-selected="false"</#if>>Регистрация</a>
                     </li>
@@ -51,14 +35,19 @@
                      aria-labelledby="aTab">
                     <div>
                         <form method="post" action="/login">
+                            <#if error??>
+                                <div class="alert alert-danger alert-dismissible" role="alert">
+                                    Имя пользователя или пароль введены неправильно
+                                </div>
+                            </#if>
                             <div class="form-group">
-                                <label for="login">Логин</label>
-                                <input placeholder-shown="" autofocus="" class="form-control" id="login" name="login"
+                                <label for="inputLogin">Логин</label>
+                                <input autofocus="" class="form-control" id="inputLogin" name="login"
                                        required="" placeholder="Введите логин здесь...">
                             </div>
                             <div class="form-group">
-                                <label for="password">Пароль</label>
-                                <input type="password" class="form-control" id="password" name="password"
+                                <label for="inputPassword">Пароль</label>
+                                <input type="password" class="form-control" id="inputPassword" name="password"
                                        placeholder="Введите пароль здесь..." required="">
                             </div>
                             <div class="form-group form-check">
@@ -66,7 +55,7 @@
                                 <label class="form-check-label" for="remember-me">Запомните меня!</label>
                             </div>
                             <div class="btn-group-vertical" role="group">
-                                <button class="btn btn-outline-dark" type="submit">
+                                <button class="btn btn-outline-dark myBtn" type="submit">
                                     Войти
                                 </button>
                             </div>
@@ -77,6 +66,9 @@
                      aria-labelledby="bTab">
                     <div>
                         <form method="post" action="/signUp">
+                            <#if signupError??>
+                                <div class="alert alert-danger alert-dismissible" role="alert">${alert}</div>
+                            </#if>
                             <div class="form-group">
                                 <label for="login">Логин</label>
                                 <input autofocus="" class="form-control" id="login" name="login"
@@ -97,7 +89,7 @@
                                 <input class="form-control" id="lastName" name="lastName"
                                        placeholder="Введите свою фамилию здесь..." required="">
                             </div>
-                            <button class="btn btn-outline-dark" type="submit">
+                            <button class="btn btn-outline-dark myBtn" type="submit">
                                 Регистрация
                             </button>
                         </form>

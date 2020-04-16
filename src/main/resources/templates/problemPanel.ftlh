@@ -5,18 +5,11 @@
 <head>
     <#include "includes.ftlh"/>
     <title>ITSprint->Проблемы контеста ${contest.title}</title>
-    <style>
-        .container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    </style>
 </head>
 <body>
 <#include "navBar.ftlh">
 <div class="container">
-    <div class="card w-50">
+    <div class="card">
         <div class="card-header text-center">
             <div class="card-title h2">
                 Задачи
@@ -24,7 +17,7 @@
         </div>
         <div class="card-body">
             <div class="card-text text-center">
-                <table class="table table-bordered table-hover table-responsive">
+                <table class="table table-bordered table-hover table-responsive-md">
                     <tr class="thead-dark">
                         <th>№</th>
                         <th>Название</th>
@@ -44,11 +37,11 @@
         </div>
         <div class="card-body">
             <div class="text-center">
-                <a role="button" class="btn btn-outline-dark" href="/scoreboard/${contest.id}">
+                <a role="button" class="btn btn-outline-dark myBtn" href="/scoreboard/${contest.id}">
                     Результаты
                 </a>
                 <#if role == true>
-                    <a role="button" class="btn btn-outline-dark" href="/create/contest/${contest.id}">
+                    <a role="button" class="btn btn-outline-dark myBtn" href="/create/contest/${contest.id}">
                         Создать задачу
                     </a>
                 </#if>

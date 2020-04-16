@@ -5,12 +5,6 @@
 <head>
     <#include "includes.ftlh"/>
     <title>ITSprint-> Профиль ${user.login}</title>
-    <style>
-        .card {
-            margin-left: 1px;
-            margin-right: 1px;
-        }
-    </style>
 </head>
 <body>
 <#include "navBar.ftlh">
@@ -22,34 +16,31 @@
             </div>
             <div class="card-body">
                 <h5 class="card-title text-center">${user.firstName} ${user.lastName}</h5>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Количество решенный задач:</li>${problemsAccepted}
-                </ul>
+                <div>Количество решенных задач:${problemsAccepted}</div>
+
             </div>
         </div>
         <#if role == true>
             <div class="card border-dark">
-                <div class="card-body text-center">
-                    <div class="card-header text-center">
-                        <h3 class="card-text">Панель админа</h3>
-                    </div>
-                    <div сlass="card-body">
-                        <div class="btn-group-vertical btn-group-xs" role="group" aria-label="Admin Panel">
-                            <a role="button" class="btn btn-outline-dark" href="<@spring.url '/create'/>">
-                                Создать контест
-                            </a>
-                            <a role="button" class="btn btn-outline-dark" href="<@spring.url '/users'/>">
-                                Список пользователей
-                            </a>
-                            <a role="button" class="btn btn-outline-dark" href="<@spring.url '/createGhost'/>">
-                                Создать пользователя
-                            </a>
-                        </div>
+                <div class="card-header text-center">
+                    <h3 class="card-text">Панель админа</h3>
+                </div>
+                <div class="card-body">
+                    <div class="btn-group-vertical btn-group-xs" role="group" aria-label="Admin Panel">
+                        <a role="button" class="btn btn-outline-dark myBtn" href="<@spring.url '/create'/>">
+                            Создать контест
+                        </a>
+                        <a role="button" class="btn btn-outline-dark myBtn" href="<@spring.url '/users'/>">
+                            Список пользователей
+                        </a>
+                        <a role="button" class="btn btn-outline-dark myBtn" href="<@spring.url '/createGhost'/>">
+                            Создать пользователя
+                        </a>
                     </div>
                 </div>
             </div>
         </#if>
-        <div class="card border-dark " style="width: 50rem;">
+        <div class="card border-dark">
             <div class="card-header text-center">
                 <div class="card-title">
                     <h3>
@@ -59,7 +50,7 @@
             </div>
             <div class="card-body">
                 <div class="card-text text-center">
-                    <table class="table table-bordered table-hover table-responsive">
+                    <table class="table table-bordered table-hover table-responsive-md">
                         <thead>
                         <tr class="thead-dark">
                             <th>№</th>

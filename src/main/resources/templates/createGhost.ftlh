@@ -5,13 +5,6 @@
 <head>
     <#include "includes.ftlh"/>
     <title>ITSprint-></title>
-    <style>
-        .container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    </style>
 </head>
 <body>
 <#include "navBar.ftlh">
@@ -50,7 +43,7 @@
                            placeholder="Введите фамилию здесь..." required>
                 </div>
                 <div class="text-center">
-                    <button class="btn btn-outline-dark bt-lg" type="submit">
+                    <button class="btn btn-outline-dark myBtn bt-lg" type="submit">
                         Регистрация
                     </button>
                 </div>

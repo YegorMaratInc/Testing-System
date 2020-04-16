@@ -5,13 +5,6 @@
 <head>
     <#include "includes.ftlh"/>
     <title>ITSprint->Все проблемы</title>
-    <style>
-        .container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    </style>
 </head>
 <body>
 <#include "navBar.ftlh">
@@ -24,7 +17,7 @@
         </div>
         <div class="card-body">
             <div class="card-text text-center">
-                <table class="table table-bordered table-hover table-responsive">
+                <table class="table table-bordered table-hover table-responsive-md">
                     <tr class="thead-dark">
                         <th>№</th>
                         <th>Название</th>
