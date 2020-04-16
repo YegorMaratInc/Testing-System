@@ -69,7 +69,8 @@
                                 <td>${sub.state.name()}</td>
                                 <td>${sub.lastTest}</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary" data-toggle="modal${sub.id}"
+                                    <button type="button" class="btn btn-outline-dark myBtn"
+                                            data-toggle="dataModal${sub.id}"
                                             data-target="#modal${sub.id}">
                                         Логи
                                     </button>
@@ -82,7 +83,8 @@
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="modal${sub.id}Label">Логи посылки
                                                         №${sub.id}</h5>
-                                                    <button type="button" class="close" data-dismiss="modal${sub.id}"
+                                                    <button type="button" class="close"
+                                                            data-dismiss="dataModal${sub.id}"
                                                             aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
@@ -92,7 +94,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-outline-dark myBtn"
-                                                            data-dismiss="modal${sub.id}">Close
+                                                            data-dismiss="dataModal${sub.id}">Close
                                                     </button>
                                                 </div>
                                             </div>
