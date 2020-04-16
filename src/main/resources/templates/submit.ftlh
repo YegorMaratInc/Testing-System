@@ -8,8 +8,6 @@
 </head>
 <body>
 <#include "navBar.ftlh">
-
-#TODO edit submission page
 <div>
     <form method="post" enctype="multipart/form-data" action="<@spring.url '/submit/contest/${contest.id}'/>">
         <label for="languageName">Language:

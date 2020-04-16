@@ -8,7 +8,6 @@
 </head>
 <body>
 <#include "navBar.ftlh">
-<#--TODO make form and apply style-->
 <div class="container">
     <div class="card">
         <form method="post" action="<@spring.url '/reply/${question.id}'/>">

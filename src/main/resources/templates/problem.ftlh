@@ -11,7 +11,7 @@
 <div class="container">
     <div class="card">
         <div class="card-header text-center">
-            <div class="btn-group btn-group-lg" role="group" aria-label="MiniNavBar">
+            <div class="btn-group" role="group" aria-label="MiniNavBar">
                 <a role="button" class="btn btn-outline-dark myBtn"
                    href="<@spring.url '/contest/${problem.contest.id}'/>">
                     Вернуться к списку задач
@@ -44,19 +44,20 @@
             <p class="card-text">
             <h4>Формат ввода</h4>
             ${problem.inputFormat}
-            <p>
+
             <p class="card-text">
             <h4>Формат вывода</h4>
             ${problem.outputFormat}
-            <p>
-            <p class="card-text">
-            <h4>Пример</h4>
-            <div id="example"></div>
-            <p>
-                <a role="button" class="btn btn-outline-dark myBtn btn-block"
-                   href="<@spring.url '/submit/contest/${problem.contest.id}'/>">
-                    Сдать!
-                </a>
+
+            <#if problem.example??>
+                <p class="card-text">
+                <h4>Пример</h4>
+                <div id="example"></div>
+            </#if>
+            <a role="button" class="btn btn-outline-dark myBtn btn-block"
+               href="<@spring.url '/submit/contest/${problem.contest.id}'/>">
+                Сдать!
+            </a>
         </div>
         <div class="card-body">
             <h4>

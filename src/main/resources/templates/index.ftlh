@@ -9,7 +9,7 @@
 <body>
 <#include "navBar.ftlh">
 <div class="container">
-    <div class="card w-75">
+    <div class="card">
         <div class="card-header text-center">
             <div class="card-title h2">
                 Активные контесты
