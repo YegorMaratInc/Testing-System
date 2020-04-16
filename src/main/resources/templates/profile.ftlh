@@ -68,7 +68,37 @@
                                 <td>${sub.language.name}</td>
                                 <td>${sub.state.name()}</td>
                                 <td>${sub.lastTest}</td>
-                                <td>${sub.log}</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal${sub.id}"
+                                            data-target="#modal${sub.id}">
+                                        Launch demo modal
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="modal${sub.id}" tabindex="-1" role="dialog"
+                                         aria-labelledby="modal${sub.id}Label" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="modal${sub.id}Label">Логи посылки
+                                                        №${sub.id}</h5>
+                                                    <button type="button" class="close" data-dismiss="modal${sub.id}"
+                                                            aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    ${sub.log}
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-outline-dark myBtn"
+                                                            data-dismiss="modal${sub.id}">Close
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                         </#list>
                         </tbody>
