@@ -36,7 +36,23 @@ public class SignUpServiceImpl implements SignUpService {
                 .lastName(userForm.getLastName())
                 .login(userForm.getLogin())
                 .hashPassword(hashPassword)
-                .userRole(UserRole.GHOST)
+                .userRole(UserRole.USER)
+                .userState(UserState.ACTIVE)
+                .build();
+
+        userRepository.save(user);
+    }
+
+    @Override
+    public void signUp(UserForm userForm, UserRole role) {
+        String hashPassword = passwordEncoder.encode(userForm.getPassword());
+
+        User user = User.builder()
+                .firstName(userForm.getFirstName())
+                .lastName(userForm.getLastName())
+                .login(userForm.getLogin())
+                .hashPassword(hashPassword)
+                .userRole(role)
                 .userState(UserState.ACTIVE)
                 .build();
 

@@ -3,22 +3,65 @@
 <!doctype html>
 <html lang="ru">
 <head>
-    <link href="<@spring.url '/css/bootstrap.min.css'/>" rel="stylesheet" type="text/css">
-    <link href="<@spring.url '/css/style.css'/>" rel="stylesheet" type="text/css">
-    <script src="<@spring.url '/js/jquery-3.4.1.min.js'/>"></script>
-    <title>ITSprint->Результаты</title>
+    <#include "includes.ftlh"/>
+    <title>AlgoSprint->Результаты ${contest.title}</title>
 </head>
 <body>
-<#--TODO generate resultsTable-->
-<form method="get" action="<@spring.url '/scoreboard/${contest.id}'/>">
-    <#list scoreboard as user, score>
-        <h6>${user.login}
-            <#list score as score>
-                ${score.triesCount}
-            </#list>
-        </h6>
-    </#list>
-
-</form>
+<#include "navBar.ftlh">
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header text-center">
+            <div class="card-title h3">
+                Таблица результатов
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="card-text text-center">
+                <table class="table table-bordered table-hover table-responsive-md">
+                    <tr class="thead-dark">
+                        <th>
+                            Пользователь
+                        </th>
+                        <th>
+                            Штраф
+                        </th>
+                        <#list problems as prob>
+                            <th>
+                                <a href="/contest/${prob.contest.id}/problem/${prob.shortName}">${prob.shortName}</a>
+                            </th>
+                        </#list>
+                    </tr>
+                    <#list scoreboard as score>
+                        <tr>
+                            <th><a href="/profile/${score.owner.login}">${score.owner.login}</a></th>
+                            <th>${score.total}</th>
+                            <#list score.problemDTO as pd>
+                                <td>
+                                    <#if pd.triesCount gt 0>
+                                        <#if pd.solved == true>
+                                            <span class="text-success">
+                                            +<#if pd.triesCount gt 1>${pd.triesCount - 1}</#if>
+                                            </span>
+                                            <br>
+                                            <span>
+                                                ${pd.timeAdded}
+                                            </span>
+                                        <#else>
+                                            <span class="text-danger">
+                                            -${pd.triesCount}
+                                            </span>
+                                        </#if>
+                                    <#else>
+                                        -
+                                    </#if>
+                                </td>
+                            </#list>
+                        </tr>
+                    </#list>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

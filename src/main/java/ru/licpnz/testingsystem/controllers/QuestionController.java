@@ -7,6 +7,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import ru.licpnz.testingsystem.exceptions.NotFoundException;
 import ru.licpnz.testingsystem.forms.QuestionForm;
 import ru.licpnz.testingsystem.models.Problem;
@@ -17,7 +18,7 @@ import ru.licpnz.testingsystem.repositories.ProblemRepository;
 import ru.licpnz.testingsystem.repositories.QuestionRepository;
 import ru.licpnz.testingsystem.security.details.UserDetailsImpl;
 
-import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -42,11 +43,9 @@ public class QuestionController {
     public String postQuestion(QuestionForm questionForm, Authentication authentication, @PathVariable Long problemId) {
         Problem problem = problemRepository.findById(problemId).orElseThrow(NotFoundException::new);
         User author = ((UserDetailsImpl) authentication.getPrincipal()).getUser();
-        //TODO create record in DB
-        //check and criticize
         Question question = Question.builder()
                 .question(questionForm.getQuestion())
-                //.date(new Date())
+                .date(Calendar.getInstance().getTime())
                 .answer("")
                 .problem(problem)
                 .owner(author)
@@ -56,9 +55,22 @@ public class QuestionController {
         return "redirect:/contest/" + problem.getContest().getId() + "/problem/" + problem.getShortName();
     }
 
+    @PostMapping("/reply/{questionId}")
+    public String replyQuestion(@PathVariable Long questionId, @RequestParam String answer) {
+        Question question = questionRepository.findById(questionId).orElseThrow(NotFoundException::new);
+        question.setAnswer(answer);
+        questionRepository.save(question);
+        return "redirect:/contest/" + question.getProblem().getContest().getId() + "/problem/" + question.getProblem().getShortName();
+    }
+
+    @GetMapping("/reply/{questionId}")
+    public String getReplyPage(@PathVariable Long questionId, ModelMap modelMap) {
+        modelMap.addAttribute("question", questionRepository.findById(questionId).orElseThrow(NotFoundException::new));
+        return "replyQuestion";
+    }
+
     @GetMapping("/question/{problemId}")
-    public String getQuestionsPage(ModelMap modelMap, @PathVariable Long problemId) {
-        //TODO resolve question creation page
+    public String getQuestionsPage(@PathVariable Long problemId) {
         return "question";
     }
 

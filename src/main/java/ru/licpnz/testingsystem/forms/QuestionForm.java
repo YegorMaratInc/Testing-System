@@ -13,8 +13,5 @@ import ru.licpnz.testingsystem.models.User;
 @Data
 public class QuestionForm {
     private String question;
-    //private Long problemId;
-    //TODO add info about user
-    //Зачем, если мы можем посмотреть с кого мы отправляем. Это должно быть не здесь, а в модельке
     private User author;
 }
