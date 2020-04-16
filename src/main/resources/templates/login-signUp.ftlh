@@ -39,7 +39,7 @@
                              role="tabpanel"
                              aria-labelledby="aTab">
                             <div>
-                                <form method="post" action="/login">
+                                <form method="post" action="<@spring.url '/login'/>">
                                     <#if error??>
                                         <div class="alert alert-danger alert-dismissible" role="alert">
                                             Имя пользователя или пароль введены неправильно
@@ -71,7 +71,7 @@
                         <div id="sectionB" class="tab-pane fade<#if signupError??>show active</#if>" role="tabpanel"
                              aria-labelledby="bTab">
                             <div>
-                                <form method="post" action="/signUp">
+                                <form method="post" action="<@spring.url '/signUp'/>">
                                     <#if signupError??>
                                         <div class="alert alert-danger alert-dismissible" role="alert">${alert}</div>
                                     </#if>

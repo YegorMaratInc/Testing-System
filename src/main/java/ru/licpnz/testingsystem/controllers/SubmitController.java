@@ -84,8 +84,6 @@ public class SubmitController {
         else
             lastLanguage = languageRepository.getOne(1L);
         modelMap.addAttribute("lastLanguage", lastLanguage);
-
-        modelMap.addAttribute("lastLanguage", lastLanguage);
         return "submit";
     }
 
