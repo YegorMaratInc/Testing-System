@@ -55,8 +55,8 @@
                             <th>Задача</th>
                             <th>Язык</th>
                             <th>Вердикт</th>
-                            <th>Last test</th>
-                            <th>Log</th>
+                            <th>Тест №</th>
+                            <th>Логи</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -71,7 +71,7 @@
                                 <td>
                                     <button type="button" class="btn btn-primary" data-toggle="modal${sub.id}"
                                             data-target="#modal${sub.id}">
-                                        Launch demo modal
+                                        Логи
                                     </button>
 
                                     <!-- Modal -->
