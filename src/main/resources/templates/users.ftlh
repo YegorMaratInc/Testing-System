@@ -20,7 +20,7 @@
 
         </div>
         <div class="card-body">
-            <table class="table table-bordered table-hover table-responsive">
+            <table class="table table-bordered table-hover table-responsive-md">
                 <tr class="thead-dark">
                     <th>
                         Имя пользователя
