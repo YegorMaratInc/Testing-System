@@ -86,6 +86,7 @@ public class ScoreboardController {
             return s1.getTotal() - s2.getTotal();
         });
         modelMap.addAttribute("problems", problems);
+        problems.sort(Comparator.comparing(Problem::getShortName));
         modelMap.addAttribute("scoreboard", score);
         return "scoreboard";
     }
