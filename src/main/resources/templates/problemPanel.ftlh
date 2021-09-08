@@ -3,25 +3,54 @@
 <!doctype html>
 <html lang="ru">
 <head>
-    <link href="<@spring.url '/css/bootstrap.min.css'/>" rel="stylesheet" type="text/css">
-    <link href="<@spring.url '/css/style.css'/>" rel="stylesheet" type="text/css">
-    <script src="<@spring.url '/js/jquery-3.4.1.min.js'/>"></script>
-    <title>ITSprint->Проблемы контеста ${contest.title}</title>
+    <#include "includes.ftlh"/>
+    <title>AlgoSprint->${contest.title}</title>
 </head>
 <body>
-<table class="table">
-    <caption>Задачи</caption>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-    </tr>
-    <#list problems as problem>
-        <tr>
-            <th>${problem.id}</th>
-            <th><a href="/contest/${contest.id}/problem/${problem.shortName}">${problem.shortName}.${problem.name}</a></th>
-        </tr>
-    </#list>
-</table>
-<#--TODO fix style and order problems-->
+<#include "navBar.ftlh">
+<div class="container">
+    <div class="card">
+        <div class="card-header text-center">
+            <div class="card-title h2">
+                Задачи
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="card-text text-center">
+                <table class="table table-bordered table-hover table-responsive-md">
+                    <tr class="thead-dark">
+                        <th>№</th>
+                        <th>Название</th>
+                        <th>Лимит по времени</th>
+                    </tr>
+                    <#list problems as problem>
+                        <tr>
+                            <th><a href="/contest/${contest.id}/problem/${problem.shortName}">${problem.shortName}</a>
+                            </th>
+                            <th><a href="/contest/${contest.id}/problem/${problem.shortName}">${problem.name}</a>
+                            </th>
+                            <th>${problem.timeLimit} sec</th>
+                        </tr>
+                    </#list>
+                </table>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="text-center">
+                <a role="button" class="btn btn-outline-dark myBtn" href="/scoreboard/${contest.id}">
+                    Результаты
+                </a>
+                <#if role == true>
+                    <a role="button" class="btn btn-outline-dark myBtn" href="/create/contest/${contest.id}">
+                        Создать задачу
+                    </a>
+                </#if>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+</div>
+
 </body>
 </html>

@@ -31,10 +31,6 @@ public class User {
     private String login;
     private String hashPassword;
 
-    @JoinColumn(name = "last_language_id")
-    @ManyToOne
-    private Language lastLanguage;
-
     @Enumerated(value = EnumType.STRING)
     private UserRole userRole;
     @Enumerated(value = EnumType.STRING)

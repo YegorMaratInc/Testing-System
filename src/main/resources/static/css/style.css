@@ -1,0 +1,39 @@
+.nav-link {
+    color: #000000 !important;
+}
+
+.headerLink.active {
+    border-color: #ff6949 !important;
+    background: #FF7F50 !important;
+}
+
+.navbar-red {
+    background: #ffe5b4 !important;
+}
+
+.jumbotron {
+    background: #ffe5b4;
+}
+
+.myBtn {
+    color: #000000;
+    border-color: #000000;
+}
+
+.myBtn:hover {
+    background: #FF7F50;
+    color: #000000;
+    border-color: #000000;
+}
+
+.orangeCardHeader {
+    background: #ffe5b4;
+}
+
+.signUp-login {
+    background-image: url("/images/background.jpg");
+}
+
+.navbar-brand {
+    font-size: 2rem;
+}

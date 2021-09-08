@@ -41,7 +41,8 @@ public class Submission {
     @Temporal(TemporalType.TIMESTAMP)
     private Date submissionTime;
 
-    private String program;
+    private String log;
+
     private String pathToProgram;
 
     @Enumerated(EnumType.STRING)

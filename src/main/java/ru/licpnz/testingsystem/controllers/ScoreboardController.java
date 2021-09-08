@@ -11,6 +11,7 @@ import ru.licpnz.testingsystem.repositories.ProblemRepository;
 import ru.licpnz.testingsystem.repositories.SubmissionRepository;
 import ru.licpnz.testingsystem.repositories.UserRepository;
 import ru.licpnz.testingsystem.transfer.ProblemDTO;
+import ru.licpnz.testingsystem.transfer.ScoreboardDTO;
 
 import java.util.*;
 
@@ -57,18 +58,35 @@ public class ScoreboardController {
                         break;
                 }
                 if (i == userSubmissions.size())
-                    scoreboard.get(user).add(new ProblemDTO(userSubmissions.size(), 0, false));
+                    scoreboard.get(user).add(new ProblemDTO(userSubmissions.size(), 0, false, problem.getShortName()));
                 else if (userSubmissions.size() == 0)
-                    scoreboard.get(user).add(new ProblemDTO(0, 0, false));
+                    scoreboard.get(user).add(new ProblemDTO(0, 0, false, problem.getShortName()));
                 else {
                     int difference = userSubmissions.size() * 10 - 10;
                     Date userTime = userSubmissions.get(i).getSubmissionTime();
                     difference += (int) ((userTime.getTime() - contest.getStartTime().getTime()) / 60000);
-                    scoreboard.get(user).add(new ProblemDTO(i + 1, difference, true));
+                    scoreboard.get(user).add(new ProblemDTO(i + 1, difference, true, problem.getShortName()));
                 }
             });
         });
-        modelMap.addAttribute("scoreboard", scoreboard);
+        List<ScoreboardDTO> score = new ArrayList<>();
+        scoreboard.forEach((user, problemDTOS) -> {
+            int total = 0;
+            int solved = 0;
+            for (ProblemDTO problemDTO : problemDTOS) {
+                total += problemDTO.getTimeAdded();
+                solved += problemDTO.isSolved() ? 1 : 0;
+            }
+            problemDTOS.sort(Comparator.comparing(ProblemDTO::getProblemShortName));
+            score.add(new ScoreboardDTO(problemDTOS, user, total, solved));
+        });
+        score.sort((s1, s2) -> {
+            if (s1.getCount() != s2.getCount())
+                return s2.getCount() - s1.getCount();
+            return s1.getTotal() - s2.getTotal();
+        });
+        modelMap.addAttribute("problems", problems);
+        modelMap.addAttribute("scoreboard", score);
         return "scoreboard";
     }
 }

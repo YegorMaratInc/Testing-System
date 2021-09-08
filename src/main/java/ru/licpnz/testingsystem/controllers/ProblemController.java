@@ -32,7 +32,6 @@ public class ProblemController {
         Problem problem = problemRepository.findByContestAndShortName(contest, problemId).orElseThrow(NotFoundException::new);
         modelMap.addAttribute("problem", problem);
         modelMap.addAttribute("questions", questionRepository.findAllByProblem(problem));
-        //TODO render detailed page with additional info
         return "problem";
     }
 }

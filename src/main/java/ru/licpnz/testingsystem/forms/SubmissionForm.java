@@ -1,8 +1,7 @@
 package ru.licpnz.testingsystem.forms;
 
 import lombok.Data;
-import ru.licpnz.testingsystem.models.Problem;
-import ru.licpnz.testingsystem.models.User;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * 28/11/2019
@@ -13,10 +12,7 @@ import ru.licpnz.testingsystem.models.User;
  */
 @Data
 public class SubmissionForm {
-    private String program;
+    private MultipartFile program;
     private String languageName;
     private Long problem;
-    //TODO add info about user
-    //Зачем, если мы можем посмотреть с кого мы отправляем. Это должно быть не здесь, а в модельке
-    //private User owner;
 }

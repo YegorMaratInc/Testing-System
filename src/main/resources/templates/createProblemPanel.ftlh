@@ -3,51 +3,61 @@
 <!doctype html>
 <html lang="ru">
 <head>
-    <link href="<@spring.url '/css/bootstrap.min.css'/>" rel="stylesheet" type="text/css">
-    <link href="<@spring.url '/css/style.css'/>" rel="stylesheet" type="text/css">
-    <script src="<@spring.url '/js/jquery-3.4.1.min.js'/>"></script>
-    <title>ITSprint->Создать</title>
+    <#include "includes.ftlh"/>
+    <title>AlgoSprint->Новая задача</title>
 </head>
 <body>
-<div>
-    <form method="post" action="<@spring.url '/create/contest/${contestId}'/>">
-        <div class="form-group">
-            <label for="name">Название</label>
-            <input autofocus class="form-control" id="name" name="name"
-                   placeholder="Введите название здесь..." required>
-        </div>
-        <div class="form-group">
-            <label for="shortName">Буква</label>
-            <input autofocus class="form-control" id="shortName" name="shortName"
-                   placeholder="Введите букву здесь..." required>
-        </div>
-        <div class="form-group">
-            <label for="timeLimit">Ограничение по времени</label>
-            <input autofocus class="form-control" id="timeLimit" name="timeLimit" type="number"
-                   placeholder="1" required>
-        </div>
-        <div class="form-group">
-            <label for="content">Условие</label>
-            <textarea autofocus class="form-control" id="content" name="content"
-                   placeholder="Введите условие здесь..." required>
-            </textarea>
-        </div>
-        <div class="form-group">
-            <label for="inputFormat">Формат входа</label>
-            <input autofocus class="form-control" id="inputFormat" name="inputFormat"
-                   placeholder="Введите здесь..." required>
-        </div>
-        <div class="form-group">
-            <label for="outputFormat">Формат выхода</label>
-            <input autofocus class="form-control" id="outputFormat" name="outputFormat"
-                   placeholder="Введите здесь..." required>
-        </div>
+<#include "navBar.ftlh">
+<div class="container">
+    <div class="card">
+        <div class="card-header"><h3>Создать задачу</h3></div>
 
-        <button class="btn btn-success" type="submit">
-            Создать
-        </button>
-    </form>
+        <form method="post" enctype="multipart/form-data" action="<@spring.url '/create/contest/${contestId}'/>">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="name">Название</label>
+                    <input autofocus class="form-control" id="name" name="name"
+                           placeholder="Введите название здесь..." required>
+                </div>
+                <div class="form-group">
+                    <label for="shortName">Буква</label>
+                    <input autofocus class="form-control" id="shortName" name="shortName"
+                           placeholder="Введите букву здесь..." required>
+                </div>
+                <div class="form-group">
+                    <label for="timeLimit">Ограничение по времени</label>
+                    <input autofocus class="form-control" id="timeLimit" name="timeLimit" type="number" required>
+                </div>
+                <div class="form-group">
+                    <label for="content">Условие</label>
+                    <textarea autofocus class="form-control" id="content" name="content"
+                              placeholder="Введите условие здесь..."
+                              required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="inputFormat">Формат ввода</label>
+                    <input autofocus class="form-control" id="inputFormat" name="inputFormat"
+                           placeholder="Введите здесь..." required>
+                </div>
+                <div class="form-group">
+                    <label for="outputFormat">Формат вывода</label>
+                    <input autofocus class="form-control" id="outputFormat" name="outputFormat"
+                           placeholder="Введите здесь..." required>
+                </div>
+                <div class="form-group">
+                    <label for="example">Пример</label>
+                    <input autofocus class="form-control" id="example" name="example"
+                           placeholder="Введите здесь..." required>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-outline-dark myBtn" type="submit">
+                    Создать
+                </button>
+            </div>
+        </form>
+    </div>
 </div>
-<#--TODO styles-->
+
 </body>
 </html>
